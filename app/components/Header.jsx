@@ -175,8 +175,8 @@ const Header = ({ isLoggedIn }) => {
                 input:
                   "text-base text-base font-light text-gray-800 placeholder:text-base placeholder:font-light placeholder:text-gray-800",
                 inputWrapper: `h-full ps-5 pe-3 text-default-500 bg-gray-500 border ${showSearchList
-                    ? "rounded-t-2xl rounded-b-none border-gray-400"
-                    : "rounded-full border-gray-500"
+                  ? "rounded-t-2xl rounded-b-none border-gray-400"
+                  : "rounded-full border-gray-500"
                   } shadow-none`,
               }}
               placeholder="Search here..."
@@ -186,77 +186,16 @@ const Header = ({ isLoggedIn }) => {
             />
             {showSearchList && <SearchListBox />}
           </NavbarItem>
-          <NavbarItem>
-            <Link
-              href="/authors"
-              className="px-5 py-3 text-gray-600 hover:text-black 2sm:text-base text-sm 2xl:px-5"
-            >
-              Authors
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link
-              href="/about"
-              className="px-5 py-3 text-gray-600 hover:text-black 2sm:text-base text-sm 2xl:px-5"
-            >
-              About Us
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link
-              href="/contact"
-              className="px-5 py-3 text-gray-600 hover:text-black 2sm:text-base text-sm 2xl:px-5"
-            >
-              Contact Us
-            </Link>
-          </NavbarItem>
         </NavbarContent>
 
         {/* End */}
         {isLoggedIn ? (
           <div className="flex items-center gap-2 md:gap-3">
-            <NavbarItem className="me-1 2sm:me-2">
-              <Button
-                onPress={onOpen}
-                variant="light"
-                className="hover:!bg-transparent gap-1 p-0 min-w-fit"
-                endContent={<ChevronDown size={16} />}
-              >
-                EN
-              </Button>
-            </NavbarItem>
-            <NavbarItem className="me-2 2sm:m-0 hidden 2sm:block">
-              <Divider className="h-6" orientation="vertical" />
-            </NavbarItem>
             <NavbarItem className="me-2 2sm:m-0 flex items-center justify-center">
               <NotificationSection />
             </NavbarItem>
             <NavbarItem>
               <ProfileDropdown />
-            </NavbarItem>
-            <NavbarItem>
-              <Link
-                href="/write-post"
-                className="hidden md:flex items-center gap-1 text-black"
-              >
-                <Image
-                  width={20}
-                  height={20}
-                  src="/assets/images/edit-pen.svg"
-                  alt="edit pen icon"
-                />
-                Write
-              </Link>
-              <Button
-                isIconOnly
-                radius="full"
-                variant="bordered"
-                size="sm"
-                href="/"
-                className="md:hidden flex border border-gray-400"
-              >
-                <SquarePen size={16} />
-              </Button>
             </NavbarItem>
             <NavbarItem className="block xl:hidden">
               <Button
@@ -273,25 +212,21 @@ const Header = ({ isLoggedIn }) => {
             <NavbarItem>
               <Button
                 color="primary"
-                href="/contact"
+                href="/login"
+                as={Link}
+                className="hidden md:flex justify-center items-center text-base px-[22px] min-w-[30px] w-full rounded-full border border-gray-900 bg-white text-gray-900"
+              >
+                Login
+              </Button>
+            </NavbarItem>
+            <NavbarItem>
+              <Button
+                color="primary"
+                href="/login"
                 as={Link}
                 className="hidden md:flex justify-center items-center text-base px-[22px] min-w-[30px] w-full rounded-full bg-gray-900"
               >
-                Membership
-              </Button>
-              <Button
-                color="primary"
-                href="/contact"
-                isIconOnly
-                as={Link}
-                className="flex md:hidden justify-center items-center text-base min-w-[30px] h-[30px] w-full rounded-full bg-gray-900"
-              >
-                <Image
-                  src={"/assets/images/user-star.svg"}
-                  alt="user star icon"
-                  width={16}
-                  height={16}
-                />
+                Register
               </Button>
             </NavbarItem>
           </div>

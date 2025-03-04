@@ -41,12 +41,6 @@ const Sidebar = () => {
                           pathname === listItem.link || activeItem
                             ? "bg-black hover:!bg-black text-white"
                             : ""
-                        } ${
-                          listItem.link === "/about" ||
-                          listItem.link === "/contact" ||
-                          listItem.link === "/authors"
-                            ? "xl:hidden"
-                            : ""
                         }`}
                       >
                         {listItem.icon}

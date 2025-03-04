@@ -73,26 +73,26 @@ const sidebarData = () => {
     {
       title: "Resources",
       items: [
+        // {
+        //   id: 7,
+        //   label: "Authors",
+        //   link: "/authors",
+        //   icon: <UsersRound size={20} />,
+        // },
         {
           id: 7,
-          label: "Authors",
-          link: "/authors",
-          icon: <UsersRound size={20} />,
-        },
-        {
-          id: 8,
           label: "About Us",
           link: "/about",
           icon: <CircleAlert size={20} />,
         },
         {
-          id: 9,
+          id: 8,
           label: "Contact Us",
           link: "/contact",
           icon: <Phone size={20} />,
         },
         {
-          id: 10,
+          id: 9,
           label: "Settings",
           link: "/profile-edit",
           icon: <Settings size={20} />,
