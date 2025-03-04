@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "label": "technology",
+    "name": "Technology",
+    "stories": "240K",
+    "followers": "1.4M"
+  },
+  {
+    "id": 2,
+    "label": "travel",
+    "name": "Travel",
+    "stories": "160K",
+    "followers": "1.1M"
+  },
+  {
+    "id": 3,
+    "label": "business",
+    "name": "Business",
+    "stories": "130K",
+    "followers": "1.6M"
+  },
+  {
+    "id": 4,
+    "label": "productivity",
+    "name": "Productivity",
+    "stories": "220K",
+    "followers": "1.3M"
+  },
+  {
+    "id": 5,
+    "label": "news",
+    "name": "News",
+    "stories": "310K",
+    "followers": "2.1M"
+  },
+  {
+    "id": 6,
+    "label": "interior-design",
+    "name": "Interior design",
+    "stories": "100K",
+    "followers": "1M"
+  },
+  {
+    "id": 7,
+    "label": "money",
+    "name": "Money",
+    "stories": "180K",
+    "followers": "1.4M"
+  },
+  {
+    "id": 8,
+    "label": "health",
+    "name": "Health",
+    "stories": "200K",
+    "followers": "1.6M"
+  }
+]

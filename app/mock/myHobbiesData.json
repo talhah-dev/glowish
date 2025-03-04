@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Painting"
+  },
+  {
+    "id": 2,
+    "name": "Blogging"
+  },
+  {
+    "id": 3,
+    "name": "Music"
+  },
+  {
+    "id": 4,
+    "name": "Travel"
+  },
+  {
+    "id": 5,
+    "name": "Reading"
+  }
+]

@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "title": "Implementing Electronic Health Records: A Case Study of the Something Something",
+        "imagePath": "/assets/images/recent-1.png",
+        "link": "/",
+        "uplodadedDate": "June 20, 2024"
+    },
+    {
+        "id": 2,
+        "title": "Cybersecurity Challenges and Solutions: A Case Study of Something",
+        "imagePath": "/assets/images/recent-2.png",
+        "link": "/",
+        "uplodadedDate": "June 20, 2024"
+    },
+    {
+        "id": 3,
+        "title": "Digital Marketing Transformation at Unilever.",
+        "imagePath": "/assets/images/recent-3.png",
+        "link": "/",
+        "uplodadedDate": "June 20, 2024"
+    },
+    {
+        "id": 4,
+        "title": "The Impact of Blockchain on Financial Services: A Case Study of the Something",
+        "imagePath": "/assets/images/recent-4.png",
+        "link": "/",
+        "uplodadedDate": "June 20, 2024"
+    },
+    {
+        "id": 5,
+        "title": "Implementing Electronic Health Records: A Case Study of the Something Something",
+        "imagePath": "/assets/images/recent-2.png",
+        "link": "/",
+        "uplodadedDate": "June 20, 2024"
+    },
+    {
+        "id": 6,
+        "title": "Cybersecurity Challenges and Solutions: A Case Study of Something",
+        "imagePath": "/assets/images/recent-3.png",
+        "link": "/",
+        "uplodadedDate": "June 20, 2024"
+    },
+    {
+        "id": 7,
+        "title": "Digital Marketing Transformation at Unilever.",
+        "imagePath": "/assets/images/recent-1.png",
+        "link": "/",
+        "uplodadedDate": "June 20, 2024"
+    },
+    {
+        "id": 8,
+        "title": "The Impact of Blockchain on Financial Services: A Case Study of the Something",
+        "imagePath": "/assets/images/recent-4.png",
+        "link": "/",
+        "uplodadedDate": "June 20, 2024"
+    }
+]

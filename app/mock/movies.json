@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "uploadedBy": "Aleena Watts",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-13.png",
+    "uploadedDate": "5/9/2024",
+    "title": "Women in Cinema: A Look at Female Directors and Their Impact",
+    "description": "Women in Cinema: A Look at Female Directors and Their Impact\" explores the transformative contributions of female filmmakers in a traditionally male-dominated industry. From pioneers like Agnès Varda to modern trailblazers like Greta Gerwig, women directors have shaped diverse narratives and pushed boundaries in storytelling. Their work continues to inspire new generations and redefine the future of cinema.",
+    "media": "carousal",
+    "mediaPath": [
+      "/assets/images/movie-1.png",
+      "/assets/images/movie-2.png",
+      "/assets/images/movie-3.png"
+    ],
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 2,
+    "uploadedBy": "Harold Pham",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-11.png",
+    "uploadedDate": "25/8/2024",
+    "title": "The Best Movies of the Year So Far",
+    "description": "Here are some of the best movies of the year so far, each offering unique storytelling, memorable performances. \"Oppenheimer\" captivated audiences with its historical depth and Christopher Nolan's masterful direction. \"Spider-Man: Across the Spider-Verse\" dazzled with its stunning animation and emotional narrative. \"Barbie\" brought a fresh and thought-provoking take on the iconic doll, while \"Past Lives\" offered an intimate and moving exploration of love and destiny. Finally, \"John Wick: Chapter 4\" delivered high-octane action that thrilled fans of the franchise.",
+    "media": "image",
+    "mediaPath": "/assets/images/movie-4.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 3,
+    "uploadedBy": "Pedro Baker",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-2.png",
+    "uploadedDate": "25/6/2024",
+    "title": "The Hidden Gems of Netflix You Shouldn't Miss",
+    "description": "Discover the hidden gems of Netflix that you might have missed! From captivating indie films to underrated series, there's a treasure trove of content waiting to be explored. Dive into unique stories and exceptional performances that deserve your attention!",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 4,
+    "uploadedBy": "Mina Machain",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-12.png",
+    "uploadedDate": "20/8/2024",
+    "title": "The Ultimate Guide to Christopher Nolan's Films",
+    "description": "Christopher Nolan's films are known for their complex narratives, visual grandeur, and thought-provoking themes. From the psychological depths of Memento to the mind-bending world of Inception, he has continually redefined modern cinema. His Dark Knight trilogy brought a new level of realism to superhero films, while Interstellar and Tenet explored the boundaries of time and space. Nolan's masterful storytelling, coupled with his use of practical effects and non-linear timelines, cements his place as one of the most innovative directors of his generation.",
+    "media": "image",
+    "mediaPath": "/assets/images/movie-5.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  }
+]

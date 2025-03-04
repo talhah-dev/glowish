@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "uploadedBy": "Harold Pham",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-11.png",
+    "uploadedDate": "5/9/2024",
+    "title": "Cricket's Greatest Rivalries: A Look at Iconic Matches",
+    "description": "Cricket's greatest rivalries have produced some of the most thrilling matches in the sport's history. From the intense Ashes battles between England and Australia to the fierce India-Pakistan clashes, these encounters are defined by their high stakes and passionate fans. Iconic matches often feature dramatic turns, memorable performances, and historic moments that cement their place in cricket lore. The rivalries are not just about the teams but also the deep-seated national pride and fierce competition they represent. Each match adds a new chapter to the rich tapestry of cricket's storied rivalries.",
+    "media": "image",
+    "mediaPath": "/assets/images/sport-1.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 2,
+    "uploadedBy": "Mina Machain",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-12.png",
+    "uploadedDate": "25/8/2024",
+    "title": "From Beach to Court: The Evolution of Volleyball",
+    "description": "Volleyball's journey from the sandy shores to the polished courts showcases its versatility and evolution. Originally a beach game, it became popular in indoor settings, leading to the establishment of structured leagues and professional play. Innovations in equipment and rules have transformed it into a dynamic sport with global appeal. Today, volleyball thrives both on the beach and in indoor arenas, reflecting its rich history and adaptability. The game's progression highlights its universal appeal and ongoing growth in the sporting world.",
+    "media": "image",
+    "mediaPath": "/assets/images/sport-2.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 3,
+    "uploadedBy": "Pedro Baker",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-2.png",
+    "uploadedDate": "25/6/2024",
+    "title": "The Big Four: Federer, Nadal, Djokovic, and Murray's Dominance",
+    "description": "The Big Four—Roger Federer, Rafael Nadal, Novak Djokovic, and Andy Murray—have defined tennis over the past two decades with their unparalleled dominance. Federer's elegance and precision, Nadal's clay court mastery, Djokovic's all-around prowess, and Murray's resilience have set new standards in the sport. Their rivalries have delivered unforgettable matches and numerous Grand Slam titles. Each player has brought a unique style and relentless drive, shaping the modern era of tennis. Their impact on the game is profound, influencing future generations and captivating fans worldwide.",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 4,
+    "uploadedBy": "Aleena Watts",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-13.png",
+    "uploadedDate": "20/8/2024",
+    "title": "The Beautiful Game: How Soccer Became the World's Favorite Sport",
+    "description": "Step into the future of technology with our latest blog post on cutting-edge gadgets. innovation accelerates, electronics are becoming smarter, more versatile, and more integrated into our daily lives. From the latest breakthroughs in wearable tech to the next-generation smart home devices, this blog explores the newest advancements that are reshaping how we interact with technology. Discover how these revolutionary gadgets work, their potential impact on various industries, and what to expect in the world of electronics in the coming years. Whether you're a tech enthusiast or just curious about the latest trends, this post will keep you informed and excited about the future of electronics.",
+    "media": "image",
+    "mediaPath": "/assets/images/sport-3.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "commentBy": "Abdullah Morris",
+    "profileImage": "/assets/images/user-1.png",
+    "commentDate": "2/9/2024",
+    "comment": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+    "likes": 54
+  },
+  {
+    "id": 2,
+    "commentBy": "Abdullah Morris",
+    "profileImage": "/assets/images/user-1.png",
+    "commentDate": "4/9/2024",
+    "comment": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+    "likes": 25
+  },
+  {
+    "id": 3,
+    "commentBy": "Abdullah Morris",
+    "profileImage": "/assets/images/user-1.png",
+    "commentDate": "2/9/2024",
+    "comment": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+    "likes": 75
+  },
+  {
+    "id": 4,
+    "commentBy": "Abdullah Morris",
+    "profileImage": "/assets/images/user-1.png",
+    "commentDate": "6/9/2024",
+    "comment": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+    "likes": 35
+  },
+  {
+    "id": 5,
+    "commentBy": "Abdullah Morris",
+    "profileImage": "/assets/images/user-1.png",
+    "commentDate": "1/9/2024",
+    "comment": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+    "likes": 45
+  },
+  {
+    "id": 6,
+    "commentBy": "Abdullah Morris",
+    "profileImage": "/assets/images/user-1.png",
+    "commentDate": "3/9/2024",
+    "comment": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+    "likes": 16
+  }
+]

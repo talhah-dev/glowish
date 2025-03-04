@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  @apply !font-matter;
+}
+
+@font-face {
+  font-family: "Matter";
+  src: url("/assets/font/Matter-Bold.eot");
+  src: url("/assets/font/Matter-Bold.eot?#iefix") format("embedded-opentype"),
+    url("/assets/font/Matter-Bold.woff2") format("woff2"),
+    url("/assets/font/Matter-Bold.woff") format("woff"),
+    url("/assets/font/Matter-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Matter";
+  src: url("/assets/font/Matter-SemiBold.eot");
+  src: url("/assets/font/Matter-SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("/assets/font/Matter-SemiBold.woff2") format("woff2"),
+    url("/assets/font/Matter-SemiBold.woff") format("woff"),
+    url("/assets/font/Matter-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Matter";
+  src: url("/assets/font/Matter-Medium.eot");
+  src: url("/assets/font/Matter-Medium.eot?#iefix") format("embedded-opentype"),
+    url("/assets/font/Matter-Medium.woff2") format("woff2"),
+    url("/assets/font/Matter-Medium.woff") format("woff"),
+    url("/assets/font/Matter-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Matter";
+  src: url("/assets/font/Matter-Regular.eot");
+  src: url("/assets/font/Matter-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/assets/font/Matter-Regular.woff2") format("woff2"),
+    url("/assets/font/Matter-Regular.woff") format("woff"),
+    url("/assets/font/Matter-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Matter";
+  src: url("/assets/font/Matter-Light.eot");
+  src: url("/assets/font/Matter-Light.eot?#iefix") format("embedded-opentype"),
+    url("/assets/font/Matter-Light.woff2") format("woff2"),
+    url("/assets/font/Matter-Light.woff") format("woff"),
+    url("/assets/font/Matter-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  .custom-check input {
+    @apply hidden;
+  }
+  .custom-check input:checked ~ span {
+    @apply border-gray-900 bg-gray-900;
+  }
+  .input {
+    @apply block w-full font-matter lg:text-lg text-base text-gray-900 placeholder:lg:text-lg placeholder:text-base placeholder:text-gray-800 placeholder:opacity-50 px-6 py-[10px] border rounded-full border-gray-400 focus:outline-none focus:border-green/30;
+  }
+  /* ====== buttons ====== */
+  .btn-primary {
+    @apply flex items-center font-matter text-base font-normal rounded-full bg-gray-900 text-white px-[22px] py-[8px] border border-gray-900 hover:text-gray-900 hover:bg-white;
+  }
+  .btn-primary:hover svg path {
+    @apply stroke-gray-900;
+  }
+  .btn-small {
+    @apply flex items-center font-matter text-sm font-normal rounded-full bg-gray-500 px-[18px] py-[8px] hover:text-white hover:bg-gray-900;
+  }
+  /* ====== buttons ====== */
+  .nav-item .nav-link {
+    @apply flex items-center mb-1 py-[10px] px-[12px] rounded-lg font-matter text-base text-gray-800;
+  }
+  .nav-item.active > a {
+    @apply bg-gray-900 text-white;
+  }
+  .nav-item.active a .chevron {
+    @apply rotate-180;
+  }
+  .nav-item.active a .chevron svg path {
+    @apply fill-white;
+  }
+  .nav-item.active a div > svg path {
+    @apply stroke-white;
+  }
+  .sub-menu ul li a {
+    @apply flex font-matter text-base text-gray-800 py-[6px] px-[10px] rounded-md hover:bg-gray-500;
+  }
+  .plus-btn:hover svg path {
+    @apply fill-white;
+  }
+  .date:before {
+    @apply 2sm:content-[''] w-[3px] h-[3px] bg-gray-900 rounded-full absolute top-[11px] start-[6px];
+  }
+  .action-result a:not(:first-child):before {
+    @apply 2sm:content-[''] w-[3px] h-[3px] bg-gray-800 rounded-full absolute top-[9px] start-[6px];
+  }
+  .more-less {
+    @apply absolute bottom-0 end-0 bg-white ps-2 cursor-pointer text-green font-matter;
+  }
+  ul.post-action li a {
+    @apply flex items-center justify-center	2sm:w-[34px] 2sm:h-[34px] w-[24px] h-[24px] rounded-full bg-gray-500 hover:bg-gray-900;
+  }
+  ul.post-action li a:hover svg path {
+    @apply stroke-white;
+  }
+  ul.topic-tabs li a.active {
+    @apply border-b-2 border-gray-900 text-gray-900;
+  }
+  ul.content-point li {
+    @apply 2sm:ps-[20px] ps-[15px] mb-[10px] font-matter sm:text-lg 2sm:text-base text-sm text-gray-800 relative;
+  }
+  ul.content-point li:before {
+    @apply content-[''] 2sm:w-[6px] 2sm:h-[6px] w-[4px] h-[4px] bg-gray-900 rounded-full absolute sm:top-[12px] 2sm:top-[10px] top-[8px] 2sm:start-[5px] start-[3px];
+  }
+
+  /*============= Media CSS ============= */
+
+  @media (max-width: 1280px) {
+    .sidebar {
+      @apply left-[-250px];
+    }
+    .sidebar.show {
+      @apply left-[0];
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mobile-search {
+      @apply absolute top-0 left-0 z-30 hidden;
+    }
+    .mobile-search.show {
+      @apply flex;
+    }
+  }
+  @media (max-width: 480px) {
+    .btn-small {
+      @apply flex text-[12px] px-[14px] py-[6px];
+    }
+    .date:before {
+      @apply top-[9px] start-[7px];
+    }
+    ul.post-action li a svg {
+      @apply w-[16px] h-[16px];
+    }
+    .btn-primary {
+      @apply px-[18px] py-[6px] text-sm;
+    }
+  }
+}

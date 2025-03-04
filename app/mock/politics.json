@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "uploadedBy": "Aleena Watts",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-13.png",
+    "uploadedDate": "7/9/2024",
+    "title": "Political Landscape: Trends and Shifts in 2024",
+    "description": "In 2024, the political landscape is witnessing significant shifts as global tensions and domestic issues reshape voter priorities. Climate change and economic inequality are increasingly driving policy debates, while populist and progressive movements gain traction in various regions. Technological advancements and social media continue to influence public opinion and campaign strategies. Additionally, international relations are evolving, with new alliances and rivalries emerging. The dynamic nature of these trends underscores the need for adaptable political strategies and informed citizen engagement.",
+    "media": "carousal",
+    "mediaPath": [
+      "/assets/images/politics-1.png",
+      "/assets/images/politics-2.png",
+      "/assets/images/politics-3.png"
+    ],
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 2,
+    "uploadedBy": "Pedro Baker",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-2.png",
+    "uploadedDate": "25/2/2024",
+    "title": "Election Insights: What the Latest Polls Really Mean",
+    "description": "Polls are a snapshot, not a crystal ball. They reflect current opinions but can change with new developments. Look beyond the numbers at trends and voter demographics. Polls also have margins of error, so interpret results with caution. For deeper insight, consider how polling methodology might influence outcomes.",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 3,
+    "uploadedBy": "Harold Pham",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-11.png",
+    "uploadedDate": "3/9/2024",
+    "title": "The Future of Democracy: Challenges and Opportunities",
+    "description": "The future of democracy is at a crossroads, facing significant challenges and promising opportunities. Digital technologies and social media are reshaping political engagement but also exposing vulnerabilities like misinformation and polarization. Ensuring equitable participation and safeguarding democratic institutions require innovation and resilience. Embracing transparency, enhancing civic education, and fostering inclusive dialogue are essential for strengthening democratic systems. Navigating these complexities will determine whether democracy can adapt and thrive in the coming decades.",
+    "media": "image",
+    "mediaPath": "/assets/images/politics-4.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 4,
+    "uploadedBy": "Mina Machain",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-12.png",
+    "uploadedDate": "1/9/2024",
+    "title": "Political Profiles: In-Depth Looks at Key Figures",
+    "description": "Political Profiles: In-Depth Looks at Key Figures\" explores the lives and careers of influential leaders shaping our world. Each post offers a comprehensive analysis of their backgrounds, ideologies, and impacts on current affairs. Dive into the complexities of their political strategies and personal motivations. Stay informed with detailed profiles and gain a deeper understanding of the figures driving global change. Your go-to source for insightful political analysis.",
+    "media": "image",
+    "mediaPath": "/assets/images/politics-5.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  }
+]

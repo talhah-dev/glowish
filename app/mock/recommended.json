@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "uploadedBy": "Elijah Delaney",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-3.png",
+    "uploadedDate": "1/9/2024",
+    "title": "Savor the Flavor: A Culinary Journey Through Global Tastes",
+    "description": "Welcome to a world where every dish tells a story, and every bite is an adventure. At Savor the Flavor, we explore global cuisines, bringing you recipes, tips, and the rich cultural history behind your favorite foods. From gourmet delights to comforting home-cooked meals, we're here to inspire your next culinary creation. Discover new ingredients, cooking techniques, and the secrets to crafting meals that leave a lasting impression. Whether you're a seasoned chef or a kitchen newbie, this blog is your guide to mastering the art of flavor.",
+    "media": "carousal",
+    "mediaPath": [
+      "/assets/images/food-1.png",
+      "/assets/images/food-2.png",
+      "/assets/images/food-3.png"
+    ],
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 2,
+    "uploadedBy": "Aleena Watts",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-13.png",
+    "uploadedDate": "25/8/2024",
+    "title": "Political Landscape: Trends and Shifts in 2024",
+    "description": "In 2024, the political landscape is witnessing significant shifts as global tensions and domestic issues reshape voter priorities. Climate change and economic inequality are increasingly driving policy debates, while populist and progressive movements gain traction in various regions. Technological advancements and social media continue to influence public opinion and campaign strategies. Additionally, international relations are evolving, with new alliances and rivalries emerging. The dynamic nature of these trends underscores the need for adaptable political strategies and informed citizen engagement.",
+    "media": "carousal",
+    "mediaPath": [
+      "/assets/images/politics-1.png",
+      "/assets/images/politics-2.png",
+      "/assets/images/politics-3.png"
+    ],
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 3,
+    "uploadedBy": "Pedro Baker",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-2.png",
+    "uploadedDate": "25/8/2024",
+    "title": "The Backbone of Modern Applications: Exploring the Power of Databases",
+    "description": "Databases are the unsung heroes of the digital age, powering everything from small apps to large-scale enterprise systems. They manage and store vast amounts of data, ensuring that information is accessible, secure, and organized. In this blog, we'll dive into the evolution of databases, from traditional relational models to cutting-edge NoSQL solutions, and discuss why they are critical to the success of modern applications. Whether you're a developer, a business owner, or just someone curious about technology, understanding databases will give you insights into how our digital world functions and how you can harness their power to drive innovation.",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 4,
+    "uploadedBy": "Harold Pham",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-11.png",
+    "uploadedDate": "25/8/2024",
+    "title": "Cricket's Greatest Rivalries: A Look at Iconic Matches",
+    "description": "Cricket's greatest rivalries have produced some of the most thrilling matches in the sport's history. From the intense Ashes battles between England and Australia to the fierce India-Pakistan clashes, these encounters are defined by their high stakes and passionate fans. Iconic matches often feature dramatic turns, memorable performances, and historic moments that cement their place in cricket lore. The rivalries are not just about the teams but also the deep-seated national pride and fierce competition they represent. Each match adds a new chapter to the rich tapestry of cricket's storied rivalries.",
+    "media": "image",
+    "mediaPath": "/assets/images/sport-1.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  }
+]

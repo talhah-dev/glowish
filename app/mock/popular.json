@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "uploadedBy": "Harold Pham",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-11.png",
+    "uploadedDate": "3/9/2024",
+    "title": "The Ultimate Guide to Mastering Productivity in 2024",
+    "description": "In today's fast-paced world, mastering productivity is more important than ever. \"The Ultimate Guide to Mastering Productivity in 2024\" offers a comprehensive roadmap to help you achieve more in less time. This guide is packed with actionable strategies, cutting-edge tools, and expert insights that will empower you to optimize your workflow, eliminate distractions, and focus on what truly matters. Whether you're a busy professional, a student, or someone looking to enhance their daily routine, this guide will provide you with the techniques you need to reach peak productivity and maintain it throughout the year. Get ready to transform your approach to work and life with these proven methods for staying organized, motivated, and efficient in 2024 and beyond.",
+    "media": "image",
+    "mediaPath": "/assets/images/mastering.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 2,
+    "uploadedBy": "Mina Machain",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-12.png",
+    "uploadedDate": "25/8/2024",
+    "title": "10 Proven Strategies to Skyrocket Your Online Business",
+    "description": "Are you ready to take your online business to the next level? In this comprehensive guide, we unveil 10 tried-and-true strategies that successful entrepreneurs use to boost their digital presence and drive significant growth. Whether you're just starting or looking to scale, these actionable tips will help you attract more customers, increase sales, and outshine your competition. From optimizing your website for conversions to leveraging social media and email marketing, these strategies are designed to deliver real results. Don't miss out on the insights that could transform your business—start implementing them today and watch your online business soar!",
+    "media": "video",
+    "mediaPath": "/assets/images/business.mp4",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 3,
+    "uploadedBy": "Pedro Baker",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-2.png",
+    "uploadedDate": "25/8/2023",
+    "title": "The Best Travel Destinations You Can't Miss This Year",
+    "description": "As the world reopens and wanderlust surges, 2024 is shaping up to be an incredible year for travel. From hidden gems to iconic landmarks, this year's must-visit destinations offer something for every type of traveler. Whether you're looking for sun-soaked beaches, vibrant cultural experiences, or breathtaking natural wonders, our curated list of top travel spots will inspire your next adventure. Explore ancient cities steeped in history, relax in luxury resorts with stunning views, or immerse yourself in local traditions in off-the-beaten-path locales. Get ready to pack your bags and discover the world's best travel destinations that promise unforgettable experiences!",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 4,
+    "uploadedBy": "Aleena Watts",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-13.png",
+    "uploadedDate": "20/8/2024",
+    "title": "Why Everyone is Talking About Sustainable Living",
+    "description": "In recent years, sustainable living has become a hot topic, capturing the attention of individuals, communities, and businesses worldwide. This movement goes beyond just reducing waste; it encompasses a holistic approach to living that prioritizes environmental stewardship, ethical consumption, and mindful choices. From reducing carbon footprints to embracing zero-waste practices, sustainable living offers practical solutions to the growing environmental challenges we face. In this blog, we'll explore the reasons behind the rising popularity of sustainable living, how it impacts our daily lives, and what you can do to join the movement for a healthier planet.",
+    "media": "carousal",
+    "mediaPath": [
+      "/assets/images/living-1.png",
+      "/assets/images/building-2.png",
+      "/assets/images/building-3.png"
+    ],
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  }
+]

@@ -1,0 +1,137 @@
+[
+    {
+        "id": 1,
+        "name": "Michael Johnson",
+        "role": "Software Engineer",
+        "profileImage": "/assets/images/authors-1.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 2,
+        "name": "Emily Carter",
+        "role": "Marketing Specialist",
+        "profileImage": "/assets/images/authors-2.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 3,
+        "name": "David Lee",
+        "role": "Marketing Director",
+        "profileImage": "/assets/images/authors-3.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 4,
+        "name": "James Smith",
+        "role": "Financial Analyst",
+        "profileImage": "/assets/images/authors-4.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 5,
+        "name": "Sophie Harris",
+        "role": "Financial Planner",
+        "profileImage": "/assets/images/authors-5.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 6,
+        "name": "Robert Brown",
+        "role": "Project Manager",
+        "profileImage": "/assets/images/authors-6.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 7,
+        "name": "Ava Mitchell",
+        "role": "Product Designer",
+        "profileImage": "/assets/images/authors-7.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 8,
+        "name": "William Wilson",
+        "role": "Operations Manager",
+        "profileImage": "/assets/images/authors-8.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 9,
+        "name": "Richard Martinez",
+        "role": "HR Specialist",
+        "profileImage": "/assets/images/authors-9.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 10,
+        "name": "Mia Johnson",
+        "role": "Senior Analyst",
+        "profileImage": "/assets/images/authors-10.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 11,
+        "name": "Daniel Taylor",
+        "role": "Research Scientist",
+        "profileImage": "/assets/images/authors-11.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 12,
+        "name": "Amelia Davis",
+        "role": "Software Developer",
+        "profileImage": "/assets/images/authors-12.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 13,
+        "name": "Evelyn Taylor",
+        "role": "Research Coordinator",
+        "profileImage": "/assets/images/authors-13.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 14,
+        "name": "Charles Thompson",
+        "role": "Graphic Designer",
+        "profileImage": "/assets/images/authors-14.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    },
+    {
+        "id": 15,
+        "name": "Hannah Brown",
+        "role": "Event Planner",
+        "profileImage": "/assets/images/authors-15.png",
+        "facebookId": "https://www.facebook.com/",
+        "instagramId": "https://www.instagram.com/",
+        "twitterId": "https://x.com/"
+    }
+]

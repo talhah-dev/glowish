@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "uploadedBy": "Marcelo Santana",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-2.png",
+    "uploadedDate": "1/9/2024",
+    "title": "Champions Again: India's Glorious World Cup Victory!",
+    "description": "India celebrated a historic victory in the 2024 World Cup, triumphing with exceptional skill and resilience. Led by their captain's inspiring leadership, the team showcased dominance throughout the tournament, captivating fans worldwide.",
+    "media": "image",
+    "mediaPath": "/assets/images/image-1.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 2,
+    "uploadedBy": "Marcelo Santana",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-3.png",
+    "uploadedDate": "25/8/2024",
+    "title": "AI Technology Effect on Human Life",
+    "description": "AI is driving innovation across multiple industries. In healthcare, AI-powered diagnostic tools enable early detection of diseases, personalized treatment plans, and efficient management of patient records. The finance sector benefits from AI algorithms that detect fraud, manage risks, and automate trading. Manufacturing processes are becoming more efficient with AI-driven predictive maintenance and quality control. Even agriculture is being transformed by AI, which optimizes crop yields and resource management.",
+    "media": "video",
+    "mediaPath": "/assets/images/video.mp4",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 3,
+    "uploadedBy": "Titan Zamora",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-4.png",
+    "uploadedDate": "25/8/2024",
+    "title": "Fit & Fabulous: Your Journey to a Healthier You",
+    "description": "Welcome to \"Fit & Fabulous,\" your ultimate guide to achieving a healthier and more vibrant lifestyle! In this blog, we'll explore effective workout routines, balanced nutrition tips, motivational stories to inspire your fitness journey. Whether you're a beginner or a seasoned athlete, our goal is to provide you with practical advice and insights to help you reach your personal health goals. Discover how to stay consistent, overcome challenges, and celebrate your progress every step of the way. Join our community of fitness enthusiasts and let's embark on this transformative journey together. Get ready to become the best version of yourself—fit, fabulous, and unstoppable!",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 4,
+    "uploadedBy": "Leo Ransome",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-4.png",
+    "uploadedDate": "25/8/2024",
+    "title": "Home Horizons: Navigating the Real Estate Landscape",
+    "description": "India celebrated a historic victory in the 2024 World Cup, triumphing with exceptional skill and resilience. Led by their captain's inspiring leadership, the team showcased dominance throughout the tournament, captivating fans worldwide.",
+    "media": "carousal",
+    "mediaPath": [
+      "/assets/images/building-1.png",
+      "/assets/images/building-2.png",
+      "/assets/images/building-3.png"
+    ],
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  }
+]

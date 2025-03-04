@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "uploadedBy": "Harold Pham",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-11.png",
+    "uploadedDate": "5/9/2024",
+    "title": "The Rise of Robotics: How Automation is Shaping Our Future",
+    "description": "The field of robotics is rapidly transforming industries and everyday life, driving innovation in ways that were once considered science fiction. From autonomous vehicles to AI-powered robots in manufacturing, healthcare, and even our homes, robotics is redefining efficiency, productivity, and creativity. This blog dives into the latest advancements in robotics, exploring how these cutting-edge technologies are being integrated into our daily routines, the ethical considerations they bring, and what the future holds as we embrace a world where robots and humans work side by side. Discover how automation is not just a trend, but a fundamental shift that will shape the future of work, society, and human interaction.",
+    "media": "image",
+    "mediaPath": "/assets/images/robotics.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 2,
+    "uploadedBy": "Mina Machain",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-12.png",
+    "uploadedDate": "25/8/2024",
+    "title": "The New Era of Cyber Security: How to Protect Your Digital Life",
+    "description": "As our lives become increasingly digital, the need for robust cyber security has never been more critical. With the rise of sophisticated cyber threats, from phishing attacks to ransomware, protecting your personal and professional data is a top priority. This blog delves into the latest trends and technologies shaping the cyber security landscape in 2024. We'll explore the most common threats, provide practical tips for safeguarding your digital life, and discuss how businesses and individuals can stay ahead of cybercriminals. Whether you're a tech-savvy professional or just beginning to navigate the digital world, this guide will equip you with the knowledge you need to stay secure online.",
+    "media": "image",
+    "mediaPath": "/assets/images/cyber.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 3,
+    "uploadedBy": "Pedro Baker",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-2.png",
+    "uploadedDate": "25/6/2024",
+    "title": "The Backbone of Modern Applications: Exploring the Power of Databases",
+    "description": "Databases are the unsung heroes of the digital age, powering everything from small apps to large-scale enterprise systems. They manage and store vast amounts of data, ensuring that information is accessible, secure, and organized. In this blog, we'll dive into the evolution of databases, from traditional relational models to cutting-edge NoSQL solutions, and discuss why they are critical to the success of modern applications. Whether you're a developer, a business owner, or just someone curious about technology, understanding databases will give you insights into how our digital world functions and how you can harness their power to drive innovation.",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 4,
+    "uploadedBy": "Aleena Watts",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-13.png",
+    "uploadedDate": "20/8/2024",
+    "title": "Cutting-Edge Gadgets: The Future of Electronics Unveiled",
+    "description": "Step into the future of technology with our latest blog post on cutting-edge gadgets. As innovation accelerates, electronics are becoming smarter, more versatile, and more integrated into our daily lives. From the latest breakthroughs in wearable tech to the next-generation smart home devices, this blog explores the newest advancements that are reshaping how we interact with technology. Discover how these revolutionary gadgets work, their potential impact on various industries, and what to expect in the world of electronics in the coming years. Whether you're a tech enthusiast or just curious about the latest trends, this post will keep you informed and excited about the future of electronics.",
+    "media": "carousal",
+    "mediaPath": [
+      "/assets/images/electronics-1.png",
+      "/assets/images/electronics-2.png",
+      "/assets/images/electronics-3.png"
+    ],
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  }
+]

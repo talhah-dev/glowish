@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "uploadedBy": "Elijah Delaney",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-3.png",
+    "uploadedDate": "7/9/2024",
+    "title": "Journey Beyond: Discover Hidden Treasures",
+    "description": "Journey Beyond is your guide to uncovering the world's best-kept secrets, from untouched natural wonders to lesser-known cultural spots. We explore off-the-beaten-path destinations that promise unique experiences and unforgettable memories. Whether it's an ancient village, a secluded beach, or a hidden trail, we help you step away from the crowds and into authentic adventures. Join us as we bring these hidden treasures to light, offering travel insights and tips for your next escape. Adventure awaits—let's go beyond the ordinary!",
+    "media": "image",
+    "mediaPath": "/assets/images/tour.png",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 2,
+    "uploadedBy": "Elijah Delaney",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-3.png",
+    "uploadedDate": "25/8/2024",
+    "title": "Smart Study Hub: Master Your Learning Journey",
+    "description": "Smart Study Hub is your ultimate destination for effective study strategies, productivity hacks, and academic success tips. Whether you're a student preparing for exams or simply looking to enhance your learning methods, we provide the tools and insights you need to excel in your academic journey.",
+    "media": "video",
+    "mediaPath": "/assets/images/video.mp4",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 3,
+    "uploadedBy": "Elijah Delaney",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-3.png",
+    "uploadedDate": "25/8/2024",
+    "title": "Fit & Fabulous: Your Journey to a Healthier You",
+    "description": "Welcome to \"Fit & Fabulous,\" your ultimate guide to achieving a healthier and more vibrant lifestyle! In this blog, we'll explore effective workout routines, balanced nutrition tips, motivational stories to inspire your fitness journey. Whether you're a beginner or a seasoned athlete, our goal is to provide you with practical advice and insights to help you reach your personal health goals. Discover how to stay consistent, overcome challenges, and celebrate your progress every step of the way. Join our community of fitness enthusiasts and let's embark on this transformative journey together. Get ready to become the best version of yourself—fit, fabulous, and unstoppable!",
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  },
+  {
+    "id": 4,
+    "uploadedBy": "Elijah Delaney",
+    "uploaderProfile": "/",
+    "uploadedByImage": "/assets/images/user-3.png",
+    "uploadedDate": "25/8/2024",
+    "title": "Home Horizons: Navigating the Real Estate Landscape",
+    "description": "India celebrated a historic victory in the 2024 World Cup, triumphing with exceptional skill and resilience. Led by their captain's inspiring leadership, the team showcased dominance throughout the tournament, captivating fans worldwide.",
+    "media": "carousal",
+    "mediaPath": [
+      "/assets/images/building-1.png",
+      "/assets/images/building-2.png",
+      "/assets/images/building-3.png"
+    ],
+    "noOfLikes": 2010,
+    "noOfComments": 79,
+    "noOfShares": 35
+  }
+]
