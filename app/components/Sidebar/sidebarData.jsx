@@ -9,6 +9,10 @@ import {
   UsersRound,
   CircleAlert,
   Phone,
+  Heart,
+  Mail,
+  LogIn,
+  UserPlus,
 } from "lucide-react";
 
 const sidebarData = () => {
@@ -34,20 +38,20 @@ const sidebarData = () => {
             { key: 34, subLabel: "Electronics", link: "/technology/electronics" },
           ],
         },
+        // {
+        //   id: 4,
+        //   label: "Movies",
+        //   icon: <Clapperboard size={20} />,
+        //   subItems: [
+        //     { key: 41, subLabel: "Hollywood", link: "/movies/hollywood" },
+        //     { key: 42, subLabel: "Web Series", link: "/movies/web-series" },
+        //     { key: 43, subLabel: "Romance", link: "/movies/romance" },
+        //     { key: 44, subLabel: "Horror", link: "/movies/horror" },
+        //     { key: 45, subLabel: "Actions", link: "/movies/actions" },
+        //   ],
+        // },
         {
           id: 4,
-          label: "Movies",
-          icon: <Clapperboard size={20} />,
-          subItems: [
-            { key: 41, subLabel: "Hollywood", link: "/movies/hollywood" },
-            { key: 42, subLabel: "Web Series", link: "/movies/web-series" },
-            { key: 43, subLabel: "Romance", link: "/movies/romance" },
-            { key: 44, subLabel: "Horror", link: "/movies/horror" },
-            { key: 45, subLabel: "Actions", link: "/movies/actions" },
-          ],
-        },
-        {
-          id: 5,
           label: "Sports",
           icon: <Award size={20} />,
           subItems: [
@@ -58,7 +62,7 @@ const sidebarData = () => {
           ],
         },
         {
-          id: 6,
+          id: 5,
           label: "Politics",
           icon: <Siren size={20} />,
           subItems: [
@@ -80,22 +84,46 @@ const sidebarData = () => {
         //   icon: <UsersRound size={20} />,
         // },
         {
-          id: 7,
+          id: 6,
           label: "About Us",
           link: "/about",
           icon: <CircleAlert size={20} />,
         },
         {
-          id: 8,
+          id: 7,
           label: "Contact Us",
           link: "/contact",
           icon: <Phone size={20} />,
         },
         {
-          id: 9,
+          id: 8,
           label: "Settings",
           link: "/profile-edit",
           icon: <Settings size={20} />,
+        },
+        {
+          id: 9,
+          label: "Donate",
+          link: "/donate",
+          icon: <Heart size={20} />,
+        },
+        {
+          id: 10,
+          label: "Subscribe",
+          link: "/subscribe",
+          icon: <Mail size={20} />,
+        },
+        {
+          id: 11,
+          label: "Login",
+          link: "/login",
+          icon: <LogIn size={20} />,
+        },
+        {
+          id: 12,
+          label: "Register",
+          link: "/register",
+          icon: <UserPlus size={20} />,
         },
       ],
     },

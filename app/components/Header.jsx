@@ -186,6 +186,22 @@ const Header = ({ isLoggedIn }) => {
             />
             {showSearchList && <SearchListBox />}
           </NavbarItem>
+          <NavbarItem>
+            <Link
+              href="/"
+              className="px-5 py-3 text-gray-600 hover:text-black 2sm:text-base text-sm 2xl:px-5"
+            >
+              News
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link
+              href="/"
+              className="px-5 py-3 text-gray-600 hover:text-black 2sm:text-base text-sm 2xl:px-5"
+            >
+              Survay
+            </Link>
+          </NavbarItem>
         </NavbarContent>
 
         {/* End */}
