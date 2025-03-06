@@ -162,10 +162,10 @@ const Header = ({ isLoggedIn }) => {
 
         {/* Center */}
         <NavbarContent
-          className="hidden xl:flex w-full px-4 grow gap-0"
+          className="flex w-full px-4 grow gap-0"
           justify="start"
         >
-          <NavbarItem className="relative 2xl:max-w-[500px] xl:max-w-[320px] min-w-[320px] w-full flex-grow me-6">
+          <NavbarItem className="relative 2xl:max-w-[500px] hidden xl:block xl:max-w-[320px] min-w-[320px] w-full flex-grow me-6">
             <Input
               onFocus={() => setShowSearchList(true)}
               onBlur={() => setShowSearchList(false)}
@@ -189,7 +189,7 @@ const Header = ({ isLoggedIn }) => {
           <NavbarItem>
             <Link
               href="/"
-              className="px-5 py-3 text-gray-600 hover:text-black 2sm:text-base text-sm 2xl:px-5"
+              className="pr-1.5 py-3 text-gray-600 hover:text-black 2sm:text-base text-sm 2xl:px-5"
             >
               News
             </Link>
@@ -197,7 +197,7 @@ const Header = ({ isLoggedIn }) => {
           <NavbarItem>
             <Link
               href="/"
-              className="px-5 py-3 text-gray-600 hover:text-black 2sm:text-base text-sm 2xl:px-5"
+              className="pl-1.5 py-3 text-gray-600 hover:text-black 2sm:text-base text-sm 2xl:px-5"
             >
               Survay
             </Link>
