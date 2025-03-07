@@ -186,22 +186,6 @@ const Header = ({ isLoggedIn }) => {
             />
             {showSearchList && <SearchListBox />}
           </NavbarItem>
-          <NavbarItem>
-            <Link
-              href="/"
-              className="pr-1.5 py-3 text-gray-600 hover:text-black 2sm:text-base text-sm 2xl:px-5"
-            >
-              News
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link
-              href="/"
-              className="pl-1.5 py-3 text-gray-600 hover:text-black 2sm:text-base text-sm 2xl:px-5"
-            >
-              Survay
-            </Link>
-          </NavbarItem>
         </NavbarContent>
 
         {/* End */}
@@ -238,7 +222,7 @@ const Header = ({ isLoggedIn }) => {
             <NavbarItem>
               <Button
                 color="primary"
-                href="/login"
+                href="/register"
                 as={Link}
                 className="hidden md:flex justify-center items-center text-base px-[22px] min-w-[30px] w-full rounded-full bg-gray-900"
               >
@@ -250,7 +234,7 @@ const Header = ({ isLoggedIn }) => {
           <div className="flex items-center gap-4">
             <NavbarItem>
               <Link
-                href="/"
+                href="/login"
                 className="flex 2sm:text-base text-sm text-gray-800 hover:text-gray-900 hover:underline"
               >
                 Login
@@ -259,11 +243,11 @@ const Header = ({ isLoggedIn }) => {
             <NavbarItem>
               <Button
                 color="primary"
-                href="/contact"
+                href="/register"
                 as={Link}
                 className="flex justify-center items-center text-base px-[22px] min-w-[30px] w-full rounded-full bg-gray-900"
               >
-                Membership
+                Register
               </Button>
             </NavbarItem>
           </div>

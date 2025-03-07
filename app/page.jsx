@@ -4,6 +4,7 @@ import HomeLayout from "./HomeLayout";
 import forYou from "./mock/forYou.json";
 import following from "./mock/following.json";
 import recommended from "./mock/recommended.json";
+import Survey from "./components/survey";
 
 export const metadata = {
   title: "Glowist - Home",
@@ -11,20 +12,15 @@ export const metadata = {
 
 let tabs = [
   {
-    id: "for-you",
-    label: "For you",
+    id: "news",
+    label: "News",
     content: <PostCard data={forYou} />,
   },
   {
-    id: "following",
-    label: "Following",
-    content: <PostCard data={following} />,
-  },
-  {
-    id: "recommended",
-    label: "Recommended",
-    content: <PostCard data={recommended} />,
-  },
+    id: "surveys",
+    label: "Surveys",
+    content: <Survey />,
+  }
 ];
 
 export default function Home() {
