@@ -25,7 +25,7 @@ const Votes = ({ data }) => {
                                 color="default" 
                                 radius="full"
                                 isSelected={selectedIndex === idx}
-                                onChange={() => handleSelect(idx)} // 🔥 This ensures the checkbox updates correctly!
+                                onChange={() => handleSelect(idx)}
                             >
                                 {text}
                             </Checkbox>
@@ -37,7 +37,7 @@ const Votes = ({ data }) => {
                                 <p>{votes}</p>
                             </div>
                         </div>
-                        <div className="w-full h-2 bg-zinc-200 rounded-full mt-2 relative">
+                        <div className="w-full h-2 bg-zinc-100 rounded-full mt-2 relative">
                             <span
                                 className={`h-full block rounded-full bg-zinc-800 transition-all`}
                                 style={{ width: `${(votes / 100) * 100}%`, opacity: selectedIndex === idx ? 1 : 0.5 }}
