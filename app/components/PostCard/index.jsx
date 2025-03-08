@@ -27,23 +27,23 @@ import React, { useState } from "react";
 import PostSwiper from "./PostSwiper";
 
 const cardFooterActions = [
+  // {
+  //   id: 1,
+  //   label: "Like",
+  //   icon: <ThumbsUp size={18} />,
+  // },
+  // {
+  //   id: 2,
+  //   label: "Dislike",
+  //   icon: <ThumbsDown size={18} />,
+  // },
   {
     id: 1,
-    label: "Like",
-    icon: <ThumbsUp size={18} />,
-  },
-  {
-    id: 2,
-    label: "Dislike",
-    icon: <ThumbsDown size={18} />,
-  },
-  {
-    id: 3,
     label: "Comment",
     icon: <MessageCircleMore size={18} />,
   },
   {
-    id: 4,
+    id: 2,
     label: "Share",
     icon: <Send size={18} />,
   },
@@ -88,13 +88,13 @@ const EachCard = ({ post }) => {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <Button
+            {/* <Button
               radius="full"
               className="bg-gray-500 hover:text-white hover:bg-black"
               onClick={() => setIsFollowing(!isFollowing)}
             >
               {isFollowing ? "Following" : "Follow"}
-            </Button>
+            </Button> */}
             {/* More button */}
             <Dropdown placement="bottom-end" className="min-w-[150px]">
               <DropdownTrigger>
@@ -182,16 +182,6 @@ const EachCard = ({ post }) => {
             </div>
             {/* No of Likes, Comments, Shares */}
             <div className="flex text-gray-800">
-              <Link
-                href="/"
-                underline="hover"
-                className="flex relative font-matter 2sm:text-sm text-[12px] text-gray-800 hover:text-gray-900 hover:underline-offset-2"
-              >
-                {post.noOfLikes <= 1
-                  ? `${post.noOfLikes} Like`
-                  : `${post.noOfLikes} Likes`}
-              </Link>
-              <Dot />
               <Link
                 href="/"
                 underline="hover"
