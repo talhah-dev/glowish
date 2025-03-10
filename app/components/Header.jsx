@@ -140,10 +140,10 @@ const Header = ({ isLoggedIn }) => {
               <Menu />
             </Button>
           </div>
-          <Link href="/" className="sm:flex hidden relative w-[118px] h-6">
+          <Link href="/" className="sm:flex hidden relative w-[118px] h-14">
             <Image
               src={"/assets/images/logo.png"}
-              alt="Glowist Logo"
+              alt=" Logo"
               layout="fill"
             />
           </Link>

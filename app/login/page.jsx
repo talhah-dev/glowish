@@ -31,7 +31,7 @@ const LoginPage = () => {
           <Link href="/" className="flex w-[118px] lg:m-0 mt-3 mx-auto">
             <Image
               height="118"
-              width="24"
+              width="200"
               src="/assets/images/logo.png"
               alt="glowist logo"
               className="w-full"
