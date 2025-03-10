@@ -152,7 +152,7 @@ const Header = ({ isLoggedIn }) => {
             className="sm:hidden flex 2sm:w-[34px] 2sm:h-[34px] w-[30px] h-[30px]"
           >
             <Image
-              src={"/assets/images/favicon.png"}
+              src={"/assets/images/logo.png"}
               alt="Glowist Logo"
               height={34}
               width={34}
