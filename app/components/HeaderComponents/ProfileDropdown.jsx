@@ -10,6 +10,7 @@ import {
 } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
+import { MessageCircleMore } from "lucide-react";
 
 const items = [
   {
@@ -36,7 +37,7 @@ const items = [
     id: 2,
     key: "mycomments",
     label: "My Comments",
-    icon: "/assets/images/create-add.svg",
+    icon: <MessageCircleMore size={18} />,
   },
   {
     id: 3,
@@ -131,17 +132,29 @@ const ProfileDropdown = () => {
             </DropdownItem>
           ) : (
             <DropdownItem
-              key={item.key}
-              startContent={<Image src={item.icon} alt="icon" height={20} width={20} />}
-              className="flex items-center rounded-none 2sm:text-base text-sm text-gray-900 2sm:py-4 py-3 2sm:px-5 px-4 border-t border-gray-400 hover:!bg-[#fafafa]"
-              href={item.link}
-            >
-              {item.label}
-            </DropdownItem>
+            key={item.key}
+            startContent={
+              typeof item.icon === "string" ? (
+                <Image
+                  src={item.icon}
+                  alt={item.label}
+                  height={20}
+                  width={20}
+                  className="w-5 h-5"
+                />
+              ) : (
+                item.icon
+              )
+            }
+            className="flex items-center rounded-none 2sm:text-base text-sm text-gray-900 2sm:py-4 py-3 2sm:px-5 px-4 border-t border-gray-400 hover:!bg-[#fafafa]"
+            href={item.link}
+          >
+            {item.label}
+          </DropdownItem>
           )
         }
       </DropdownMenu>
-    </Dropdown>
+    </Dropdown >
   );
 };
 

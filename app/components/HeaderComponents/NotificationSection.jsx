@@ -93,7 +93,7 @@ const List = ({ data }) => {
                 <p className="line-clamp-2 font-matter sm:text-sm text-xs text-gray-800">
                   {item.description}
                 </p>
-                {item.acceptDenyBtns && (
+                {/* {item.acceptDenyBtns && (
                   <div className="mt-2 flex gap-2 items-center">
                     <Button className="bg-black text-white h-9" radius="full">
                       Accept
@@ -105,18 +105,18 @@ const List = ({ data }) => {
                       Deny
                     </Button>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
-            {item.showFollowBtn && (
+            {/* {item.showFollowBtn && (
               <Button
                 className="bg-gray-500 text-black hover:bg-black hover:text-white h-9"
                 radius="full"
               >
                 Follow
               </Button>
-            )}
-            {item.featuredImage && (
+            )} */}
+            {/* {item.featuredImage && (
               <div className="sm:max-w-[90px] w-full sm:h-[65px] max-w-[70px] h-[50px] ms-4">
                 <Image
                   width="90"
@@ -126,7 +126,7 @@ const List = ({ data }) => {
                   className="w-full h-full object-cover"
                 />
               </div>
-            )}
+            )} */}
           </div>
         </ListboxItem>
       )}
@@ -141,11 +141,11 @@ const tabs = [
     content: <List data={notifications} badge={notifications.length} />,
     badge: 5,
   },
-  {
-    id: "messages",
-    label: "Messages",
-    content: <List data={notifications} />,
-  },
+  // {
+  //   id: "messages",
+  //   label: "Messages",
+  //   content: <List data={notifications} />,
+  // },
 ];
 
 const NotificationSection = () => {

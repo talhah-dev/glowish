@@ -27,16 +27,16 @@ import React, { useState } from "react";
 import PostSwiper from "./PostSwiper";
 
 const cardFooterActions = [
-  // {
-  //   id: 1,
-  //   label: "Like",
-  //   icon: <ThumbsUp size={18} />,
-  // },
-  // {
-  //   id: 2,
-  //   label: "Dislike",
-  //   icon: <ThumbsDown size={18} />,
-  // },
+  {
+    id: 1,
+    label: "Like",
+    icon: <ThumbsUp size={18} />,
+  },
+  {
+    id: 2,
+    label: "Dislike",
+    icon: <ThumbsDown size={18} />,
+  },
   {
     id: 1,
     label: "Comment",
@@ -131,9 +131,8 @@ const EachCard = ({ post }) => {
           )}
           {post.description && (
             <p
-              className={`${
-                post.media ? "line-clamp-2" : ""
-              } font-matter 2sm:text-base text-sm text-gray-800 mb-1`}
+              className={`${post.media ? "line-clamp-2" : ""
+                } font-matter 2sm:text-base text-sm text-gray-800 mb-1`}
             >
               {post.description}
             </p>
@@ -187,6 +186,16 @@ const EachCard = ({ post }) => {
                 underline="hover"
                 className="flex relative font-matter 2sm:text-sm text-[12px] text-gray-800 hover:text-gray-900 hover:underline-offset-2"
               >
+                {post.noOfLikes <= 1
+                  ? `${post.noOfLikes} Like`
+                  : `${post.noOfLikes} Likes`}
+              </Link>
+              <Dot />
+              <Link
+                href="/"
+                underline="hover"
+                className="flex relative font-matter 2sm:text-sm text-[12px] text-gray-800 hover:text-gray-900 hover:underline-offset-2"
+              >
                 {post.noOfComments <= 1
                   ? `${post.noOfComments} Comment`
                   : `${post.noOfComments} Comments`}
@@ -205,9 +214,8 @@ const EachCard = ({ post }) => {
           </div>
           {showSendOptions && <Divider />}
           <div
-            className={`w-full flex justify-between items-center px-1 transition-height duration-500 ${
-              showSendOptions ? "h-11" : "h-0 invisible"
-            }`}
+            className={`w-full flex justify-between items-center px-1 transition-height duration-500 ${showSendOptions ? "h-11" : "h-0 invisible"
+              }`}
           >
             <Button
               as={Link}

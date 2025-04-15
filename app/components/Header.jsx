@@ -191,12 +191,6 @@ const Header = ({ isLoggedIn }) => {
         {/* End */}
         {isLoggedIn ? (
           <div className="flex items-center gap-2 md:gap-3">
-            <NavbarItem className="me-2 2sm:m-0 flex items-center justify-center">
-              <NotificationSection />
-            </NavbarItem>
-            <NavbarItem>
-              <ProfileDropdown />
-            </NavbarItem>
             <NavbarItem className="block xl:hidden">
               <Button
                 isIconOnly
@@ -208,6 +202,12 @@ const Header = ({ isLoggedIn }) => {
               >
                 <Search size={16} />
               </Button>
+            </NavbarItem>
+            <NavbarItem className="me-2 2sm:m-0 flex items-center justify-center">
+              <NotificationSection />
+            </NavbarItem>
+            <NavbarItem>
+              <ProfileDropdown />
             </NavbarItem>
             <NavbarItem>
               <Button

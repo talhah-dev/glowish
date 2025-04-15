@@ -16,24 +16,24 @@ export const metadata = {
 };
 
 let tabs = [
-  {
-    id: "posts",
-    label: "Posts",
-    content: <PostCard data={profilePosts} />,
-  },
+  // {
+  //   id: "posts",
+  //   label: "Posts",
+  //   content: <PostCard data={profilePosts} />,
+  // },
   {
     id: "about",
     label: "About",
     content: <AboutProfile myHobbiesData={myHobbiesData} />,
   },
-  {
-    id: "following",
-    label: "Following",
-    content: <FollowingProfile />,
-  },
+  // {
+  //   id: "following",
+  //   label: "Following",
+  //   content: <FollowingProfile />,
+  // },
   {
     id: "comments",
-    label: "Comments",
+    label: "🔒 Comments",
     content: <CommentsProfile />,
   },
 ];

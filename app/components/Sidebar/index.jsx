@@ -54,7 +54,10 @@ const Sidebar = () => {
                         `}
                       >
                         {listItem.icon}
-                        {listItem.label}
+                        {listItem.label} {(listItem.label === "Technology" || listItem.label === "Sports") && (
+  <span className="text-xs opacity-50">(Soon)</span>
+)}
+
                       </Link>
                     ) : (
                       <Accordion
