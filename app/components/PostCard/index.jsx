@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
   Image,
+  Input,
   Link,
 } from "@nextui-org/react";
 import {
@@ -69,6 +70,7 @@ const PostCard = ({ data }) => {
 const EachCard = ({ post }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [showSendOptions, setShowSendOptions] = useState(false);
+  const [comment, setComment] = useState(false);
 
   return (
     <React.Fragment key={post.id}>
@@ -170,10 +172,16 @@ const EachCard = ({ post }) => {
                   radius="full"
                   className="h-[34px] w-[34px] min-w-[34px] bg-gray-500 text-gray-800 hover:text-white hover:!bg-black"
                   aria-label={action.label}
-                  onClick={() =>
-                    action.label === "Share" &&
-                    setShowSendOptions(!showSendOptions)
-                  }
+                  onClick={() => {
+                    if (action.label === "Share") {
+                      setShowSendOptions(!showSendOptions);
+                      setComment(false);
+                    } else if (action.label === "Comment") {
+                      setComment(!comment);
+                      setShowSendOptions(false);
+                    }
+                  }}
+
                 >
                   {action.icon}
                 </Button>
@@ -211,6 +219,14 @@ const EachCard = ({ post }) => {
                   : `${post.noOfShares} Shares`}
               </Link>
             </div>
+          </div>
+          {comment && <Divider />}
+          <div
+            className={`w-full flex gap-5 justify-between items-center pl-1 transition-height duration-500 ${comment ? "h-11" : "h-0 invisible"
+              }`}
+          >
+            <input type="text" className="w-full py-2.5 outline-none placeholder:text-sm placeholder:text-zinc-400" placeholder="Write Comment" />
+            <Button className="rounded-lg">Add</Button>
           </div>
           {showSendOptions && <Divider />}
           <div
