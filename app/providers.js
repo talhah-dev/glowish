@@ -15,9 +15,9 @@ export function Providers({ children }) {
     const handleResize = () => {
       if (window.innerWidth < 1280) {
         setIsSidebarOpen(false);
-        setIsSmallScreen(true);
+        // setIsSmallScreen(true);
       } else {
-        setIsSidebarOpen(true);
+        // setIsSidebarOpen(true);
         setIsSmallScreen(false);
       }
     };

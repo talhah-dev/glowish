@@ -2,7 +2,7 @@
 import { Accordion, AccordionItem, Divider } from "@nextui-org/react";
 import React, { useContext } from "react";
 import sidebarData from "./sidebarData";
-import { ChevronDown, Dot, X } from "lucide-react";
+import { ChevronDown, Dot, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SidebarContext, SmallScreenContext } from "@/app/providers";
@@ -20,11 +20,11 @@ const Sidebar = () => {
         }`}
     >
 
-      <div className="text-2xl px-3 pt-3 text-gray-800 lg:hidden flex justify-end" >
-        <X size={24} onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className="text-2xl px-3 pt-3 flex justify-end " >
+        <Menu variant="light" size={24} className="cursor-pointer" onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
       </div>
 
-      <div className="flex-grow overflow-auto px-5 lg:pt-5 pb-0">
+      <div className="flex-grow overflow-auto px-5 pb-0">
         {sidebarData().map((item, index) => (
           <div key={item.title}>
             {index !== 0 && <Divider className="my-4" />}
@@ -55,8 +55,8 @@ const Sidebar = () => {
                       >
                         {listItem.icon}
                         {listItem.label} {(listItem.label === "Technology" || listItem.label === "Sports") && (
-  <span className="text-xs opacity-50">(Soon)</span>
-)}
+                          <span className="text-xs opacity-50">(Soon)</span>
+                        )}
 
                       </Link>
                     ) : (

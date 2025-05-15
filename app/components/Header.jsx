@@ -130,7 +130,7 @@ const Header = ({ isLoggedIn }) => {
       >
         {/* Start */}
         <NavbarBrand className="max-w-[199px] w-full gap-1 2sm:gap-2">
-          <div className="block xl:hidden">
+          <div className="block">
             <Button
               isIconOnly
               variant="light"
