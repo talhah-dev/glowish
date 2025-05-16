@@ -3,7 +3,7 @@ import { Divider } from "@nextui-org/react";
 import AddDocuments from "./AddDocuments";
 
 export const metadata = {
-    title: "Glowist - Edit Profile",
+    title: "Glowist - Add Documents",
 };
 
 const Documents = () => {

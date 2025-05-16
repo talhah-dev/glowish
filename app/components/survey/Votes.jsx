@@ -59,7 +59,8 @@ const Votes = ({ data }) => {
                         </div>
                     </div>
                 ))}
-                <Button onPress={onOpen} className="mt-7 p-3.5 transition-all duration-500 rounded-b-md rounded-t-none hover:bg-gray-100 border-t text-center text-sm">
+                <p className='text-xs text-zinc-400 mt-4 pr-2 pb-1 text-end'>5/16/2025</p>
+                <Button onPress={onOpen} className="p-3.5 transition-all duration-500 rounded-b-md rounded-t-none hover:bg-gray-100 border-t text-center text-sm">
                     View Votes
                 </Button>
             </div>

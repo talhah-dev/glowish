@@ -1,12 +1,16 @@
 "use client";
-import { Button, Input, Textarea } from "@nextui-org/react";
+
+import { Button } from "@nextui-org/react";
 import MyInput from "../components/MyInput";
 import { useForm } from "react-hook-form";
 import { useRef, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddDocuments = () => {
-   const [file, setFile] = useState("");
-    const fileInputRef = useRef("");
+  const [file, setFile] = useState(null);
+  const fileInputRef = useRef(null);
+
   const {
     register,
     handleSubmit,
@@ -17,11 +21,27 @@ const AddDocuments = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    if (!data.passport.trim()) {
+      toast.error("Passport ID is required");
+      return;
+    }
+
+    if (!file) {
+      toast.error("Please upload a file.");
+      return;
+    }
+
+    // Proceed with submission
+    console.log("Form data submitted:", data);
+    toast.success("Verification is in progress (3–24 hrs)");
   };
 
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+      {/* Toast Container */}
+      <ToastContainer />
+
+      {/* Passport Input */}
       <div className="sm:mb-5 mb-4">
         <MyInput
           label={"Passport ID"}
@@ -31,15 +51,17 @@ const AddDocuments = () => {
           trigger={trigger}
           register={register}
           validations={{
-            required: "Position is required",
+            required: "Passport ID is required",
             minLength: {
               value: 2,
-              message: "Position must be at least 2 characters",
+              message: "Passport ID must be at least 2 characters",
             },
           }}
           errors={errors}
         />
       </div>
+
+      {/* File Upload */}
       <div className="sm:mb-5 mb-4">
         <label htmlFor="file" className="text-zinc-900 block">Upload File</label>
 
@@ -54,7 +76,9 @@ const AddDocuments = () => {
                 <path d="M20.285 6.708l-11.285 11.285-5.285-5.285 1.414-1.414 3.871 3.871 9.871-9.871z" />
               </svg>
               <p className="text-sm font-medium text-green-400">File Attached!</p>
-              <p className="text-xs mt-1 text-zinc-200">{file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)</p>
+              <p className="text-xs mt-1 text-zinc-200">
+                {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
+              </p>
             </>
           ) : (
             <>
@@ -80,9 +104,10 @@ const AddDocuments = () => {
         </div>
       </div>
 
+      {/* Action Buttons */}
       <div className="self-end flex gap-3">
         <Button
-          type="submit"
+          type="button"
           variant="flat"
           className="flex justify-center items-center text-base px-[22px] min-w-[30px] rounded-full"
         >
