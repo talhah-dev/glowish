@@ -285,6 +285,7 @@ const Header = ({ isLoggedIn }) => {
             {showSearchList && <SearchListBox />}
           </div>
         )}
+        <Link className="sm:block hidden" href={"/add-document"}>documents</Link>
       </Navbar>
 
       {/* Language Modal */}
