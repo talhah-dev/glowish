@@ -80,12 +80,12 @@ const List = ({ data }) => {
         >
           <div className="flex items-start justify-between">
             <div className="flex">
-              <Link
+              {/* <Link
                 href={item.link}
                 className="flex mt-1 w-full sm:max-w-[34px] sm:h-[34px] max-w-[30px] h-[30px] rounded-full overflow-hidden me-[10px]"
               >
                 <Avatar src={item.profileImage} size="sm" />
-              </Link>
+              </Link> */}
               <div>
                 <h5 className="font-matter sm:text-base text-sm text-gray-900 hover:text-gray-800 font-semibold mb-[1px]">
                   <a href="javascript:;">{item.name}</a>

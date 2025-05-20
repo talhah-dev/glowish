@@ -75,7 +75,7 @@ const EachCard = ({ post }) => {
   return (
     <React.Fragment key={post.id}>
       <Card shadow="none" radius="none" className="gap-3">
-        <CardHeader className="flex gap-3 justify-between items-center p-0 pt-1 pe-1">
+        {/* <CardHeader className="flex gap-3 justify-between items-center p-0 pt-1 pe-1">
           <div className="flex items-center">
             <Avatar src={post.uploadedByImage} className="me-2" size="sm" />
             <Link
@@ -90,14 +90,14 @@ const EachCard = ({ post }) => {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            {/* <Button
+            <Button
               radius="full"
               className="bg-gray-500 hover:text-white hover:bg-black"
               onClick={() => setIsFollowing(!isFollowing)}
             >
               {isFollowing ? "Following" : "Follow"}
-            </Button> */}
-            {/* More button */}
+            </Button>
+
             <Dropdown placement="bottom-end" className="min-w-[150px]">
               <DropdownTrigger>
                 <Button
@@ -118,7 +118,7 @@ const EachCard = ({ post }) => {
               </DropdownMenu>
             </Dropdown>
           </div>
-        </CardHeader>
+        </CardHeader> */}
 
         <CardBody className="p-0 flex flex-col gap-2">
           {post.title && (

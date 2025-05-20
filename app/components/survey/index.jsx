@@ -82,7 +82,7 @@ const Survey = () => {
                 <Button
                     color="primary"
                     onClick={handleShowMore}
-                    className="hidden md:flex mt-6 justify-center items-center text-base px-[22px] min-w-[30px] w-full rounded-full bg-gray-900"
+                    className="flex mt-6 justify-center items-center text-base px-[22px] min-w-[30px] w-full rounded-full bg-gray-900"
                 >
                     Show More
                 </Button>
