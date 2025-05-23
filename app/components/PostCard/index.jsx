@@ -14,10 +14,17 @@ import {
   Image,
   Input,
   Link,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
 } from "@nextui-org/react";
 import {
   Dot,
   Ellipsis,
+  Heart,
   MessageCircleMore,
   Send,
   ThumbsDown,
@@ -26,6 +33,7 @@ import {
 import moment from "moment";
 import React, { useState } from "react";
 import PostSwiper from "./PostSwiper";
+import Comments from "./Comments";
 
 const cardFooterActions = [
   {
@@ -39,12 +47,13 @@ const cardFooterActions = [
     icon: <ThumbsDown size={18} />,
   },
   {
-    id: 1,
+    id: 3,
     label: "Comment",
     icon: <MessageCircleMore size={18} />,
+
   },
   {
-    id: 2,
+    id: 4,
     label: "Share",
     icon: <Send size={18} />,
   },
@@ -60,7 +69,7 @@ const menuItems = [
 const PostCard = ({ data }) => {
   return (
     <div className="pt-4">
-      {data.map((post) => (
+      {Array.isArray(data) && data.map((post) => (
         <EachCard post={post} key={post.id} />
       ))}
     </div>
@@ -70,7 +79,14 @@ const PostCard = ({ data }) => {
 const EachCard = ({ post }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [showSendOptions, setShowSendOptions] = useState(false);
-  const [comment, setComment] = useState(false);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [size, setSize] = React.useState("5xl");
+
+  const handleOpen = () => {
+    setSize("5xl");
+    onOpen();
+  };
 
   return (
     <React.Fragment key={post.id}>
@@ -159,7 +175,7 @@ const EachCard = ({ post }) => {
             </div>
           )}
         </CardBody>
-
+        {/* <Comments/> */}
         <CardFooter className="p-0 flex-col">
           {/* Footer Actions */}
           <div className="flex gap-3 justify-between items-center px-[3px] pt-1 pb-3 w-full">
@@ -175,10 +191,8 @@ const EachCard = ({ post }) => {
                   onClick={() => {
                     if (action.label === "Share") {
                       setShowSendOptions(!showSendOptions);
-                      setComment(false);
                     } else if (action.label === "Comment") {
-                      setComment(!comment);
-                      setShowSendOptions(false);
+                      handleOpen()
                     }
                   }}
 
@@ -220,14 +234,54 @@ const EachCard = ({ post }) => {
               </Link>
             </div>
           </div>
-          {comment && <Divider />}
-          <div
-            className={`w-full flex gap-5 justify-between items-center pl-1 transition-height duration-500 ${comment ? "h-11" : "h-0 invisible"
-              }`}
-          >
-            <input type="text" className="w-full py-2.5 outline-none placeholder:text-sm placeholder:text-zinc-400" placeholder="Write Comment" />
-            <Button className="rounded-lg">Add</Button>
-          </div>
+
+          <Modal isOpen={isOpen} size={size} onClose={onClose}>
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <div className="flex md:flex-row flex-col md:h-[80vh]">
+                    <div className="md:max-w-[50%] h-full flex items-center justify-center w-full">
+                      <Image className="w-full md:h-[80vh] object-cover rounded-none " src="assets/images/image-1.png" />
+                    </div>
+                    <div className="md:max-w-[50%] w-full">
+                      <Comments post={post} />
+                    </div>
+                  </div>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
+
+          {/* <div className="w-full">
+            <div className="flex items-start">
+              <div className="">
+                <Avatar src={post.uploadedByImage} className="me-2" size="sm" />
+              </div>
+              <div className="">
+                <div className="justify-between flex items-center">
+                  <div className="flex items-center">
+                    <Link
+                      href={post.uploaderProfile}
+                      className="font-matter sm:text-base !text-sm font-medium text-gray-900 hover:text-gray-800"
+                    >
+                      @user
+                    </Link>
+                    <Dot />
+                    <p className="text-xs text-default-500">
+                      12h
+                    </p>
+                  </div>
+                  <Heart size={13} className="text-gray-600 cursor-pointer" />
+                </div>
+                <p className="text-sm text-gray-600 mt-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. At porro omnis odio maxime. Ea eaque odit explicabo qui veniam a dolor, deserunt provident atque fugit eveniet, pariatur, sunt officia consequuntur?</p>
+              </div>
+
+
+
+            </div>
+          </div> */}
+
+
           {showSendOptions && <Divider />}
           <div
             className={`w-full flex justify-between items-center px-1 transition-height duration-500 ${showSendOptions ? "h-11" : "h-0 invisible"

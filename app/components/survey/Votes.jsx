@@ -1,22 +1,45 @@
 "use client"
 import React, { useState } from 'react'
-import { CircleUserRound } from 'lucide-react'
+import { CircleUserRound, Heart, MessageCircleMore, Send, ThumbsDown, ThumbsUp } from 'lucide-react'
 import {
     Checkbox, Modal,
     ModalContent,
     ModalHeader,
     ModalBody,
-    ModalFooter,
     Button,
     useDisclosure,
-    Badge,
 } from '@nextui-org/react'
 import Link from 'next/link'
 import Image from 'next/image'
+import Comments from '../PostCard/Comments'
+import forYou from "../../mock/forYou.json";
 
+const cardFooterActions = [
+    {
+        id: 1,
+        label: "Like",
+        icon: <ThumbsUp size={18} />,
+    },
+    {
+        id: 2,
+        label: "Dislike",
+        icon: <ThumbsDown size={18} />,
+    },
+    {
+        id: 3,
+        label: "Comment",
+        icon: <MessageCircleMore size={18} />,
+
+    },
+    {
+        id: 4,
+        label: "Share",
+        icon: <Send size={18} />,
+    },
+];
 
 const Votes = ({ data }) => {
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
 
     const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -24,10 +47,21 @@ const Votes = ({ data }) => {
         setSelectedIndex(prevIndex => prevIndex === idx ? null : idx);
     };
 
+    const [size, setSize] = React.useState("5xl");
+
+    const handleOpen = () => {
+        setSize("5xl");
+        onOpen();
+    };
+
     return (
         <>
             <div className="border myShadow rounded-md flex flex-col justify-between fadeIn">
-                <h2 className="font-semibold text-lg p-5">{data.question}</h2>
+                <div className="flex items-center justify-between pb-1">
+                    <p className='text-xs text-zinc-100 p-0.5 rounded-full ml-1.5 px-2 bg-[#17c964]'>Active</p>
+                    <p className='text-xs text-zinc-400 p-2'>5/16/2025</p>
+                </div>
+                <h2 className="font-semibold text-lg px-5">{data.question}</h2>
                 {data.options.map(({ text, votes }, idx) => (
                     <div
                         key={idx}
@@ -59,8 +93,28 @@ const Votes = ({ data }) => {
                         </div>
                     </div>
                 ))}
-                <p className='text-xs text-zinc-400 mt-4 pr-2 pb-1 text-end'>5/16/2025</p>
-                <Button onPress={onOpen} className="p-3.5 transition-all duration-500 rounded-b-md rounded-t-none hover:bg-gray-100 border-t text-center text-sm">
+                <div className="flex items-center justify-center mt-3 p-2 gap-4">
+                    {cardFooterActions.map((action) => (
+                        <Button
+                            key={action.id}
+                            isIconOnly
+                            variant="light"
+                            radius="full"
+                            className="h-[34px] w-[34px] min-w-[34px] bg-gray-500 text-gray-800 hover:text-white hover:!bg-black"
+                            aria-label={action.label}
+                            onClick={() => {
+                                if (action.label === "Share") {
+                                    // setShowSendOptions(!showSendOptions);
+                                } else if (action.label === "Comment") {
+                                    // handleOpen()
+                                }
+                            }}
+                        >
+                            {action.icon}
+                        </Button>
+                    ))}
+                </div>
+                <Button onPress={onOpen} className="p-3.5 transition-all duration-500 rounded-t-none mt-2 rounded-b-md hover:bg-gray-100 border-t text-center text-sm">
                     View Votes
                 </Button>
             </div>
@@ -102,6 +156,24 @@ const Votes = ({ data }) => {
                 </ModalContent>
             </Modal>
 
+            {/* comments */}
+
+            {/* <Modal isOpen={isOpen} size={size} onClose={onClose}>
+                <ModalContent>
+                    {(onClose) => (
+                        <>
+                            <div className="flex md:flex-row flex-col md:h-[80vh]">
+                                <div className="md:max-w-[50%] h-full flex items-center justify-center w-full">
+                                    <Image className="w-full md:h-[80vh] object-cover rounded-none"  src="assets/images/image-1.png" />
+                                </div>
+                                <div className="md:max-w-[50%] w-full">
+                                    <Comments post={forYou} />
+                                </div>
+                            </div>
+                        </>
+                    )}
+                </ModalContent>
+            </Modal> */}
         </>
     );
 }
