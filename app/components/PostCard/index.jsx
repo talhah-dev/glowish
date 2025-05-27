@@ -20,6 +20,7 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
+  Chip,
 } from "@nextui-org/react";
 import {
   Dot,
@@ -66,12 +67,69 @@ const menuItems = [
   },
 ];
 
+const tags = [
+  {
+    id: 1,
+    label: "All",
+  },
+  {
+    id: 2,
+    label: "Photos",
+  },
+  {
+    id: 3,
+    label: "Videos",
+  },
+  {
+    id: 4,
+    label: "Articles",
+  },
+  {
+    id: 5,
+    label: "Music",
+  },
+  {
+    id: 6,
+    label: "Live",
+  },
+  {
+    id: 7,
+    label: "Events",
+  }
+]
+
 const PostCard = ({ data }) => {
+
+  const [selectedTagIds, setSelectedTagIds] = useState([]);
+  
+  const toggleTag = (id) => {
+    setSelectedTagIds((prev) =>
+      prev.includes(id) ? prev.filter((tagId) => tagId !== id) : [...prev, id]
+    );
+  };
   return (
-    <div className="pt-4">
-      {Array.isArray(data) && data.map((post) => (
-        <EachCard post={post} key={post.id} />
-      ))}
+    <div className="pt-6">
+      <div className="flex items-center overflow-auto md:gap-3 gap-1.5">
+        {tags.map((tag) => {
+          const isSelected = selectedTagIds.includes(tag.id);
+          return (
+            <div
+              key={tag.id}
+              onClick={() => toggleTag(tag.id)}
+              className={`cursor-pointer px-3 py-1.5 rounded-full text-sm border transition-colors
+                ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
+              `}
+            >
+              <span className={isSelected ? 'text-white' : 'text-zinc-600'}>#</span> {tag.label}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="pt-4">
+        {Array.isArray(data) &&
+          data.map((post) => <EachCard post={post} key={post.id} />)}
+      </div>
     </div>
   );
 };

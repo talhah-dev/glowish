@@ -10,6 +10,37 @@ export const metadata = {
     title: "Glowist - Survay",
 };
 
+const tags = [
+    {
+        id: 1,
+        label: "All",
+    },
+    {
+        id: 2,
+        label: "Wars",
+    },
+    {
+        id: 3,
+        label: "Politics",
+    },
+    {
+        id: 4,
+        label: "Sports",
+    },
+    {
+        id: 5,
+        label: "Entertainment",
+    },
+    {
+        id: 6,
+        label: "Technology",
+    },
+    {
+        id: 7,
+        label: "Health",
+    }
+]
+
 const Survey = () => {
     const [selectedKeys, setSelectedKeys] = React.useState(new Set(["Active"]));
 
@@ -23,8 +54,36 @@ const Survey = () => {
     const handleShowMore = () => {
         setShowMore(prev => prev + 6)
     }
+
+    const [selectedTagIds, setSelectedTagIds] = useState([]);
+
+    const toggleTag = (id) => {
+        setSelectedTagIds((prev) =>
+            prev.includes(id) ? prev.filter((tagId) => tagId !== id) : [...prev, id]
+        );
+    };
+
     return (
         <>
+
+            <div className="pt-6">
+                <div className="flex items-center overflow-auto md:gap-3 gap-1.5">
+                    {tags.map((tag) => {
+                        const isSelected = selectedTagIds.includes(tag.id);
+                        return (
+                            <div
+                                key={tag.id}
+                                onClick={() => toggleTag(tag.id)}
+                                className={`cursor-pointer px-3 py-1.5 rounded-full text-sm border transition-colors
+                ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
+              `}
+                            >
+                                <span className={isSelected ? 'text-white' : 'text-zinc-600'}>#</span> {tag.label}
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
 
             <div className="flex items-center justify-between gap-2 mt-6">
                 <div className="">
@@ -48,7 +107,7 @@ const Survey = () => {
                     <Dropdown>
                         <DropdownTrigger>
                             <Button className="capitalize" variant="flat">
-                                {selectedValue} 
+                                {selectedValue}
                             </Button>
                         </DropdownTrigger>
                         <DropdownMenu
