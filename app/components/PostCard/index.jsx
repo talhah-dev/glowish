@@ -23,6 +23,7 @@ import {
   Chip,
 } from "@nextui-org/react";
 import {
+  ArrowUpRight,
   Dot,
   Ellipsis,
   Heart,
@@ -101,7 +102,7 @@ const tags = [
 const PostCard = ({ data }) => {
 
   const [selectedTagIds, setSelectedTagIds] = useState([]);
-  
+
   const toggleTag = (id) => {
     setSelectedTagIds((prev) =>
       prev.includes(id) ? prev.filter((tagId) => tagId !== id) : [...prev, id]
@@ -109,24 +110,24 @@ const PostCard = ({ data }) => {
   };
   return (
     <div className="pt-6">
-      <div className="flex items-center overflow-auto md:gap-3 gap-1.5">
+      <div className="flex items-center overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
         {tags.map((tag) => {
           const isSelected = selectedTagIds.includes(tag.id);
           return (
             <div
               key={tag.id}
               onClick={() => toggleTag(tag.id)}
-              className={`cursor-pointer px-3 py-1.5 rounded-full text-sm border transition-colors
+              className={`cursor-pointer px-3 py-1.5 flex items-center gap-2 rounded-full text-sm border transition-colors
                 ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
               `}
             >
-              <span className={isSelected ? 'text-white' : 'text-zinc-600'}>#</span> {tag.label}
+              <span className={isSelected ? 'text-white' : 'text-zinc-600'}><ArrowUpRight size={16} className='text-xs' /></span> {tag.label}
             </div>
           );
         })}
       </div>
 
-      <div className="pt-4">
+      <div className="pt-4 md:gap-10 grid md:grid-cols-2 grid-cols-1">
         {Array.isArray(data) &&
           data.map((post) => <EachCard post={post} key={post.id} />)}
       </div>
@@ -220,11 +221,11 @@ const EachCard = ({ post }) => {
                   src={post.mediaPath}
                   alt="media"
                   radius="none"
-                  className="w-full"
+                  className="w-full md:h-[33rem] object-cover"
                   classNames={{ wrapper: "!max-w-full" }}
                 />
               ) : post.media === "video" ? (
-                <video src={post.mediaPath} controls />
+                <video src={post.mediaPath} controls className="w-full md:h-[33rem] object-cover" />
               ) : post.media === "carousal" ? (
                 <PostSwiper slides={post.mediaPath} />
               ) : (
@@ -430,8 +431,8 @@ const EachCard = ({ post }) => {
             </Button>
           </div>
         </CardFooter>
+        <Divider className="mb-4" />
       </Card>
-      <Divider className="mb-4" />
     </React.Fragment>
   );
 };

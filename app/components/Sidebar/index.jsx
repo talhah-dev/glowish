@@ -20,11 +20,11 @@ const Sidebar = () => {
         }`}
     >
 
-      <div className="text-2xl px-3 pt-3 flex justify-end " >
+      {/* <div className="text-2xl px-3 pt-3 flex justify-end " >
         <Menu variant="light" size={24} className="cursor-pointer" onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
-      </div>
+      </div> */}
 
-      <div className="flex-grow overflow-auto px-5 pb-0">
+      <div className="flex-grow overflow-auto px-5 pb-0 pt-2">
         {sidebarData().map((item, index) => (
           <div key={item.title}>
             {index !== 0 && <Divider className="my-4" />}

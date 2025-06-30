@@ -21,7 +21,7 @@ const PostSwiper = ({ slides }) => {
             src={slide}
             alt={`slide ${i + 1}`}
             radius="none"
-            className="w-full rounded-xl"
+            className="w-full md:h-[33rem] object-cover rounded-xl"
             classNames={{ wrapper: "!max-w-full" }}
           />
         </SwiperSlide>

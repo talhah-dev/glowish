@@ -3,7 +3,7 @@ import { POLL_DATA } from '@/app/mock/Survey/PollVote';
 import React, { useState } from 'react'
 import Votes from './Votes';
 import { Button, DatePicker, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input } from '@nextui-org/react';
-import { SearchIcon } from 'lucide-react';
+import { ArrowUpRight, SearchIcon } from 'lucide-react';
 // import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@heroui/react";
 
 export const metadata = {
@@ -49,7 +49,7 @@ const Survey = () => {
         [selectedKeys],
     );
 
-    const [showMore, setShowMore] = useState(12)
+    const [showMore, setShowMore] = useState(24)
 
     const handleShowMore = () => {
         setShowMore(prev => prev + 6)
@@ -67,18 +67,18 @@ const Survey = () => {
         <>
 
             <div className="pt-6">
-                <div className="flex items-center overflow-auto md:gap-3 gap-1.5">
+                <div className="flex overflow-x-auto scrollbar-hide whitespace-nowrap items-center overflow-auto md:gap-3 gap-1.5">
                     {tags.map((tag) => {
                         const isSelected = selectedTagIds.includes(tag.id);
                         return (
                             <div
                                 key={tag.id}
                                 onClick={() => toggleTag(tag.id)}
-                                className={`cursor-pointer px-3 py-1.5 rounded-full text-sm border transition-colors
+                                className={`cursor-pointer px-3 py-1.5 rounded-full flex items-center gap-2 text-sm border transition-colors
                 ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
               `}
                             >
-                                <span className={isSelected ? 'text-white' : 'text-zinc-600'}>#</span> {tag.label}
+                                <span className={isSelected ? 'text-white' : 'text-zinc-600'}><ArrowUpRight size={16} className='text-xs' /></span> {tag.label}
                             </div>
                         );
                     })}
@@ -86,7 +86,7 @@ const Survey = () => {
             </div>
 
             <div className="flex items-center justify-between gap-2 mt-6">
-                <div className="">
+                {/* <div className="">
                     <Input
                         classNames={{
                             base: "max-w-full sm:max-w-[15rem] h-10",
@@ -100,7 +100,7 @@ const Survey = () => {
                         startContent={<SearchIcon size={18} />}
                         type="search"
                     />
-                </div>
+                </div> */}
 
                 <div className="flex items-center gap-2">
 
@@ -128,7 +128,7 @@ const Survey = () => {
 
             </div>
 
-            <div className='grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-3 mt-5'>
+            <div className='grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-1 gap-3 mt-5'>
                 {
                     POLL_DATA.slice(0, showMore).map((data) => (
                         <Votes key={data.id} data={data} />
