@@ -117,13 +117,13 @@ const sidebarData = () => {
         {
           id: 8,
           label: "Donate",
-          link: "/donate",
+          link: "#",
           icon: <Heart size={20} />,
         },
         {
           id: 9,
           label: "Subscribe",
-          link: "/subscribe",
+          link: "#",
           icon: <Mail size={20} />,
         },
         {
