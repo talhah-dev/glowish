@@ -40,7 +40,7 @@ const Sidebar = () => {
           }`}
       >
 
-        <div className="text-2xl px-3 pt-3 flex md:hidden justify-end " >
+        <div className="text-2xl px-3 pt-6 flex md:hidden justify-end " >
         <Menu variant="light" size={24} className="cursor-pointer" onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
       </div>
 
