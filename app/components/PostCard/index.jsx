@@ -31,6 +31,7 @@ import {
   Send,
   ThumbsDown,
   ThumbsUp,
+  X,
 } from "lucide-react";
 import moment from "moment";
 import React, { useState } from "react";
@@ -299,8 +300,11 @@ const EachCard = ({ post }) => {
               {(onClose) => (
                 <>
                   <div className="flex md:flex-row flex-col md:h-[80vh]">
-                    <div className="md:max-w-[50%] h-full flex items-center justify-center w-full">
-                      <Image className="w-full md:h-[80vh] object-cover rounded-none " src="assets/images/image-1.png" />
+                    <div className="md:max-w-[50%] h-full flex items-center justify-center w-full relative">
+                      <Image className="w-full md:h-[80vh] object-cover z-10 rounded-none " src="assets/images/image-1.png" />
+                      <div onClick={onClose} className="md:hidden flex absolute top-4 right-4 z-20 items-center justify-center w-7 h-7 rounded-full bg-white">
+                        <X size={16} />
+                      </div>
                     </div>
                     <div className="md:max-w-[50%] w-full">
                       <Comments post={post} />
