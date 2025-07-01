@@ -23,12 +23,6 @@ const Sidebar = () => {
     onOpen(); // <-- use the one from useDisclosure
   };
 
-  const handleCloseModal = () => {
-    onOpenChange(false); // or use `onClose()` if defined by your lib
-    setModalType(null);
-  };
-
-
   return (
     <>
 
@@ -40,7 +34,7 @@ const Sidebar = () => {
           }`}
       >
 
-        <div className="text-2xl px-3 pt-6 flex lg:hidden justify-end md:mt-32" >
+        <div className="text-2xl px-3 pt-6 flex lg:hidden justify-end sm:mt-32" >
           <Menu variant="light" size={24} className="cursor-pointer" onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
         </div>
         <div className="flex-grow overflow-auto px-5 pb-0 pt-2">
