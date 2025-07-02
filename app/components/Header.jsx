@@ -36,6 +36,7 @@ import Link from "next/link";
 import ProfileDropdown from "./HeaderComponents/ProfileDropdown";
 import { SidebarContext } from "../providers";
 import NotificationSection from "./HeaderComponents/NotificationSection";
+import DonateModal from "./Sidebar/DonateModal";
 
 const languages = [
   {
@@ -120,6 +121,20 @@ const Header = ({ isLoggedIn }) => {
   const [showSearchList, setShowSearchList] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
+  const [modalType, setModalType] = useState(null);
+
+  const {
+    isOpen: isDonateOpen,
+    onOpen: onDonateOpen,
+    onOpenChange: onDonateOpenChange
+  } = useDisclosure();
+
+  const {
+    isOpen: isProfileOpen,
+    onOpen: onProfileOpen,
+    onOpenChange: onProfileOpenChange
+  } = useDisclosure();
+
 
   return (
     <>
@@ -190,6 +205,15 @@ const Header = ({ isLoggedIn }) => {
           </NavbarItem>
         </NavbarContent>
 
+        {/* remove later */}
+
+        <DonateModal
+          isOpen={isDonateOpen}
+          onOpenChange={onDonateOpenChange}
+          modalType={"donate"}
+        />
+
+
         {/* End */}
         {isLoggedIn ? (
           <div className="flex items-center gap-2 md:gap-3">
@@ -207,7 +231,7 @@ const Header = ({ isLoggedIn }) => {
             </NavbarItem>
             <NavbarItem className="me-2 2sm:m-0 flex items-center justify-center">
               {/* < size={20} /> */}
-              <Heart className="text-zinc-700 cursor-pointer" />
+              <Heart onClick={onDonateOpen} className="text-zinc-700 cursor-pointer" />
             </NavbarItem>
             <NavbarItem className="me-2 2sm:m-0 flex items-center justify-center">
               <NotificationSection />
@@ -295,8 +319,8 @@ const Header = ({ isLoggedIn }) => {
 
       {/* Language Modal */}
       <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
+        isOpen={isProfileOpen}
+        onOpenChange={onProfileOpenChange}
         isDismissable={false}
         isKeyboardDismissDisabled={true}
         closeButton={<X size={45} />}
