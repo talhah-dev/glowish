@@ -25,6 +25,7 @@ import {
   ChevronDown,
   Dot,
   Flame,
+  HandCoins,
   Menu,
   Search,
   SquarePen,
@@ -202,6 +203,9 @@ const Header = ({ isLoggedIn }) => {
               >
                 <Search size={16} />
               </Button>
+            </NavbarItem>
+            <NavbarItem className="me-2 2sm:m-0 flex items-center justify-center">
+              <HandCoins className="text-zinc-700 cursor-pointer" />
             </NavbarItem>
             <NavbarItem className="me-2 2sm:m-0 flex items-center justify-center">
               <NotificationSection />

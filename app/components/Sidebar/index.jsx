@@ -33,7 +33,6 @@ const Sidebar = () => {
         className={`flex flex-col w-[250px] h-[calc(100vh-56px)] md:h-[calc(100vh-73px)] border-r transition-transform bg-white fixed z-50 bottom-0 ${isSidebarOpen ? "" : "-translate-x-full"
           }`}
       >
-
         <div className="text-2xl px-3 pt-6 flex lg:hidden justify-end sm:mt-32" >
           <Menu variant="light" size={24} className="cursor-pointer" onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
         </div>

@@ -31,11 +31,11 @@ let tabs = [
   //   label: "Following",
   //   content: <FollowingProfile />,
   // },
-  {
-    id: "comments",
-    label: "🔒 Comments",
-    content: <CommentsProfile />,
-  },
+  // {
+  //   id: "comments",
+  //   label: "🔒 Comments",
+  //   content: <CommentsProfile />,
+  // },
 ];
 
 const MyProfile = () => {
@@ -81,11 +81,11 @@ const MyProfile = () => {
             </div>
           </div>
           <div className="flex items-center">
-            <div className="2sm:me-[10px] mx-[7px]">
+            {/* <div className="2sm:me-[10px] mx-[7px]">
               <Link href="#" className="flex 2sm:w-[20px] w-[16px]">
                 <Ellipsis />
               </Link>
-            </div>
+            </div> */}
             <Button
               color="primary"
               href="/profile-edit"
