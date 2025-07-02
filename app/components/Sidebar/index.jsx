@@ -34,7 +34,7 @@ const Sidebar = () => {
           }`}
       >
         <div className="text-2xl px-3 pt-6 flex lg:hidden justify-end sm:mt-32" >
-          <Menu variant="light" size={24} className="cursor-pointer" onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
+          <X variant="light" size={24} className="cursor-pointer" onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
         </div>
         <div className="flex-grow overflow-auto px-5 pb-0 pt-2">
           {sidebarData().map((item, index) => (

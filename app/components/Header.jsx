@@ -26,6 +26,7 @@ import {
   Dot,
   Flame,
   HandCoins,
+  Heart,
   Menu,
   Search,
   SquarePen,
@@ -205,7 +206,8 @@ const Header = ({ isLoggedIn }) => {
               </Button>
             </NavbarItem>
             <NavbarItem className="me-2 2sm:m-0 flex items-center justify-center">
-              <HandCoins className="text-zinc-700 cursor-pointer" />
+              {/* < size={20} /> */}
+              <Heart className="text-zinc-700 cursor-pointer" />
             </NavbarItem>
             <NavbarItem className="me-2 2sm:m-0 flex items-center justify-center">
               <NotificationSection />
