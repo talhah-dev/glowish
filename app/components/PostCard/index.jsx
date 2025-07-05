@@ -104,7 +104,7 @@ const tags = [
 const PostCard = ({ data }) => {
 
   const [selectedTagIds, setSelectedTagIds] = useState([]);
-  const [gridView, setGridView] = useState("grid-cols-2");
+  const [gridView, setGridView] = useState(false);
 
   const toggleTag = (id) => {
     setSelectedTagIds((prev) =>
@@ -131,12 +131,12 @@ const PostCard = ({ data }) => {
           })}
         </div>
         <div className="flex items-center gap-3">
-          <IoGridOutline onClick={() => setGridView("grid-cols-2")} size={22} className="text-gray-900 hover:opacity-55 duration-500 transition-all cursor-pointer" />
-          <BsGrid3X3Gap onClick={() => setGridView("grid-cols-3")} size={22} className="text-gray-900 hover:opacity-55 duration-500 transition-all cursor-pointer" />
+          <IoGridOutline onClick={() => setGridView(false)} size={22} className="text-gray-900 hover:opacity-55 duration-500 transition-all cursor-pointer" />
+          <BsGrid3X3Gap onClick={() => setGridView(true)} size={22} className="text-gray-900 hover:opacity-55 duration-500 transition-all cursor-pointer" />
         </div>
       </div>
 
-      <div className={`pt-4 md:gap-10 grid lg:${gridView} grid-cols-1`}>
+      <div className={`pt-4 md:gap-10 grid ${gridView ? "lg:grid-cols-3" : "lg:grid-cols-2"} grid-cols-1`}>
         {Array.isArray(data) &&
           data.map((post) => <EachCard post={post} key={post.id} />)}
       </div>
