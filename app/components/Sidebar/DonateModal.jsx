@@ -74,7 +74,6 @@ export default function DonateModal({ isOpen, onOpenChange, modalType }) {
                                         Cancel
                                     </Button>
                                     <Button
-                                        color="primary"
                                         onPress={() => {
                                             alert(`Donated €${getFinalAmount()}`);
                                             onClose();
@@ -114,7 +113,6 @@ export default function DonateModal({ isOpen, onOpenChange, modalType }) {
                                         Cancel
                                     </Button>
                                     <Button
-                                        color="primary"
                                         isDisabled={!email || !email.includes("@")}
                                         onPress={() => {
                                             alert(`Subscribed with: ${email}`);

@@ -229,11 +229,11 @@ const Header = ({ isLoggedIn }) => {
                 <Search size={16} />
               </Button>
             </NavbarItem>
-            <NavbarItem className="me-2 2sm:m-0 flex items-center justify-center">
-              {/* < size={20} /> */}
-              <Heart onClick={onDonateOpen} className="text-zinc-700 cursor-pointer" />
+            <NavbarItem onClick={onDonateOpen} className="me-2 cursor-pointer gap-1 2sm:m-0 flex items-center justify-center">
+              <Heart />
+              <p className="">Donate</p>
             </NavbarItem>
-            <NavbarItem className="me-2 2sm:m-0 flex items-center justify-center">
+            <NavbarItem className="me-2 2sm:mr-1.5 flex items-center justify-center">
               <NotificationSection />
             </NavbarItem>
             <NavbarItem>

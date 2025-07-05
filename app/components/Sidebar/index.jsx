@@ -2,10 +2,10 @@
 import { Accordion, AccordionItem, Divider } from "@nextui-org/react";
 import React, { useContext, useState } from "react";
 import sidebarData from "./sidebarData";
-import { ChevronDown, Dot, Menu, X } from "lucide-react";
+import { ChevronDown, Dot, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SidebarContext, SmallScreenContext } from "@/app/providers";
+import { SidebarContext, SmallScreenContext } from "../../../app/providers";
 import {
   useDisclosure,
 } from "@nextui-org/react";

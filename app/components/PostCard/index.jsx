@@ -22,18 +22,19 @@ import {
   useDisclosure,
   Chip,
 } from "@nextui-org/react";
+import { BsGrid3X3Gap } from "react-icons/bs";
+
 import {
   ArrowUpRight,
+  Bookmark,
   Dot,
-  Ellipsis,
-  Heart,
   MessageCircleMore,
   Send,
   ThumbsDown,
   ThumbsUp,
   X,
 } from "lucide-react";
-import moment from "moment";
+import { IoGridOutline } from "react-icons/io5";
 import React, { useState } from "react";
 import PostSwiper from "./PostSwiper";
 import Comments from "./Comments";
@@ -103,6 +104,7 @@ const tags = [
 const PostCard = ({ data }) => {
 
   const [selectedTagIds, setSelectedTagIds] = useState([]);
+  const [gridView, setGridView] = useState("grid-cols-2");
 
   const toggleTag = (id) => {
     setSelectedTagIds((prev) =>
@@ -111,24 +113,30 @@ const PostCard = ({ data }) => {
   };
   return (
     <div className="pt-6">
-      <div className="flex items-center overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
-        {tags.map((tag) => {
-          const isSelected = selectedTagIds.includes(tag.id);
-          return (
-            <div
-              key={tag.id}
-              onClick={() => toggleTag(tag.id)}
-              className={`cursor-pointer px-3 py-1.5 flex items-center gap-2 rounded-full text-sm border transition-colors
-                ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
-              `}
-            >
-              <span className={isSelected ? 'text-white' : 'text-zinc-600'}><ArrowUpRight size={16} className='text-xs' /></span> {tag.label}
-            </div>
-          );
-        })}
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
+          {tags.map((tag) => {
+            const isSelected = selectedTagIds.includes(tag.id);
+            return (
+              <div
+                key={tag.id}
+                onClick={() => toggleTag(tag.id)}
+                className={`cursor-pointer px-3 py-1.5 flex items-center gap-2 rounded-full text-sm border transition-colors
+              ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
+                `}
+              >
+                <span className={isSelected ? 'text-white' : 'text-zinc-600'}><ArrowUpRight size={16} className='text-xs' /></span> {tag.label}
+              </div>
+            );
+          })}
+        </div>
+        <div className="flex items-center gap-3">
+          <IoGridOutline onClick={() => setGridView("grid-cols-2")} size={22} className="text-gray-900 hover:opacity-55 duration-500 transition-all cursor-pointer" />
+          <BsGrid3X3Gap onClick={() => setGridView("grid-cols-3")} size={22} className="text-gray-900 hover:opacity-55 duration-500 transition-all cursor-pointer" />
+        </div>
       </div>
 
-      <div className="pt-4 md:gap-10 grid md:grid-cols-2 grid-cols-1">
+      <div className={`pt-4 md:gap-10 grid lg:${gridView} grid-cols-1`}>
         {Array.isArray(data) &&
           data.map((post) => <EachCard post={post} key={post.id} />)}
       </div>
@@ -139,6 +147,8 @@ const PostCard = ({ data }) => {
 const EachCard = ({ post }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [showSendOptions, setShowSendOptions] = useState(false);
+
+  const [bookmark, setBookmark] = useState(false);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [size, setSize] = React.useState("5xl");
@@ -262,36 +272,39 @@ const EachCard = ({ post }) => {
               ))}
             </div>
             {/* No of Likes, Comments, Shares */}
-            <div className="flex text-gray-800">
-              <Link
-                href="/"
-                underline="hover"
-                className="flex relative font-matter 2sm:text-sm text-[12px] text-gray-800 hover:text-gray-900 hover:underline-offset-2"
-              >
-                {post.noOfLikes <= 1
-                  ? `${post.noOfLikes} Like`
-                  : `${post.noOfLikes} Likes`}
-              </Link>
-              <Dot />
-              <Link
-                href="/"
-                underline="hover"
-                className="flex relative font-matter 2sm:text-sm text-[12px] text-gray-800 hover:text-gray-900 hover:underline-offset-2"
-              >
-                {post.noOfComments <= 1
-                  ? `${post.noOfComments} Comment`
-                  : `${post.noOfComments} Comments`}
-              </Link>
-              <Dot />
-              <Link
-                href="/"
-                underline="hover"
-                className="flex relative font-matter 2sm:text-sm text-[12px] text-gray-800 hover:text-gray-900 hover:underline-offset-2"
-              >
-                {post.noOfShares <= 1
-                  ? `${post.noOfShares} Share`
-                  : `${post.noOfShares} Shares`}
-              </Link>
+            <div className="flex items-center">
+              <div className="md:flex hidden text-gray-800">
+                <Link
+                  href="/"
+                  underline="hover"
+                  className="flex relative font-matter 2sm:text-sm text-[12px] text-gray-800 hover:text-gray-900 hover:underline-offset-2"
+                >
+                  {post.noOfLikes <= 1
+                    ? `${post.noOfLikes} Like`
+                    : `${post.noOfLikes} Likes`}
+                </Link>
+                <Dot />
+                <Link
+                  href="/"
+                  underline="hover"
+                  className="flex relative font-matter 2sm:text-sm text-[12px] text-gray-800 hover:text-gray-900 hover:underline-offset-2"
+                >
+                  {post.noOfComments <= 1
+                    ? `${post.noOfComments} Comment`
+                    : `${post.noOfComments} Comments`}
+                </Link>
+                <Dot />
+                <Link
+                  href="/"
+                  underline="hover"
+                  className="flex relative font-matter 2sm:text-sm text-[12px] text-gray-800 hover:text-gray-900 hover:underline-offset-2"
+                >
+                  {post.noOfShares <= 1
+                    ? `${post.noOfShares} Share`
+                    : `${post.noOfShares} Shares`}
+                </Link>
+              </div>
+              <Bookmark onClick={() => setBookmark(!bookmark)} className={`${bookmark && "fill-gray-800"} text-gray-800 md:ml-7 transition-all duration-500 cursor-pointer`} />
             </div>
           </div>
 

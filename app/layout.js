@@ -17,14 +17,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ReduxProviders>
+        {/* <ReduxProviders> */}
           <Providers>
             <ProtectedRoute>
               <Header isLoggedIn={isLoggedIn} />
               {children}
             </ProtectedRoute>
           </Providers>
-        </ReduxProviders>
+        {/* </ReduxProviders> */}
       </body>
     </html>
   );

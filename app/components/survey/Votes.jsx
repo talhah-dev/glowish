@@ -93,7 +93,10 @@ const Votes = ({ data }) => {
                         </div>
                     </div>
                 ))}
-                <div className="flex items-center justify-center mt-3 p-2 gap-4">
+                <Button onPress={onOpen} className="p-3.5 transition-all duration-500 w-full max-w-[90%] mx-auto mt-5 mb-4 rounded-lg hover:bg-gray-100 border-t text-center text-sm">
+                    View Votes
+                </Button>
+                <div className="flex items-center justify-center mb-3 p-2 gap-4">
                     {cardFooterActions.map((action) => (
                         <Button
                             key={action.id}
@@ -114,9 +117,6 @@ const Votes = ({ data }) => {
                         </Button>
                     ))}
                 </div>
-                <Button onPress={onOpen} className="p-3.5 transition-all duration-500 rounded-t-none mt-2 rounded-b-md hover:bg-gray-100 border-t text-center text-sm">
-                    View Votes
-                </Button>
             </div>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent className='pb-4'>
