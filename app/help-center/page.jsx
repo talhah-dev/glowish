@@ -1,8 +1,8 @@
 import React from "react";
 import { Divider } from "@nextui-org/react";
-import LayoutWithSidebar from "@/app/LayoutWithSidebar";
+import LayoutWithSidebar from "../../app/LayoutWithSidebar";
 import Link from "next/link";
-import Contactform from "@/app/contact/Contactform";
+import Contactform from "../../app/contact/Contactform";
 
 export const metadata = {
   title: "Glowist - About Us",

@@ -4,8 +4,8 @@ import LayoutWithFooter from "../../(withFooter)/layout";
 import { Divider, Image } from "@nextui-org/react";
 import PostCard from "../../components/PostCard";
 import Link from "next/link";
-import CommentBox from "@/app/components/comments/CommentBox";
-import Comments from "@/app/components/comments/Comments";
+import CommentBox from "../../../app/components/comments/CommentBox";
+import Comments from "../../../app/components/comments/Comments";
 
 const details = [
   {

@@ -1,7 +1,7 @@
 import React from "react";
 import PostCard from "../../components/PostCard";
 import forYou from "../../mock/forYou.json";
-import RecommendedTopic from "@/app/components/RecommendedTopic";
+import RecommendedTopic from "../../../app/components/RecommendedTopic";
 import recommendedTopicData from "../../mock/RecommendedTopicData.json";
 import { Divider } from "@nextui-org/react";
 import Sidebar from "@/app/components/Sidebar";
