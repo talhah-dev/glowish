@@ -4,7 +4,7 @@ import forYou from "../../mock/forYou.json";
 import RecommendedTopic from "../../../app/components/RecommendedTopic";
 import recommendedTopicData from "../../mock/RecommendedTopicData.json";
 import { Divider } from "@nextui-org/react";
-import Sidebar from "@/app/components/Sidebar";
+import Sidebar from "../../../app/components/Sidebar";
 import Link from "next/link";
 
 const TagDetails = ({ params }) => {
