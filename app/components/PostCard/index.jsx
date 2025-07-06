@@ -130,7 +130,7 @@ const PostCard = ({ data }) => {
             );
           })}
         </div>
-        <div className="flex items-center gap-3">
+        <div className="md:flex hidden items-center gap-3">
           <IoGridOutline onClick={() => setGridView(false)} size={22} className="text-gray-900 hover:opacity-55 duration-500 transition-all cursor-pointer" />
           <BsGrid3X3Gap onClick={() => setGridView(true)} size={22} className="text-gray-900 hover:opacity-55 duration-500 transition-all cursor-pointer" />
         </div>

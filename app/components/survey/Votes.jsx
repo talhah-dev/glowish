@@ -13,6 +13,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Comments from '../PostCard/Comments'
 import forYou from "../../mock/forYou.json";
+import { FaPlus } from "react-icons/fa6";
 
 const cardFooterActions = [
     {
@@ -58,7 +59,7 @@ const Votes = ({ data }) => {
         <>
             <div className="border myShadow rounded-md flex flex-col justify-between fadeIn">
                 <div className="flex items-center justify-between pb-1">
-                    <p className='text-xs text-zinc-100 p-0.5 rounded-full ml-1.5 px-2 bg-[#17c964]'>Active</p>
+                    <p className='text-xs text-zinc-100 p-0.5 rounded-full ml-1.5 px-2 bg-[#17c964] flex items-center gap-1'><FaPlus />Active</p>
                     <p className='text-xs text-zinc-400 p-2'>5/16/2025</p>
                 </div>
                 <h2 className="font-semibold text-lg px-5">{data.question}</h2>

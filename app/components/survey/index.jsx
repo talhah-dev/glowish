@@ -5,6 +5,7 @@ import Votes from './Votes';
 import { Button, DatePicker, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input } from '@nextui-org/react';
 import { ArrowUpRight, SearchIcon } from 'lucide-react';
 // import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@heroui/react";
+import { AiOutlineBars } from "react-icons/ai";
 
 export const metadata = {
     title: "Glowist - Survay",
@@ -63,6 +64,9 @@ const Survey = () => {
         );
     };
 
+    const placements = ["inside", "outside"];
+
+
     return (
         <>
 
@@ -102,28 +106,39 @@ const Survey = () => {
                     />
                 </div> */}
 
-                <div className="flex items-center gap-2">
-
-                    <Dropdown>
-                        <DropdownTrigger>
-                            <Button className="capitalize" variant="flat">
-                                {selectedValue}
-                            </Button>
-                        </DropdownTrigger>
-                        <DropdownMenu
-                            disallowEmptySelection
-                            aria-label="Single selection example"
-                            selectedKeys={selectedKeys}
-                            selectionMode="single"
-                            variant="flat"
-                            onSelectionChange={setSelectedKeys}
-                        >
-                            <DropdownItem key="Active">Active</DropdownItem>
-                            <DropdownItem key="Not Active">Not Active</DropdownItem>
-                        </DropdownMenu>
-                    </Dropdown>
-
-                    <DatePicker className="max-w-[284px] w-full !pb-0" errorMessage="Please enter a valid date." />
+                <div className="flex sm:justify-between justify-center items-center gap-2 w-full">
+                    <div className="flex flex-col gap-2">
+                        <div className="flex w-full items-center justify-center mb-6 md:mb-0 gap-4">
+                            <DatePicker
+                                className="sm:max-w-[284px] w-full"
+                                label={"Start date"}
+                            />
+                            <DatePicker
+                                className="sm:max-w-[284px] w-full"
+                                label={"End date"}
+                            />
+                        </div>
+                    </div>
+                    <div className="md:block hidden">
+                        <Dropdown>
+                            <DropdownTrigger>
+                                <Button className="min-w-10" variant="flat">
+                                    <AiOutlineBars className='text-xl' />
+                                </Button>
+                            </DropdownTrigger>
+                            <DropdownMenu
+                                disallowEmptySelection
+                                aria-label="Single selection example"
+                                selectedKeys={selectedKeys}
+                                selectionMode="single"
+                                variant="flat"
+                                onSelectionChange={setSelectedKeys}
+                            >
+                                <DropdownItem key="Active">Active</DropdownItem>
+                                <DropdownItem key="Not Active">Not Active</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                    </div>
                 </div>
 
             </div>
