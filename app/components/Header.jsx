@@ -229,8 +229,8 @@ const Header = ({ isLoggedIn }) => {
                 <Search size={16} />
               </Button>
             </NavbarItem>
-            <NavbarItem onClick={onDonateOpen} className="me-2 cursor-pointer gap-1 2sm:m-0 flex items-center justify-center">
-              <Heart />
+            <NavbarItem onClick={onDonateOpen} className="me-2 cursor-pointer gap-1 2sm:m-0 flex items-center justify-center text-[#646464] text-sm">
+              <Heart size={19} />
               <p className="">Donate</p>
             </NavbarItem>
             <NavbarItem className="me-2 2sm:mr-1.5 flex items-center justify-center">
@@ -408,7 +408,7 @@ const SearchListBox = () => {
                 {item.description}
               </p>
               <div className="flex items-center">
-                <Link
+                {/* <Link
                   href={item.postLink}
                   className="flex w-[16px] h-[16px] rounded-full overflow-hidden me-[5px]"
                 >
@@ -416,14 +416,14 @@ const SearchListBox = () => {
                     src={item.userProfile}
                     className="h-[18px] w-[18px]"
                   />
-                </Link>
+                </Link> */}
                 <div className="flex items-center">
-                  <p className="font-matter text-xs text-gray-900 hover:text-gray-800">
+                  {/* <p className="font-matter text-xs text-gray-900 hover:text-gray-800">
                     <Link href={item.profileLink} className="flex">
                       {item.userName}
                     </Link>
                   </p>
-                  <Dot size={14} />
+                  <Dot size={14} /> */}
                   <p className="relative font-matter text-xs text-gray-800">
                     {item.uploadDate}
                   </p>

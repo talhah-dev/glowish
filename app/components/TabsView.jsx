@@ -1,12 +1,17 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import { Tabs, Tab } from "@nextui-org/react";
+import { TabContext } from "../providers";
 
 const TabsView = ({ tabs }) => {
+  const { activeTab, setActiveTab } = useContext(TabContext);
+
   return (
     <div className="flex w-full flex-col">
       <Tabs
         aria-label="Dynamic tabs"
+        selectedKey={activeTab} // Use selectedKey instead of defaultSelectedKey
+        onSelectionChange={setActiveTab} // Update activeTab when a new tab is selected
         items={tabs}
         variant="underlined"
         classNames={{
@@ -26,4 +31,5 @@ const TabsView = ({ tabs }) => {
     </div>
   );
 };
+
 export default TabsView;

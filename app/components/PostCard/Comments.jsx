@@ -9,7 +9,7 @@ const Comments = ({post}) => {
             <div className="border-b">
                 <div className="flex items-center p-3">
                     <div className="">
-                        <Avatar src={post.uploadedByImage} className="me-2" size="sm" />
+                        <Avatar src={"/assets/images/user-2.png"} className="me-2" size="sm" />
                     </div>
                     <Link
                         href={"#"}
@@ -22,13 +22,13 @@ const Comments = ({post}) => {
             <div className="bg-gray-50 h-[66.5vh] overflow-auto h-full">
                 <div className="flex p-3 items-start">
                     <div className="">
-                        <Avatar src={post.uploadedByImage} className="me-2" size="sm" />
+                        <Avatar src={"/assets/images/user-2.png"} className="me-2" size="sm" />
                     </div>
                     <div className="">
                         <div className="justify-between flex items-center">
                             <div className="flex items-center">
                                 <Link
-                                    href={post.uploaderProfile}
+                                    href={"/"}
                                     className="font-matter sm:text-base !text-sm font-medium text-gray-900 hover:text-gray-800"
                                 >
                                     @user
@@ -54,13 +54,13 @@ const Comments = ({post}) => {
                 </div>
                 <div className="flex pl-14 p-3 items-start">
                     <div className="">
-                        <Avatar src={post.uploadedByImage} className="me-2" size="sm" />
+                        <Avatar src={"/assets/images/user-2.png"} className="me-2" size="sm" />
                     </div>
                     <div className="">
                         <div className="justify-between flex items-center">
                             <div className="flex items-center">
                                 <Link
-                                    href={post.uploaderProfile}
+                                    href={"/"}
                                     className="font-matter sm:text-base !text-sm font-medium text-gray-900 hover:text-gray-800"
                                 >
                                     @user

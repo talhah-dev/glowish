@@ -1,66 +1,116 @@
-"use client"
-import React, { useState } from 'react'
-import { CircleUserRound, Heart, MessageCircleMore, Send, ThumbsDown, ThumbsUp } from 'lucide-react'
+"use client";
+import React, { useState } from "react";
+import { ArrowUpRight, Bookmark, CircleUserRound, Heart, MessageCircleMore, PlusCircle, Send, ThumbsDown, ThumbsUp } from "lucide-react";
 import {
-    Checkbox, Modal,
+    Checkbox,
+    Modal,
     ModalContent,
     ModalHeader,
     ModalBody,
     Button,
     useDisclosure,
-} from '@nextui-org/react'
-import Link from 'next/link'
-import Image from 'next/image'
-import Comments from '../PostCard/Comments'
+    Tooltip,
+} from "@nextui-org/react";
+import Link from "next/link";
+import Image from "next/image";
+import SurveyComments from "./SurveyComments";
 import forYou from "../../mock/forYou.json";
-import { FaPlus } from "react-icons/fa6";
+import { IoInformationCircleOutline } from "react-icons/io5";
+
+const tags = [
+    {
+        id: 1,
+        label: "Current",
+    },
+    {
+        id: 2,
+        label: "Wars",
+    },
+    {
+        id: 3,
+        label: "Politics",
+    },
+    {
+        id: 4,
+        label: "Sports",
+    },
+    {
+        id: 5,
+        label: "Entertainment",
+    },
+    {
+        id: 6,
+        label: "Technology",
+    },
+    {
+        id: 7,
+        label: "Health",
+    }
+]
 
 const cardFooterActions = [
     {
         id: 1,
         label: "Like",
         icon: <ThumbsUp size={18} />,
+        num: 34
     },
     {
         id: 2,
         label: "Dislike",
         icon: <ThumbsDown size={18} />,
+        num: 22
     },
     {
         id: 3,
         label: "Comment",
         icon: <MessageCircleMore size={18} />,
-
+        num: 89
     },
     {
         id: 4,
         label: "Share",
         icon: <Send size={18} />,
+        num: 54
     },
 ];
 
 const Votes = ({ data }) => {
-    const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
+    // Separate disclosure hooks for each modal
+    const votesModal = useDisclosure();
+    const commentsModal = useDisclosure();
 
     const [selectedIndex, setSelectedIndex] = useState(null);
 
     const handleSelect = (idx) => {
-        setSelectedIndex(prevIndex => prevIndex === idx ? null : idx);
+        setSelectedIndex((prevIndex) => (prevIndex === idx ? null : idx));
     };
 
-    const [size, setSize] = React.useState("5xl");
+    const [bookmark, setBookmark] = useState(false);
 
-    const handleOpen = () => {
-        setSize("5xl");
-        onOpen();
+    const [selectedTagIds, setSelectedTagIds] = useState([]);
+
+    const toggleTag = (id) => {
+        setSelectedTagIds((prev) =>
+            prev.includes(id) ? prev.filter((tagId) => tagId !== id) : [...prev, id]
+        );
     };
 
     return (
         <>
             <div className="border myShadow rounded-md flex flex-col justify-between fadeIn">
                 <div className="flex items-center justify-between pb-1">
-                    <p className='text-xs text-zinc-100 p-0.5 rounded-full ml-1.5 px-2 bg-[#17c964] flex items-center gap-1'><FaPlus />Active</p>
-                    <p className='text-xs text-zinc-400 p-2'>5/16/2025</p>
+                    <p className="text-xs rounded-full ml-1.5 text-[#17c964] flex items-center gap-1">
+                        <PlusCircle size={16} />
+                    </p>
+                    <div className="flex items-center gap-1 p-2">
+                        <Tooltip content="This poll expired on 5/16/2025">
+                            <span tabIndex="0" className="inline-block">
+                                <IoInformationCircleOutline className="text-zinc-600" />
+                            </span>
+                        </Tooltip>
+                        <p className="text-xs text-zinc-400">5/16/2025</p>
+                    </div>
                 </div>
                 <h2 className="font-semibold text-lg px-5">{data.question}</h2>
                 {data.options.map(({ text, votes }, idx) => (
@@ -80,8 +130,8 @@ const Votes = ({ data }) => {
                             </Checkbox>
                             <div className="flex items-center gap-1">
                                 <div className="flex items-center">
-                                    <CircleUserRound size={18} className='text-gray-800 bg-white rounded-full' />
-                                    <CircleUserRound size={18} className='text-gray-800 -ml-2 bg-white rounded-full' />
+                                    <CircleUserRound size={18} className="text-gray-800 bg-white rounded-full" />
+                                    <CircleUserRound size={18} className="text-gray-800 -ml-2 bg-white rounded-full" />
                                 </div>
                                 <p>{votes}</p>
                             </div>
@@ -94,37 +144,68 @@ const Votes = ({ data }) => {
                         </div>
                     </div>
                 ))}
-                <Button onPress={onOpen} className="p-3.5 transition-all duration-500 w-full max-w-[90%] mx-auto mt-5 mb-4 rounded-lg hover:bg-gray-100 border-t text-center text-sm">
+                <Button
+                    onPress={votesModal.onOpen}
+                    className="p-3.5 transition-all duration-500 w-full max-w-[90%] mx-auto mt-5 mb-4 rounded-lg hover:bg-gray-100 border-t text-center text-sm"
+                >
                     View Votes
                 </Button>
-                <div className="flex items-center justify-center mb-3 p-2 gap-4">
-                    {cardFooterActions.map((action) => (
-                        <Button
-                            key={action.id}
-                            isIconOnly
-                            variant="light"
-                            radius="full"
-                            className="h-[34px] w-[34px] min-w-[34px] bg-gray-500 text-gray-800 hover:text-white hover:!bg-black"
-                            aria-label={action.label}
-                            onClick={() => {
-                                if (action.label === "Share") {
-                                    // setShowSendOptions(!showSendOptions);
-                                } else if (action.label === "Comment") {
-                                    // handleOpen()
-                                }
-                            }}
-                        >
-                            {action.icon}
-                        </Button>
-                    ))}
+                <div className="pl-3 mb-3">
+                    <div className="flex overflow-x-auto scrollbar-hide whitespace-nowrap items-center overflow-auto md:gap-3 gap-1.5">
+                        {tags.map((tag) => {
+                            const isSelected = selectedTagIds.includes(tag.id);
+                            return (
+                                <div
+                                    key={tag.id}
+                                    onClick={() => toggleTag(tag.id)}
+                                    className={`cursor-pointer px-2 py-1 rounded-full flex items-center gap-2 text-xs border transition-colors
+                ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
+              `}
+                                >
+                                    <span className={isSelected ? 'text-white' : 'text-zinc-600'}><ArrowUpRight size={14} className='text-xs' /></span> {tag.label}
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+                <div className="flex items-center justify-between w-full mb-3 p-3 gap-4">
+                    <div className="flex items-center gap-4">
+                        {cardFooterActions.map((action) => (
+                            <div className="flex flex-col items-center justify-center gap-1">
+                                <Button
+                                    key={action.id}
+                                    isIconOnly
+                                    variant="light"
+                                    radius="full"
+                                    className="h-[34px] w-[34px] min-w-[34px] bg-gray-500 text-gray-800 hover:text-white hover:!bg-black"
+                                    aria-label={action.label}
+                                    onPress={() => {
+                                        if (action.label === "Comment") {
+                                            commentsModal.onOpen();
+                                        } else if (action.label === "Share") {
+                                            // Handle share functionality if needed
+                                        }
+                                    }}
+                                >
+                                    {action.icon}
+                                </Button>
+                                <p className="text-xs text-zinc-600 font-medium">
+                                    {action.num}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                    <Bookmark onClick={() => setBookmark(!bookmark)} className={`${bookmark && "fill-gray-800"} text-gray-800 md:ml-7 transition-all duration-500 cursor-pointer`} />
                 </div>
             </div>
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-                <ModalContent className='pb-4'>
-                    {(onClose) => (
+
+            {/* Votes Modal */}
+            <Modal isOpen={votesModal.isOpen} onOpenChange={votesModal.onOpenChange}>
+                <ModalContent className="pb-4">
+                    {() => (
                         <>
                             <ModalHeader className="flex flex-col gap-1">Voting</ModalHeader>
-                            <ModalBody className='max-h-[70vh] h-full overflow-auto'>
+                            <ModalBody className="max-h-[70vh] h-full overflow-auto">
                                 {Array.from({ length: 10 }).map((_, index) => (
                                     <div key={index} className="flex items-center mb-4">
                                         <div>
@@ -133,8 +214,8 @@ const Votes = ({ data }) => {
                                                 className="flex 2sm:w-[40px] 2sm:h-[40px] w-[36px] h-[36px] rounded-full me-2"
                                             >
                                                 <Image
-                                                    height="34"
-                                                    width="34"
+                                                    height={34}
+                                                    width={34}
                                                     src="/assets/images/user-1.png"
                                                     alt="profile image"
                                                     className="w-full h-full rounded-full"
@@ -157,26 +238,22 @@ const Votes = ({ data }) => {
                 </ModalContent>
             </Modal>
 
-            {/* comments */}
-
-            {/* <Modal isOpen={isOpen} size={size} onClose={onClose}>
+            {/* Comments Modal */}
+            <Modal isOpen={commentsModal.isOpen} size="3xl" onOpenChange={commentsModal.onOpenChange}>
                 <ModalContent>
-                    {(onClose) => (
+                    {() => (
                         <>
                             <div className="flex md:flex-row flex-col md:h-[80vh]">
-                                <div className="md:max-w-[50%] h-full flex items-center justify-center w-full">
-                                    <Image className="w-full md:h-[80vh] object-cover rounded-none"  src="assets/images/image-1.png" />
-                                </div>
-                                <div className="md:max-w-[50%] w-full">
-                                    <Comments post={forYou} />
+                                <div className="w-full">
+                                    <SurveyComments post={forYou} />
                                 </div>
                             </div>
                         </>
                     )}
                 </ModalContent>
-            </Modal> */}
+            </Modal>
         </>
     );
-}
+};
 
 export default Votes;

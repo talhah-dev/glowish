@@ -1,3 +1,4 @@
+// app/providers.js
 "use client";
 import { NextUIProvider } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
@@ -5,19 +6,20 @@ import { createContext, useEffect, useState } from "react";
 
 export const SidebarContext = createContext(undefined);
 export const SmallScreenContext = createContext(undefined);
+export const TabContext = createContext(undefined);
 
 export function Providers({ children }) {
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [activeTab, setActiveTab] = useState("news"); // Default to "News" tab
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1280) {
         setIsSidebarOpen(false);
-        // setIsSmallScreen(true);
+        setIsSmallScreen(true);
       } else {
-        // setIsSidebarOpen(true);
         setIsSmallScreen(false);
       }
     };
@@ -32,10 +34,10 @@ export function Providers({ children }) {
   return (
     <NextUIProvider navigate={router.push}>
       <SidebarContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>
-        <SmallScreenContext.Provider
-          value={{ isSmallScreen, setIsSmallScreen }}
-        >
-          {children}
+        <SmallScreenContext.Provider value={{ isSmallScreen, setIsSmallScreen }}>
+          <TabContext.Provider value={{ activeTab, setActiveTab }}>
+            {children}
+          </TabContext.Provider>
         </SmallScreenContext.Provider>
       </SidebarContext.Provider>
     </NextUIProvider>

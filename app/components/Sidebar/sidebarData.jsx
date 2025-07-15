@@ -26,10 +26,8 @@ const sidebarData = () => {
           label: "Politics",
           icon: <Siren size={20} />,
           subItems: [
-            { key: 61, subLabel: "Election", link: "/politics/election" },
-            { key: 62, subLabel: "Political Party", link: "/politics/political-party" },
-            { key: 63, subLabel: "Politicians", link: "/politics/politicians" },
-            { key: 64, subLabel: "State Politics", link: "/politics/state-politics" },
+            { key: 61, subLabel: "News", link: "#" },
+            { key: 62, subLabel: "Survey", link: "#" },
           ],
         },
         // {
@@ -54,6 +52,10 @@ const sidebarData = () => {
           label: "Technology",
           link: "#",
           icon: <Lightbulb size={20} />,
+          subItems: [
+            { key: 63, subLabel: "News", link: "#" },
+            { key: 64, subLabel: "Survey", link: "#" },
+          ],
         },
         // {
         //   id: 4,
@@ -83,8 +85,11 @@ const sidebarData = () => {
           label: "Sports",
           link: "#",
           icon: <Award size={20} />,
+          subItems: [
+            { key: 65, subLabel: "News", link: "#" },
+            { key: 66, subLabel: "Survey", link: "#" },
+          ],
         },
-       
       ],
     },
     {

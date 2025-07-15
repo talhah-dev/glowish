@@ -73,7 +73,7 @@ const menuItems = [
 const tags = [
   {
     id: 1,
-    label: "All",
+    label: "Prime",
   },
   {
     id: 2,
@@ -102,7 +102,6 @@ const tags = [
 ]
 
 const PostCard = ({ data }) => {
-
   const [selectedTagIds, setSelectedTagIds] = useState([]);
   const [gridView, setGridView] = useState(false);
 
@@ -147,7 +146,13 @@ const PostCard = ({ data }) => {
 const EachCard = ({ post }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [showSendOptions, setShowSendOptions] = useState(false);
+  const [selectedTagIds, setSelectedTagIds] = useState([]);
 
+  const toggleTag = (id) => {
+    setSelectedTagIds((prev) =>
+      prev.includes(id) ? prev.filter((tagId) => tagId !== id) : [...prev, id]
+    );
+  };
   const [bookmark, setBookmark] = useState(false);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -213,7 +218,9 @@ const EachCard = ({ post }) => {
                 href="/"
                 className="font-matter text-gray-900 hover:text-gray-800 font-semibold sm:text-xl 2sm:text-lg text-base"
               >
-                {post.title}
+                <p className="line-clamp-1">
+                  {post.title}
+                </p>
               </Link>
             </h3>
           )}
@@ -247,6 +254,26 @@ const EachCard = ({ post }) => {
         </CardBody>
         {/* <Comments/> */}
         <CardFooter className="p-0 flex-col">
+
+          <div className="px-3 w-full mb-3">
+            <div className="flex overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
+              {tags.map((tag) => {
+                const isSelected = selectedTagIds.includes(tag.id);
+                return (
+                  <div
+                    key={tag.id}
+                    onClick={() => toggleTag(tag.id)}
+                    className={`cursor-pointer px-2 py-1 rounded-full flex gap-2 text-xs border transition-colors
+                          ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
+                        `}
+                  >
+                    <span className={isSelected ? 'text-white' : 'text-zinc-600'}><ArrowUpRight size={14} className='text-xs' /></span> {tag.label}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Footer Actions */}
           <div className="flex gap-3 justify-between items-center px-[3px] pt-1 pb-3 w-full">
             <div className="flex gap-2">

@@ -1,40 +1,66 @@
 "use client";
 import { Accordion, AccordionItem, Divider } from "@nextui-org/react";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import sidebarData from "./sidebarData";
 import { ChevronDown, Dot, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SidebarContext, SmallScreenContext } from "../../../app/providers";
-import {
-  useDisclosure,
-} from "@nextui-org/react";
+import { SidebarContext, SmallScreenContext, TabContext } from "../../../app/providers";
+import { useDisclosure } from "@nextui-org/react";
 import DonateModal from "./DonateModal";
 
 const Sidebar = () => {
   const pathname = usePathname();
   const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
   const { isSmallScreen } = useContext(SmallScreenContext);
-  const { isOpen, onOpen, onOpenChange } = useDisclosure(); // from NextUI
-  const [modalType, setModalType] = useState(null); // "donate" | "subscribe" | null
+  const { setActiveTab, activeTab } = useContext(TabContext);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [modalType, setModalType] = useState(null);
+  const sidebarRef = useRef(null); // Ref to track sidebar element
 
   const handleOpenModal = (type) => {
     setModalType(type);
-    onOpen(); // <-- use the one from useDisclosure
+    onOpen();
   };
+
+  // Close sidebar when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isSidebarOpen &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target)
+      ) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    // Add event listener for clicks
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isSidebarOpen, setIsSidebarOpen]);
 
   return (
     <>
-
       <DonateModal isOpen={isOpen} onOpenChange={onOpenChange} modalType={modalType} />
 
       <div
         id="navbar"
+        ref={sidebarRef} // Attach ref to sidebar
         className={`flex flex-col w-[250px] h-[calc(100vh-56px)] md:h-[calc(100vh-73px)] border-r transition-transform bg-white fixed z-50 bottom-0 ${isSidebarOpen ? "" : "-translate-x-full"
           }`}
       >
-        <div className="text-2xl px-3 pt-6 flex lg:hidden justify-end sm:mt-32" >
-          <X variant="light" size={24} className="cursor-pointer" onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
+        <div className="text-2xl px-3 pt-6 flex lg:hidden justify-end sm:mt-32">
+          <X
+            variant="light"
+            size={24}
+            className="cursor-pointer"
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          />
         </div>
         <div className="flex-grow overflow-auto px-5 pb-0 pt-2">
           {sidebarData().map((item, index) => (
@@ -65,9 +91,14 @@ const Sidebar = () => {
                             }
                           }}
                           className={`w-full flex items-center gap-2 text-base leading-6 text-[#646464] mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500
-    ${pathname === listItem.link || activeItem ? "bg-black hover:!bg-black text-white" : ""}
-    ${(listItem.link === "/login" || listItem.link === "/register") ? "xl:hidden" : ""}
-  `}
+                            ${pathname === listItem.link || activeItem
+                              ? "bg-black hover:!bg-black text-white"
+                              : ""
+                            }
+                            ${listItem.link === "/login" || listItem.link === "/register"
+                              ? "xl:hidden"
+                              : ""
+                            }`}
                         >
                           {listItem.icon}
                           {listItem.label}
@@ -75,7 +106,6 @@ const Sidebar = () => {
                             <span className="text-xs opacity-50">(Soon)</span>
                           )}
                         </Link>
-
                       ) : (
                         <Accordion
                           className="!p-0"
@@ -91,14 +121,11 @@ const Sidebar = () => {
                             classNames={{
                               trigger: `group gap-2 mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 focus:bg-black ${activeItem ? "bg-black hover:!bg-black" : ""
                                 }`,
-                              title: `text-base text-[#646464] gap-0 group-focus:!text-white ${activeItem
-                                ? "bg-black hover:!bg-black text-white"
-                                : ""
+                              title: `text-base text-[#646464] gap-0 group-focus:!text-white ${activeItem ? "bg-black hover:!bg-black text-white" : ""
                                 }`,
                               startContent: `text-[#646464] group-focus:!text-white ${activeItem ? "text-white" : ""
                                 }`,
-                              indicator: `group-focus:!text-white ${activeItem ? "text-white" : ""
-                                }`,
+                              indicator: `group-focus:!text-white ${activeItem ? "text-white" : ""}`,
                               content: "ps-5 py-1",
                             }}
                             indicator={<ChevronDown size={17} />}
@@ -107,12 +134,11 @@ const Sidebar = () => {
                               <Link
                                 key={accItem.id}
                                 href={accItem.link}
-                                onClick={() =>
-                                  isSmallScreen && setIsSidebarOpen(false)
-                                }
-                                className={`w-full flex items-center text-base leading-6 text-[#646464] mb-1 px-3 py-1.5 rounded-lg hover:bg-gray-500 ${pathname.includes(accItem.link)
-                                  ? "bg-gray-500"
-                                  : ""
+                                onClick={() => {
+                                  isSmallScreen ? setIsSidebarOpen(false) : setIsSidebarOpen(!isSidebarOpen);
+                                  setActiveTab(activeTab === "news" ? "surveys" : "news");
+                                }}
+                                className={`w-full flex items-center text-base leading-6 text-[#646464] mb-1 px-3 py-1.5 rounded-lg hover:bg-gray-500 ${pathname.includes(accItem.link) ? "bg-gray-500" : ""
                                   }`}
                               >
                                 {accItem.subLabel}
@@ -132,7 +158,7 @@ const Sidebar = () => {
         {/* Sidebar Footer */}
         <div className="p-5">
           <p className="font-matter text-sm text-gray-800 mb-2">
-            &copy; Copyright 2024 - Glowist. All Rights Reserved.
+            © Copyright 2024 - Glowist. All Rights Reserved.
           </p>
           <div className="flex items-center">
             <Link
