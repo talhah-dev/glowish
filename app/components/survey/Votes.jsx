@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { ArrowUpRight, Bookmark, CircleUserRound, Hash, Heart, MessageCircleMore, PlusCircle, Send, ThumbsDown, ThumbsUp } from "lucide-react";
+import { ArrowUpRight, Bookmark, CircleUserRound, Facebook, Hash, Heart, Instagram, MessageCircleMore, PlusCircle, Send, ThumbsDown, ThumbsUp, Twitter } from "lucide-react";
 import {
     Checkbox,
     Modal,
@@ -10,6 +10,9 @@ import {
     Button,
     useDisclosure,
     Tooltip,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
 } from "@nextui-org/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -96,6 +99,26 @@ const Votes = ({ data }) => {
         );
     };
 
+    // share
+
+    const [isShareOpen, setIsShareOpen] = useState(false);
+
+    const socialNetworks = [
+        { id: 1, name: "Twitter", icon: <Twitter />, url: "https://twitter.com/intent/tweet" },
+        { id: 2, name: "Facebook", icon: <Facebook />, url: "https://www.facebook.com/sharer/sharer.php" },
+        { id: 3, name: "LinkedIn", icon: <Instagram />, url: "https://www.linkedin.com/shareArticle" },
+    ];
+
+    const handleShare = (url) => {
+        window.open(url, "_blank");
+        setIsShareOpen(false);
+    };
+
+    // info icon
+
+    const [isOpen, setIsOpen] = useState(false);
+
+
     return (
         <>
             <div className="border myShadow rounded-md flex flex-col justify-between fadeIn">
@@ -104,11 +127,29 @@ const Votes = ({ data }) => {
                         <PlusCircle size={16} />
                     </p>
                     <div className="flex items-center gap-1 p-2">
-                        <Tooltip content="This poll expired on 5/16/2025">
-                            <span tabIndex="0" className="inline-block">
-                                <IoInformationCircleOutline className="text-zinc-600" />
-                            </span>
-                        </Tooltip>
+
+                        <div className="md:hidden flex flex-col gap-2">
+                            <Popover isOpen={isOpen} onOpenChange={(open) => setIsOpen(open)}>
+                                <PopoverTrigger>
+                                    <span tabIndex="0" className="inline-block">
+                                        <IoInformationCircleOutline className="text-zinc-600" />
+                                    </span>
+                                </PopoverTrigger>
+                                <PopoverContent>
+                                    <div className="">
+                                        <div className="text-sm">This poll expired on 5/16/2025</div>
+                                    </div>
+                                </PopoverContent>
+                            </Popover>
+                        </div>
+
+                        <div className="md:block hidden">
+                            <Tooltip className="" content="This poll expired on 5/16/2025">
+                                <span tabIndex="0" className="inline-block">
+                                    <IoInformationCircleOutline className="text-zinc-600" />
+                                </span>
+                            </Tooltip>
+                        </div>
                         <p className="text-xs text-zinc-400">5/16/2025</p>
                     </div>
                 </div>
@@ -158,45 +199,83 @@ const Votes = ({ data }) => {
                                 <div
                                     key={tag.id}
                                     onClick={() => toggleTag(tag.id)}
-                                    className={`cursor-pointer px-2 py-1 rounded-full flex items-center gap-2 text-xs border transition-colors
-                bg-gray-100 text-black
-              `}
+                                    className={`cursor-pointer px-2 py-1 rounded-full flex items-center text-xs border transition-colors bg-gray-100 text-black`}
                                 >
-                                    <span className={'text-zinc-600'}><Hash size={14} className='text-xs' /></span> {tag.label}
+                                    <span className={'text-zinc-600'}><Hash size={12} className='text-xs' /></span> {tag.label}
                                 </div>
                             );
                         })}
                     </div>
                 </div>
+
                 <div className="flex items-center justify-between w-full mb-3 p-3 gap-4">
                     <div className="flex items-center gap-4">
                         {cardFooterActions.map((action) => (
-                            <div className="flex flex-col items-center justify-center gap-1">
-                                <Button
-                                    key={action.id}
-                                    isIconOnly
-                                    variant="light"
-                                    radius="full"
-                                    className="h-[34px] w-[34px] min-w-[34px] bg-gray-500 text-gray-800 hover:text-white hover:!bg-black"
-                                    aria-label={action.label}
-                                    onPress={() => {
-                                        if (action.label === "Comment") {
-                                            commentsModal.onOpen();
-                                        } else if (action.label === "Share") {
-                                            // Handle share functionality if needed
-                                        }
-                                    }}
-                                >
-                                    {action.icon}
-                                </Button>
+                            <div key={action.id} className="flex flex-col items-center justify-center gap-1">
+                                {action.label === "Share" ? (
+                                    <Popover
+                                        placement="top"
+                                        isOpen={isShareOpen}
+                                        onOpenChange={(open) => setIsShareOpen(open)}
+                                    >
+                                        <PopoverTrigger>
+                                            <Button
+                                                isIconOnly
+                                                variant="light"
+                                                radius="full"
+                                                className="h-[34px] w-[34px] min-w-[34px] bg-gray-500 text-gray-800 hover:text-white hover:!bg-black"
+                                                aria-label={action.label}
+                                            >
+                                                {action.icon}
+                                            </Button>
+                                        </PopoverTrigger>
+                                        <PopoverContent>
+                                            <div className="px-1 py-2">
+                                                <div className="text-sm text-zinc-700 font-bold mb-2">Share to</div>
+                                                <div className="flex flex-col gap-2">
+                                                    {socialNetworks.map((network) => (
+                                                        <Button
+                                                            key={network.id}
+                                                            variant="light"
+                                                            className="w-full text-gray-600 justify-start"
+                                                            onPress={() => handleShare(network.url)}
+                                                        >
+                                                            {network.icon}
+                                                            <span className="ml-2">{network.name}</span>
+                                                        </Button>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </PopoverContent>
+                                    </Popover>
+                                ) : (
+                                    <Button
+                                        isIconOnly
+                                        variant="light"
+                                        radius="full"
+                                        className="h-[34px] w-[34px] min-w-[34px] bg-gray-500 text-gray-800 hover:text-white hover:!bg-black"
+                                        aria-label={action.label}
+                                        onPress={() => {
+                                            if (action.label === "Comment") {
+                                                commentsModal.onOpen();
+                                            }
+                                        }}
+                                    >
+                                        {action.icon}
+                                    </Button>
+                                )}
                                 <p className="text-xs text-zinc-600 font-medium">
                                     {action.num}
                                 </p>
                             </div>
                         ))}
                     </div>
-                    <Bookmark onClick={() => setBookmark(!bookmark)} className={`${bookmark && "fill-gray-800"} text-gray-800 md:ml-7 transition-all duration-500 cursor-pointer`} />
+                    <Bookmark
+                        onClick={() => setBookmark(!bookmark)}
+                        className={`${bookmark && "fill-gray-800"} text-gray-800 md:ml-7 transition-all duration-500 cursor-pointer`}
+                    />
                 </div>
+
             </div>
 
             {/* Votes Modal */}

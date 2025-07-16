@@ -132,7 +132,7 @@ const Survey = () => {
             </div>
 
             <div className="flex items-center justify-between gap-2 mt-10">
-                <div className="flex sm:justify-between justify-start items-center gap-2 w-full">
+                <div className="flex justify-between items-center gap-2 w-full">
 
                     <h2 className="text-xl md:text-3xl font-semibold text-zinc-900">{activeTab.title} Surveys</h2>
 
