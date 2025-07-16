@@ -159,10 +159,10 @@ const Votes = ({ data }) => {
                                     key={tag.id}
                                     onClick={() => toggleTag(tag.id)}
                                     className={`cursor-pointer px-2 py-1 rounded-full flex items-center gap-2 text-xs border transition-colors
-                ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
+                bg-gray-100 text-black
               `}
                                 >
-                                    <span className={isSelected ? 'text-white' : 'text-zinc-600'}><Hash size={14} className='text-xs' /></span> {tag.label}
+                                    <span className={'text-zinc-600'}><Hash size={14} className='text-xs' /></span> {tag.label}
                                 </div>
                             );
                         })}
