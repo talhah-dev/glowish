@@ -12,7 +12,10 @@ export function Providers({ children }) {
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [activeTab, setActiveTab] = useState("news"); // Default to "News" tab
+  const [activeTab, setActiveTab] = useState({
+    tab:"news",
+    title:""
+  }); // Default to "News" tab
 
   useEffect(() => {
     const handleResize = () => {

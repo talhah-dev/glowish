@@ -28,6 +28,7 @@ import {
   ArrowUpRight,
   Bookmark,
   Dot,
+  Hash,
   MessageCircleMore,
   Send,
   ThumbsDown,
@@ -120,11 +121,11 @@ const PostCard = ({ data }) => {
               <div
                 key={tag.id}
                 onClick={() => toggleTag(tag.id)}
-                className={`cursor-pointer px-3 py-1.5 flex items-center gap-2 rounded-full text-sm border transition-colors
+                className={`cursor-pointer px-3 py-1.5 flex items-center gap-1 rounded-full text-sm border transition-colors
               ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
                 `}
               >
-                <span className={isSelected ? 'text-white' : 'text-zinc-600'}><ArrowUpRight size={16} className='text-xs' /></span> {tag.label}
+                <span className={isSelected ? 'text-white' : 'text-zinc-600'}><Hash size={15} className='text-xs' /></span> {tag.label}
               </div>
             );
           })}

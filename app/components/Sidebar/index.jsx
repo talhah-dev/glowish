@@ -136,10 +136,9 @@ const Sidebar = () => {
                                 href={accItem.link}
                                 onClick={() => {
                                   isSmallScreen ? setIsSidebarOpen(false) : setIsSidebarOpen(!isSidebarOpen);
-                                  setActiveTab(activeTab === "news" ? "surveys" : "news");
+                                  setActiveTab({ tab: activeTab.tab === "news" ? "surveys" : "news", title: listItem.label });
                                 }}
-                                className={`w-full flex items-center text-base leading-6 text-[#646464] mb-1 px-3 py-1.5 rounded-lg hover:bg-gray-500 ${pathname.includes(accItem.link) ? "bg-gray-500" : ""
-                                  }`}
+                                className={`w-full flex items-center text-base leading-6 text-[#646464] mb-1 px-3 py-1.5 rounded-lg hover:bg-gray-500 ${pathname.includes(accItem.link) ? "bg-gray-500" : ""}`}
                               >
                                 {accItem.subLabel}
                               </Link>

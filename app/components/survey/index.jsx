@@ -1,6 +1,6 @@
 "use client";
 import { POLL_DATA } from "../../../app/mock/Survey/PollVote";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import Votes from "./Votes";
 import {
     Button,
@@ -11,12 +11,13 @@ import {
     DropdownItem,
     Input,
 } from "@nextui-org/react";
-import { ArrowUpRight, SearchIcon } from "lucide-react";
+import { ArrowUpRight, Hash, SearchIcon } from "lucide-react";
 import { AiOutlineBars } from "react-icons/ai";
 import { parseDate } from "@internationalized/date"; // For DatePicker parsing
 import { IoGridOutline } from "react-icons/io5";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import { CiGrid2V } from "react-icons/ci";
+import { TabContext } from "../../providers";
 
 export const metadata = {
     title: "Glowist - Survey",
@@ -40,10 +41,12 @@ const Survey = () => {
         [selectedKeys],
     );
 
+    const { activeTab, setActiveTab } = useContext(TabContext);
+
     // State for date filters
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
-    const [gridView, setGridView] = useState("standard");
+    const [gridView, setGridView] = useState("compact");
 
     // State for tags and show more
     const [showMore, setShowMore] = useState(24);
@@ -99,11 +102,11 @@ const Survey = () => {
                                 <div
                                     key={tag.id}
                                     onClick={() => toggleTag(tag.id)}
-                                    className={`cursor-pointer px-3 py-1.5 flex items-center gap-2 rounded-full text-sm border transition-colors
+                                    className={`cursor-pointer px-3 py-1.5 flex items-center gap-1 rounded-full text-sm border transition-colors
                             ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
                               `}
                                 >
-                                    <span className={isSelected ? 'text-white' : 'text-zinc-600'}><ArrowUpRight size={16} className='text-xs' /></span> {tag.label}
+                                    <span className={isSelected ? 'text-white' : 'text-zinc-600'}><Hash size={15} className='text-xs' /></span> {tag.label}
                                 </div>
                             );
                         })}
@@ -128,8 +131,11 @@ const Survey = () => {
                 </div>
             </div>
 
-            <div className="flex items-center justify-between gap-2 mt-6">
+            <div className="flex items-center justify-between gap-2 mt-10">
                 <div className="flex sm:justify-between justify-start items-center gap-2 w-full">
+
+                    <h2 className="text-xl md:text-3xl font-semibold text-zinc-900">{activeTab.title} Surveys</h2>
+
                     <div className="flex flex-col gap-2">
                         <Dropdown>
                             <DropdownTrigger>
@@ -193,8 +199,8 @@ const Survey = () => {
             </div>
 
             <div className={`grid ${gridView === 'vertical' ? 'lg:grid-cols-2 grid-cols-1' :
-                    gridView === 'standard' ? 'lg:grid-cols-3 xl:grid-cols-4 grid-cols-1' :
-                        'lg:grid-cols-4 xl:grid-cols-5 grid-cols-1'
+                gridView === 'standard' ? 'lg:grid-cols-3 grid-cols-1' :
+                    'lg:grid-cols-4 grid-cols-1'
                 } gap-3 mt-5`}>
                 {POLL_DATA.slice(0, showMore).map((data) => (
                     <Votes key={data.id} data={data} />

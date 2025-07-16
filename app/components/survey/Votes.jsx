@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { ArrowUpRight, Bookmark, CircleUserRound, Heart, MessageCircleMore, PlusCircle, Send, ThumbsDown, ThumbsUp } from "lucide-react";
+import { ArrowUpRight, Bookmark, CircleUserRound, Hash, Heart, MessageCircleMore, PlusCircle, Send, ThumbsDown, ThumbsUp } from "lucide-react";
 import {
     Checkbox,
     Modal,
@@ -162,7 +162,7 @@ const Votes = ({ data }) => {
                 ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
               `}
                                 >
-                                    <span className={isSelected ? 'text-white' : 'text-zinc-600'}><ArrowUpRight size={14} className='text-xs' /></span> {tag.label}
+                                    <span className={isSelected ? 'text-white' : 'text-zinc-600'}><Hash size={14} className='text-xs' /></span> {tag.label}
                                 </div>
                             );
                         })}
