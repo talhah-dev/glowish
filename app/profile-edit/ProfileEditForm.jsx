@@ -1,5 +1,5 @@
 "use client";
-import { Button, Input, Textarea } from "@nextui-org/react";
+import { Button, Input, Textarea, Select, SelectItem, Switch } from "@nextui-org/react";
 import MyInput from "../components/MyInput";
 import { useForm } from "react-hook-form";
 
@@ -17,9 +17,34 @@ const ProfileEditForm = () => {
     console.log(data);
   };
 
+  // Sample LinkedIn job titles (based on common and popular titles from 2025 trends)
+  const jobTitles = [
+    "Software Engineer",
+    "Data Scientist",
+    "Product Manager",
+    "Marketing Manager",
+    "Sales Manager",
+    "Financial Analyst",
+    "Project Manager",
+    "DevOps Engineer",
+    "Cybersecurity Specialist",
+    "AI/ML Specialist",
+    "Digital Marketing Manager",
+    "Data Engineer",
+    "Customer Success Manager",
+    "Business Development Manager",
+    "Recruitment Manager",
+    "Restaurant Specialist",
+    "Dentist",
+    "Dental Assistant",
+    "Mental Health Practitioner",
+    "Delivery Driver",
+    // Add more as needed
+  ];
+
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-      <div className="sm:mb-5 mb-4 flex 2sm:gap-4">
+      <div className="sm:mb-5 mb-4 grid gap-4 md:grid-cols-2 grid-cols-1">
         <div className="w-full">
           <MyInput
             label={"First Name"}
@@ -79,88 +104,225 @@ const ProfileEditForm = () => {
         />
       </div>
       <div className="sm:mb-5 mb-4">
-        <MyInput
-          label={"Position"}
-          name={"position"}
-          type={"text"}
-          defaultValue={"CEO, Founder"}
-          placeholder={"your position..."}
-          trigger={trigger}
-          register={register}
-          validations={{
-            required: "Position is required",
-            minLength: {
-              value: 2,
-              message: "Position must be at least 2 characters",
-            },
+        <label htmlFor="jobTitle" className="flex pb-2 text-base text-gray-900">
+          Job Title
+        </label>
+        <Select
+          id="jobTitle"
+          placeholder="Select your job title..."
+          defaultSelectedKeys={["CEO, Founder"]}
+          {...register("jobTitle", {
+            required: "Job title is required",
+          })}
+          classNames={{
+            trigger:
+              "w-full rounded-full text-gray-900 px-4 shadow-none !bg-transparent hover:!bg-transparent h-fit border border-gray-400 focus:border-[#000]",
+            value: "text-base w-full leading-6 py-3",
+            popoverContent: "rounded-2xl",
           }}
-          errors={errors}
-        />
+        >
+          {jobTitles.map((title) => (
+            <SelectItem key={title} value={title}>
+              {title}
+            </SelectItem>
+          ))}
+        </Select>
+        {errors.jobTitle && (
+          <p className="text-red-500 text-sm mt-1">{errors.jobTitle.message}</p>
+        )}
       </div>
       <div className="sm:mb-5 mb-4">
         <label
-          htmlFor="aboutInfo"
+          htmlFor="aboutMe"
           className="flex pb-2 text-base text-gray-900"
         >
-          About info
+          About Me
         </label>
         <Textarea
-          id="aboutInfo"
+          id="aboutMe"
           type="text"
-          placeholder="About info..."
+          placeholder="About me..."
           defaultValue="I am a seasoned businessman with expertise in technology, dedicated to driving innovation and growth in the marketplace. Passionate about building strong, sustainable businesses and forging meaningful industry connections."
           disableAutosize
-          {...register("aboutInfo")}
+          {...register("aboutMe")}
           classNames={{
             inputWrapper:
               "w-full rounded-2xl text-gray-900 p-0 shadow-none !bg-transparent hover:!bg-transparent h-fit",
             input:
-              "resize-y min-h-[150px] rounded-2xl text-base w-full leading-6 px-6 py-3  border border-gray-400 focus:border-[#0080004d]",
+              "resize-y min-h-[150px] rounded-2xl text-base w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#000]",
           }}
         />
       </div>
+      <div className="grid md:grid-cols-2 grid-cols-1 md:gap-4">
+        <div className="sm:mb-5 mb-4">
+          <label htmlFor="portfolio" className="flex pb-2 text-base text-gray-900">
+            My Portfolio - Website
+          </label>
+          <Input
+            id="portfolio"
+            type="text"
+            placeholder="https://www.demooo.com/..."
+            defaultValue="https://www.demooo.com/"
+            {...register("portfolio")}
+            classNames={{
+              inputWrapper:
+                "w-full rounded-full text-gray-900 px-0 shadow-none !bg-transparent hover:!bg-transparent h-fit",
+              input:
+                "text-base rounded-full w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#000]",
+            }}
+          />
+        </div>
+        <div className="sm:mb-5 mb-4">
+          <label htmlFor="linkedin" className="flex pb-2 text-base text-gray-900">
+            LinkedIn Profile
+          </label>
+          <Input
+            id="linkedin"
+            type="text"
+            placeholder="https://www.linkedin.com/in/username..."
+            {...register("linkedin")}
+            classNames={{
+              inputWrapper:
+                "w-full rounded-full text-gray-900 px-0 shadow-none !bg-transparent hover:!bg-transparent h-fit",
+              input:
+                "text-base rounded-full w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#000]",
+            }}
+          />
+        </div>
+        <div className="sm:mb-5 mb-4">
+          <label htmlFor="instagram" className="flex pb-2 text-base text-gray-900">
+            Instagram
+          </label>
+          <Input
+            id="instagram"
+            type="text"
+            placeholder="https://www.instagram.com/username..."
+            {...register("instagram")}
+            classNames={{
+              inputWrapper:
+                "w-full rounded-full text-gray-900 px-0 shadow-none !bg-transparent hover:!bg-transparent h-fit",
+              input:
+                "text-base rounded-full w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#000]",
+            }}
+          />
+        </div>
+        <div className="sm:mb-5 mb-4">
+          <label htmlFor="facebook" className="flex pb-2 text-base text-gray-900">
+            Facebook
+          </label>
+          <Input
+            id="facebook"
+            type="text"
+            placeholder="https://www.facebook.com/username..."
+            {...register("facebook")}
+            classNames={{
+              inputWrapper:
+                "w-full rounded-full text-gray-900 px-0 shadow-none !bg-transparent hover:!bg-transparent h-fit",
+              input:
+                "text-base rounded-full w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#000]",
+            }}
+          />
+        </div>
+        <div className="sm:mb-5 mb-4">
+          <label htmlFor="tiktok" className="flex pb-2 text-base text-gray-900">
+            TikTok
+          </label>
+          <Input
+            id="tiktok"
+            type="text"
+            placeholder="https://www.tiktok.com/@username..."
+            {...register("tiktok")}
+            classNames={{
+              inputWrapper:
+                "w-full rounded-full text-gray-900 px-0 shadow-none !bg-transparent hover:!bg-transparent h-fit",
+              input:
+                "text-base rounded-full w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#000]",
+            }}
+          />
+        </div>
+        <div className="sm:mb-5 mb-4">
+          <label htmlFor="xprofile" className="flex pb-2 text-base text-gray-900">
+            X Profile
+          </label>
+          <Input
+            id="xprofile"
+            type="text"
+            placeholder="https://x.com/username..."
+            {...register("xprofile")}
+            classNames={{
+              inputWrapper:
+                "w-full rounded-full text-gray-900 px-0 shadow-none !bg-transparent hover:!bg-transparent h-fit",
+              input:
+                "text-base rounded-full w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#000]",
+            }}
+          />
+        </div>
+      </div>
       <div className="sm:mb-5 mb-4">
-        <label htmlFor="website" className="flex pb-2 text-base text-gray-900">
-          Website
+        <label htmlFor="bbcProfile" className="flex pb-2 text-base text-gray-900">
+          BBC Profile
         </label>
         <Input
-          id="website"
+          id="bbcProfile"
           type="text"
-          placeholder="https://www.demooo.com/..."
-          defaultValue="https://www.demooo.com/"
-          // startContent={<Globe />}
-          {...register("website")}
+          placeholder="Your BBC profile link..."
+          {...register("bbcProfile")}
           classNames={{
             inputWrapper:
               "w-full rounded-full text-gray-900 px-0 shadow-none !bg-transparent hover:!bg-transparent h-fit",
             input:
-              "text-base rounded-full w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#0080004d]",
+              "text-base rounded-full w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#000]",
           }}
         />
+        <Button
+          type="button"
+          variant="flat"
+          className="mt-2 flex justify-center items-center text-base px-[22px] min-w-[30px] rounded-full"
+          onClick={() => navigator.clipboard.writeText("Your BBC profile link")}
+        >
+          Copy BBC Profile Link
+        </Button>
       </div>
       <div className="sm:mb-5 mb-4">
-        <label htmlFor="website" className="flex pb-2 text-base text-gray-900">
-          Set as Pravite Profile
+        <label htmlFor="idVerification" className="flex pb-2 text-base text-gray-900">
+          ID Verification
         </label>
-        <label class="relative inline-flex items-center cursor-pointer">
-          <input type="checkbox" value="" class="sr-only peer" />
-          <div class="group peer ring-0 bg-gray-400  rounded-full outline-none duration-300 after:duration-300 w-20 h-9 peer-checked:bg-zinc-300  peer-focus:outline-none  after:content-[''] after:rounded-full after:absolute after:bg-gray-50 after:outline-none after:h-7 after:w-7 after:top-1 after:left-1 after:flex after:justify-center after:items-center peer-checked:after:translate-x-[44px] peer-hover:after:scale-95">
-            <svg class="absolute  top-1 left-12 stroke-gray-900 w-10 h-10" height="150" preserveAspectRatio="xMidYMid meet" viewBox="0 0 150 150" width="150" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
-              <path class="svg-fill-primary" d="M50,18A19.9,19.9,0,0,0,30,38v8a8,8,0,0,0-8,8V74a8,8,0,0,0,8,8H70a8,8,0,0,0,8-8V54a8,8,0,0,0-8-8H38V38a12,12,0,0,1,23.6-3,4,4,0,1,0,7.8-2A20.1,20.1,0,0,0,50,18Z">
-              </path>
-            </svg>
-            <svg class="absolute top-1 left-1 stroke-gray-900  w-10 h-10" height="150" preserveAspectRatio="xMidYMid meet" viewBox="0 0 150 150" width="150" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
-              <path d="M30,46V38a20,20,0,0,1,40,0v8a8,8,0,0,1,8,8V74a8,8,0,0,1-8,8H30a8,8,0,0,1-8-8V54A8,8,0,0,1,30,46Zm32-8v8H38V38a12,12,0,0,1,24,0Z" fill-rule="evenodd">
-              </path>
-            </svg>
-          </div>
+        <Input
+          id="idVerification"
+          type="text"
+          placeholder="Upload or verify your ID..."
+          {...register("idVerification")}
+          classNames={{
+            inputWrapper:
+              "w-full rounded-full text-gray-900 px-0 shadow-none !bg-transparent hover:!bg-transparent h-fit",
+            input:
+              "text-base rounded-full w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#000]",
+          }}
+        />
+        <p className="text-green-600 text-sm mt-1">You verified your identity</p>
+      </div>
+      <div className="sm:mb-5 mb-4">
+        <label htmlFor="isPublic" className="flex pb-2 text-base text-gray-900">
+          Profile Visibility
         </label>
-
-
+        <div className="flex items-center gap-3">
+          <Switch
+            id="isPublic"
+            {...register("isPublic")}
+            defaultSelected={true}
+            classNames={{
+              wrapper: "bg-gray-300 group-data-[selected=true]:bg-zinc-600",
+              thumb: "bg-white group-data-[selected=true]:bg-gray-200",
+            }}
+          />
+          <span className="text-base text-gray-900">
+            {register("isPublic").value ? "Public" : "Private"}
+          </span>
+        </div>
       </div>
       <div className="self-end flex gap-3">
         <Button
-          type="submit"
+          type="button"
           variant="flat"
           className="flex justify-center items-center text-base px-[22px] min-w-[30px] rounded-full"
         >
