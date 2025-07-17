@@ -7,8 +7,14 @@ const AboutProfile = ({ myHobbiesData }) => {
     <div className="mt-5">
       <div className="2sm:mb-[20px] mb-[12px]">
         <h3 className="text-gray-900 font-semibold sm:text-2xl 2sm:text-xl text-lg sm:pb-[10px] pb-[6px]">
-          About me
+          About
         </h3>
+        <p className="2sm:text-base text-sm text-gray-800 font-semibold">
+          Job Title: Software Engineer
+        </p>
+        <p className="text-sm text-gray-600 mb-2">
+          San Francisco, CA
+        </p>
         <p className="2sm:text-base text-sm text-gray-800">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -19,7 +25,7 @@ const AboutProfile = ({ myHobbiesData }) => {
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
       </div>
-      <div className="2sm:mb-[20px] mb-[12px]">
+      {/* <div className="2sm:mb-[20px] mb-[12px]">
         <div>
           <Link href="/" className="block w-full overflow-hidden mb-2">
             <img
@@ -44,7 +50,10 @@ const AboutProfile = ({ myHobbiesData }) => {
         <p className="2sm:text-base text-sm text-gray-900">
           63k Followers - 2.8k Following
         </p>
-      </div>
+        <p className="2sm:text-base text-sm text-gray-900 mt-2">
+          Ready to share my thoughts and experiences through posts!
+        </p>
+      </div> */}
       <div className="mb-5 2sm:mb-3">
         <h4 className="sm:text-2xl 2sm:text-xl text-lg text-gray-900 font-semibold mb-4">
           My Hobbies
