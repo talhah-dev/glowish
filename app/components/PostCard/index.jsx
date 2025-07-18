@@ -296,7 +296,7 @@ const EachCard = ({ post }) => {
         <CardFooter className="p-0 flex-col">
 
           <div className="px-3 w-full mb-3">
-            <div className="flex overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
+            <div className="flex overflow-x-auto scrollbar-hide whitespace-nowrap flex-wrap overflow-auto md:gap-3 gap-1.5">
               {tags.map((tag) => {
                 const isSelected = selectedTagIds.includes(tag.id);
                 return (
