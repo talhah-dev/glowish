@@ -37,6 +37,7 @@ import ProfileDropdown from "./HeaderComponents/ProfileDropdown";
 import { SidebarContext } from "../providers";
 import NotificationSection from "./HeaderComponents/NotificationSection";
 import DonateModal from "./Sidebar/DonateModal";
+import { PiHandHeart } from "react-icons/pi";
 
 const languages = [
   {
@@ -229,9 +230,9 @@ const Header = ({ isLoggedIn }) => {
                 <Search size={16} />
               </Button>
             </NavbarItem>
-            <NavbarItem onClick={onDonateOpen} className="me-2 cursor-pointer gap-1 2sm:m-0 flex items-center justify-center text-[#646464] text-sm">
-              <Heart size={19} />
-              <p className="">Donate</p>
+            <NavbarItem onClick={onDonateOpen} className="me-2 cursor-pointer gap-1 2sm:m-0 flex items-center justify-center text- [#646464] text-sm">
+              <PiHandHeart size={25} />
+              {/* <p className="">Donate</p> */}
             </NavbarItem>
             <NavbarItem className="me-2 2sm:mr-1.5 flex items-center justify-center">
               <NotificationSection />

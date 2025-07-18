@@ -21,6 +21,7 @@ import {
   ModalFooter,
   useDisclosure,
   Chip,
+  DatePicker,
 } from "@nextui-org/react";
 import { BsGrid3X3Gap } from "react-icons/bs";
 
@@ -39,6 +40,7 @@ import { IoGridOutline } from "react-icons/io5";
 import React, { useState } from "react";
 import PostSwiper from "./PostSwiper";
 import Comments from "./Comments";
+import { AiOutlineBars } from "react-icons/ai";
 
 const cardFooterActions = [
   {
@@ -105,6 +107,8 @@ const tags = [
 const PostCard = ({ data }) => {
   const [selectedTagIds, setSelectedTagIds] = useState([]);
   const [gridView, setGridView] = useState(false);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   const toggleTag = (id) => {
     setSelectedTagIds((prev) =>
@@ -114,22 +118,57 @@ const PostCard = ({ data }) => {
   return (
     <div className="pt-6">
       <div className="flex items-center justify-between w-full">
-        <div className="flex items-center overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
-          {tags.map((tag) => {
-            const isSelected = selectedTagIds.includes(tag.id);
-            return (
-              <div
-                key={tag.id}
-                onClick={() => toggleTag(tag.id)}
-                className={`cursor-pointer px-3 py-1.5 flex items-center gap-1 rounded-full text-sm border transition-colors
+
+        <div className="flex items-center gap-3">
+          <div className="flex flex-col gap-2">
+            <Dropdown>
+              <DropdownTrigger>
+                <Button variant="flat" className="min-w-10">
+                  <AiOutlineBars className="text-xl" />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu
+                aria-label="Filters"
+                variant="flat"
+                closeOnSelect={false} // Keep dropdown open for date pickers
+              >
+                <DropdownItem className="hover:!bg-white" key="start-date" textValue="Start Date">
+                  <DatePicker
+                    className="sm:max-w-[284px] w-full"
+                    label="Start date"
+                    value={startDate}
+                    onChange={setStartDate}
+                  />
+                </DropdownItem>
+                <DropdownItem className="hover:!bg-white" key="end-date" textValue="End Date">
+                  <DatePicker
+                    className="sm:max-w-[284px] w-full"
+                    label="End date"
+                    value={endDate}
+                    onChange={setEndDate}
+                  />
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
+          <div className="flex items-center overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
+            {tags.map((tag) => {
+              const isSelected = selectedTagIds.includes(tag.id);
+              return (
+                <div
+                  key={tag.id}
+                  onClick={() => toggleTag(tag.id)}
+                  className={`cursor-pointer px-3 py-1.5 flex items-center gap-1 rounded-full text-sm border transition-colors
               ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
                 `}
-              >
-                <span className={isSelected ? 'text-white' : 'text-zinc-600'}><Hash size={15} className='text-xs' /></span> {tag.label}
-              </div>
-            );
-          })}
+                >
+                  <span className={isSelected ? 'text-white' : 'text-zinc-600'}><Hash size={15} className='text-xs' /></span> {tag.label}
+                </div>
+              );
+            })}
+          </div>
         </div>
+
         <div className="md:flex hidden items-center gap-3">
           <IoGridOutline onClick={() => setGridView(false)} size={22} className="text-gray-900 hover:opacity-55 duration-500 transition-all cursor-pointer" />
           <BsGrid3X3Gap onClick={() => setGridView(true)} size={22} className="text-gray-900 hover:opacity-55 duration-500 transition-all cursor-pointer" />
@@ -264,11 +303,11 @@ const EachCard = ({ post }) => {
                   <div
                     key={tag.id}
                     onClick={() => toggleTag(tag.id)}
-                    className={`cursor-pointer px-2 py-1 rounded-full flex gap-2 text-xs border transition-colors
+                    className={`cursor-pointer px-2 py-1 rounded-full flex text-xs items-center border transition-colors
                           ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
                         `}
                   >
-                    <span className={isSelected ? 'text-white' : 'text-zinc-600'}><ArrowUpRight size={14} className='text-xs' /></span> {tag.label}
+                    <span className={isSelected ? 'text-white' : 'text-zinc-600'}><Hash size={12} className='text-xs' /></span> {tag.label}
                   </div>
                 );
               })}

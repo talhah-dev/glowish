@@ -64,7 +64,7 @@ const LoginPage = () => {
                 .
               </p>
               <div className="flex 2sm:flex-nowrap flex-wrap my-5">
-                <Link
+                {/* <Link
                   href="/"
                   className="flex w-full justify-center items-center font-matter sm:text-base text-sm text-gray-900 border rounded-full border-gray-400 2sm:p-3 p-2.5 2sm:me-3 2sm:mb-0 mb-3"
                 >
@@ -78,7 +78,7 @@ const LoginPage = () => {
                     />
                   </div>
                   Continue Google
-                </Link>
+                </Link> */}
                 <Link
                   href="/"
                   className="flex w-full justify-center items-center font-matter sm:text-base text-sm text-gray-900 border rounded-full border-gray-400 2sm:p-3 p-2.5"
