@@ -232,7 +232,7 @@ const Header = ({ isLoggedIn }) => {
             </NavbarItem>
             <NavbarItem onClick={onDonateOpen} className="me-2 cursor-pointer gap-1 2sm:m-0 flex items-center justify-center text- [#646464] text-sm">
               <PiHandHeart size={25} />
-              {/* <p className="">Donate</p> */}
+              <p className="">Support Us</p>
             </NavbarItem>
             <NavbarItem className="me-2 2sm:mr-1.5 flex items-center justify-center">
               <NotificationSection />

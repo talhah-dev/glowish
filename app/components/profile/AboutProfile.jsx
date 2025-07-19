@@ -56,7 +56,7 @@ const AboutProfile = ({ myHobbiesData }) => {
       </div> */}
       <div className="mb-5 2sm:mb-3">
         <h4 className="sm:text-2xl 2sm:text-xl text-lg text-gray-900 font-semibold mb-4">
-          My Hobbies
+          Recently viewed
         </h4>
         <div className="flex flex-wrap gap-2">
           {myHobbiesData.map((topic) => (

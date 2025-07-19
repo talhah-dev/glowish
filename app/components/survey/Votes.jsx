@@ -126,7 +126,7 @@ const Votes = ({ data }) => {
                     <p className="text-xs rounded-full ml-1.5 text-[#17c964] flex items-center gap-1">
                         <PlusCircle size={16} />
                     </p>
-                    <div className="flex items-center gap-1 p-2">
+                    <div className="flex items- center gap-1 p-2">
 
                         <div className="md:hidden flex flex-col gap-2">
                             <Popover isOpen={isOpen} onOpenChange={(open) => setIsOpen(open)}>
@@ -150,7 +150,8 @@ const Votes = ({ data }) => {
                                 </span>
                             </Tooltip>
                         </div>
-                        <p className="text-xs text-zinc-400">5/16/2025</p>
+
+                        <p className="text-xs text-zinc-400 md:mt-0.5">5/16/2025</p>
                     </div>
                 </div>
                 <h2 className="font-semibold text-lg px-5">{data.question}</h2>

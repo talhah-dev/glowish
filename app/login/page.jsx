@@ -63,8 +63,8 @@ const LoginPage = () => {
                 </Link>
                 .
               </p>
-              <div className="flex 2sm:flex-nowrap flex-wrap my-5">
-                {/* <Link
+              {/* <div className="flex 2sm:flex-nowrap flex-wrap my-5">
+                <Link
                   href="/"
                   className="flex w-full justify-center items-center font-matter sm:text-base text-sm text-gray-900 border rounded-full border-gray-400 2sm:p-3 p-2.5 2sm:me-3 2sm:mb-0 mb-3"
                 >
@@ -78,7 +78,7 @@ const LoginPage = () => {
                     />
                   </div>
                   Continue Google
-                </Link> */}
+                </Link>
                 <Link
                   href="/"
                   className="flex w-full justify-center items-center font-matter sm:text-base text-sm text-gray-900 border rounded-full border-gray-400 2sm:p-3 p-2.5"
@@ -92,14 +92,14 @@ const LoginPage = () => {
                   </div>
                   Continue Apple
                 </Link>
-              </div>
-              <div className="flex items-center font-matter 2sm:mt-3 mt-2">
+              </div> */}
+              {/* <div className="flex items-center font-matter 2sm:mt-3 mt-2">
                 <div className="w-full border-b border-gray-400"></div>
                 <p className="font-matter sm:text-base text-sm text-gray-800 px-3 opacity-50">
                   OR
                 </p>
                 <div className="w-full border-b border-gray-400"></div>
-              </div>
+              </div> */}
               <div className="2sm:mt-4 mt-3">
                 <form method="post" onSubmit={handleSubmit(onSubmit)}>
                   <div className="sm:mb-5 mb-4">

@@ -14,6 +14,7 @@ import {
   LogIn,
   UserPlus,
 } from "lucide-react";
+import { PiHandHeart } from "react-icons/pi";
 
 const sidebarData = () => {
   return [
@@ -123,7 +124,7 @@ const sidebarData = () => {
           id: 8,
           label: "Donate",
           link: "#",
-          icon: <Heart size={20} />,
+          icon: <PiHandHeart size={23} />,
         },
         {
           id: 9,
