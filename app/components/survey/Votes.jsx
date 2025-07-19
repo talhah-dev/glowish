@@ -193,7 +193,7 @@ const Votes = ({ data }) => {
                     View Votes
                 </Button>
                 <div className="pl-3 mb-3">
-                    <div className="flex overflow-x-auto flex-wrap scrollbar-hide whitespace-nowrap items-center overflow-auto gap-1.5">
+                    <div className="flex overflow-x-auto scrollbar-hide whitespace-nowrap items-center overflow-auto gap-1.5">
                         {tags.map((tag) => {
                             const isSelected = selectedTagIds.includes(tag.id);
                             return (

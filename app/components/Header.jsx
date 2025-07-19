@@ -218,7 +218,7 @@ const Header = ({ isLoggedIn }) => {
         {/* End */}
         {isLoggedIn ? (
           <div className="flex items-center gap-2 md:gap-3">
-            <NavbarItem className="block xl:hidden">
+            <NavbarItem className="block me-2 xl:hidden">
               <Button
                 isIconOnly
                 radius="full"
@@ -231,8 +231,8 @@ const Header = ({ isLoggedIn }) => {
               </Button>
             </NavbarItem>
             <NavbarItem onClick={onDonateOpen} className="me-2 cursor-pointer gap-1 2sm:m-0 flex items-center justify-center text- [#646464] text-sm">
-              <PiHandHeart size={25} />
-              <p className="">Support Us</p>
+              <PiHandHeart size={27} />
+              <p className="md:block hidden">Support Us</p>
             </NavbarItem>
             <NavbarItem className="me-2 2sm:mr-1.5 flex items-center justify-center">
               <NotificationSection />
