@@ -120,7 +120,7 @@ const PostCard = ({ data }) => {
       <div className="flex items-center justify-between w-full">
 
         <div className="flex items-center gap-3 overflow-auto">
-          <div className="flex flex-col gap-2">
+          <div className="md:flex hidden flex-col gap-2">
             <Dropdown>
               <DropdownTrigger>
                 <Button variant="flat" className="min-w-10">
@@ -151,14 +151,14 @@ const PostCard = ({ data }) => {
               </DropdownMenu>
             </Dropdown>
           </div>
-          <div className="flex items-center overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
+          <div className="flex items-center flex-wrap overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
             {tags.map((tag) => {
               const isSelected = selectedTagIds.includes(tag.id);
               return (
                 <div
                   key={tag.id}
                   onClick={() => toggleTag(tag.id)}
-                  className={`cursor-pointer px-3 py-1.5 flex items-center gap-1 rounded-full text-sm border transition-colors
+                  className={`cursor-pointer px-2 py-1 flex items-center gap-1 rounded-full text-sm border transition-colors
               ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-black'}
                 `}
                 >
