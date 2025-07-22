@@ -151,7 +151,7 @@ const PostCard = ({ data }) => {
               </DropdownMenu>
             </Dropdown>
           </div>
-          <div className="flex items-center flex-wrap overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
+          <div className="flex items-center overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
             {tags.map((tag) => {
               const isSelected = selectedTagIds.includes(tag.id);
               return (
@@ -295,8 +295,8 @@ const EachCard = ({ post }) => {
         {/* <Comments/> */}
         <CardFooter className="p-0 flex-col">
 
-          <div className="px-3 w-full mb-3">
-            <div className="flex overflow-x-auto scrollbar-hide whitespace-nowrap flex-wrap overflow-auto md:gap-3 gap-1.5">
+          <div className="w-full mb-3">
+            <div className="flex overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
               {tags.map((tag) => {
                 const isSelected = selectedTagIds.includes(tag.id);
                 return (

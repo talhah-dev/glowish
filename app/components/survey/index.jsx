@@ -95,7 +95,7 @@ const Survey = () => {
         <>
             <div className="pt-6">
                 <div className="flex items-center justify-between w-full gap-10">
-                    <div className="flex items-center flex-wrap overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
+                    <div className="flex items-center overflow-x-auto scrollbar-hide whitespace-nowrap overflow-auto md:gap-3 gap-1.5">
                         {tags.map((tag) => {
                             const isSelected = selectedTagIds.includes(tag.id);
                             return (
