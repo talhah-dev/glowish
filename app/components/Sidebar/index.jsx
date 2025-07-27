@@ -1,3 +1,4 @@
+"use client";
 import { Accordion, AccordionItem, Divider } from "@nextui-org/react";
 import React, { useContext, useState, useEffect, useRef } from "react";
 import sidebarData from "./sidebarData";
@@ -69,12 +70,12 @@ const Sidebar = () => {
                 {item.title}
               </h3>
               <ul>
-                {item.items.map((listItem, itemIndex) => {
+                {item.items.map((listItem) => {
                   const activeItem =
-                    !pathname.includes("tag-details") && pathname.includes(listItem.label.toLowerCase());
-                  const listItemKey = `${listItem.id}-${itemIndex}`; // Ensure unique key for each item
+                    !pathname.includes("tag-details") &&
+                    pathname.includes(listItem.label.toLowerCase());
                   return (
-                    <li key={listItemKey}>
+                    <li key={listItem.id}>
                       {!listItem.subItems ? (
                         <Link
                           href={listItem.link}
@@ -90,7 +91,14 @@ const Sidebar = () => {
                             }
                           }}
                           className={`w-full flex items-center gap-2 text-base leading-6 text-[#646464] mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500
-                  ${pathname === listItem.link || activeItem ? "bg-black hover:!bg-black text-white" : ""}`}
+                            ${pathname === listItem.link || activeItem
+                              ? "bg-black hover:!bg-black text-white"
+                              : ""
+                            }
+                            ${listItem.link === "/login" || listItem.link === "/register"
+                              ? "xl:hidden"
+                              : ""
+                            }`}
                         >
                           {listItem.icon}
                           {listItem.label}
@@ -101,17 +109,22 @@ const Sidebar = () => {
                       ) : (
                         <Accordion
                           className="!p-0"
-                          defaultExpandedKeys={activeItem ? [`Accordion ${listItem.id}`] : []}
+                          defaultExpandedKeys={
+                            activeItem ? [`Accordion ${listItem.id}`] : []
+                          }
                         >
                           <AccordionItem
-                            key={`Accordion-${listItem.id}`} // Ensure unique key for AccordionItem
+                            key={`Accordion ${listItem.id}`}
                             aria-label={`Accordion ${listItem.id}`}
                             startContent={listItem.icon}
                             title={listItem.label}
                             classNames={{
-                              trigger: `group gap-2 mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 focus:bg-black ${activeItem ? "bg-black hover:!bg-black" : ""}`,
-                              title: `text-base text-[#646464] gap-0 group-focus:!text-white ${activeItem ? "bg-black hover:!bg-black text-white" : ""}`,
-                              startContent: `text-[#646464] group-focus:!text-white ${activeItem ? "text-white" : ""}`,
+                              trigger: `group gap-2 mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 focus:bg-black ${activeItem ? "bg-black hover:!bg-black" : ""
+                                }`,
+                              title: `text-base text-[#646464] gap-0 group-focus:!text-white ${activeItem ? "bg-black hover:!bg-black text-white" : ""
+                                }`,
+                              startContent: `text-[#646464] group-focus:!text-white ${activeItem ? "text-white" : ""
+                                }`,
                               indicator: `group-focus:!text-white ${activeItem ? "text-white" : ""}`,
                               content: "ps-5 py-1",
                             }}
@@ -119,7 +132,7 @@ const Sidebar = () => {
                           >
                             {listItem.subItems.map((accItem) => (
                               <Link
-                                key={accItem.key} // Ensure unique key for each subItem
+                                key={accItem.id}
                                 href={accItem.link}
                                 onClick={() => {
                                   isSmallScreen ? setIsSidebarOpen(false) : setIsSidebarOpen(!isSidebarOpen);
