@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer"; // For sending emails
+import crypto from "crypto"; // To generate a random OTP
 
 export async function POST(req) {
     try {
@@ -18,19 +19,17 @@ export async function POST(req) {
             return NextResponse.json({ message: "User not found" }, { status: 404 });
         }
 
-        // Generate a password reset token
-        const resetToken = jwt.sign(
-            { userId: user._id },
-            process.env.JWT_SECRET,
-            { expiresIn: "1h" } // Token will expire in 1 hour
-        );
+        // Generate a 6-digit OTP
+        const otp = crypto.randomInt(100000, 999999).toString(); // Generate random OTP
 
-        // Save the reset token in the user's record (optional, for security reasons)
-        user.resetToken = resetToken;
+        // Set OTP expiration time (e.g., 10 minutes)
+        const otpExpiry = new Date();
+        otpExpiry.setMinutes(otpExpiry.getMinutes() + 10);
+
+        // Save the OTP and its expiration to the user's record
+        user.resetOtp = otp;
+        user.resetOtpExpiry = otpExpiry;
         await user.save();
-
-        // Create a reset password URL
-        const resetUrl = `${process.env.FRONTEND_URL}/reset-password?token=${resetToken}`;
 
         // Set up the email transporter (using Gmail as an example)
         const transporter = nodemailer.createTransport({
@@ -45,17 +44,17 @@ export async function POST(req) {
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
-            subject: "Password Reset Request",
-            html: `<p>You requested a password reset. Click the link below to reset your password:</p>
-             <a href="${resetUrl}">Reset Password</a>`,
+            subject: "Password Reset OTP",
+            html: `<p>You requested a password reset. Here is your OTP: <strong>${otp}</strong></p>
+            <p>It will expire in 10 minutes.</p>`,
         };
 
-        // Send the email
+        // Send the OTP via email
         await transporter.sendMail(mailOptions);
 
-        return NextResponse.json({ message: "Password reset link sent to your email" });
+        return NextResponse.json({ message: "OTP sent to your email" });
     } catch (err) {
-        console.error("Error sending password reset email:", err);
+        console.error("Error sending password reset OTP:", err);
         return NextResponse.json({ message: "Server error" }, { status: 500 });
     }
 }

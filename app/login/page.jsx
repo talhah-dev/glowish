@@ -19,7 +19,6 @@ const LoginPage = () => {
 
   const [loading, setLoading] = useState(false); // Loading state for login
   const [error, setError] = useState(""); // Error state for API errors
-  const [success, setSuccess] = useState(""); // Success state for forgot password
   const router = useRouter(); // Next.js router to navigate after successful login
 
   const onSubmit = async (data) => {
@@ -40,27 +39,6 @@ const LoginPage = () => {
       setError(err.response?.data?.message || "Something went wrong, please try again.");
     } finally {
       setLoading(false); // End loading state after API call is finished
-    }
-  };
-
-  // Forgot Password functionality
-  const handleForgotPassword = async () => {
-    const email = prompt("Please enter your email address for password reset:");
-
-    if (email) {
-      setLoading(true);
-      setError("");
-      setSuccess("");
-
-      try {
-        const response = await axios.post("/api/auth/forgot-password", { email });
-        setSuccess(response.data.message); // Show success message
-      } catch (err) {
-        console.error("Forgot Password error:", err);
-        setError(err.response?.data?.message || "Something went wrong, please try again.");
-      } finally {
-        setLoading(false);
-      }
     }
   };
 
@@ -151,13 +129,12 @@ const LoginPage = () => {
                       Register
                     </Link>
                   </p>
-                  <button
-                    type="button"
-                    onClick={handleForgotPassword}
+                  {/* <Link
+                    href="/"
                     className="font-matter 2sm:text-base text-sm text-gray-900 hover:underline"
                   >
                     Forgot Password?
-                  </button>
+                  </Link> */}
                 </div>
                 <div className="w-full">
                   <button
@@ -175,7 +152,6 @@ const LoginPage = () => {
               </form>
             </div>
             {error && <p className="text-red-600 font-medium mb-3">{error}</p>} {/* Display error message */}
-            {success && <p className="text-green-600 font-medium mb-3">{success}</p>} {/* Display success message */}
           </div>
         </div>
       </div>
