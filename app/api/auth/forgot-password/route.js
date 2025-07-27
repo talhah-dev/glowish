@@ -1,7 +1,5 @@
 import User from "../../../../models/User";
 import mongoDB from "../../../../lib/mongoDB";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer"; // For sending emails
 import crypto from "crypto"; // To generate a random OTP
