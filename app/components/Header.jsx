@@ -240,7 +240,7 @@ const Header = ({ isLoggedIn }) => {
             <NavbarItem>
               <ProfileDropdown />
             </NavbarItem>
-            <NavbarItem>
+            <NavbarItem className="hidden md:flex">
               <Button
                 color="primary"
                 href="/login"
@@ -250,7 +250,7 @@ const Header = ({ isLoggedIn }) => {
                 Login
               </Button>
             </NavbarItem>
-            <NavbarItem>
+            <NavbarItem className="hidden md:flex">
               <Button
                 color="primary"
                 href="/register"

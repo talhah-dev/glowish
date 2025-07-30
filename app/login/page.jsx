@@ -28,8 +28,6 @@ const LoginPage = () => {
     try {
       // API call to authenticate the user
       const response = await axios.post("/api/auth/login", data);
-      console.log("Login response:", response.data);
-
       // On successful login, navigate to the homepage or another page
       router.push("/"); // Redirect to the homepage or dashboard page
 
@@ -125,7 +123,7 @@ const LoginPage = () => {
                 <div className="flex flex-wrap justify-between items-center cursor-pointer sm:mb-6 mb-5">
                   <p className="font-matter 2sm:text-base text-sm	text-gray-800">
                     No account?{" "}
-                    <Link href="/" className="hover:underline text-gray-900">
+                    <Link href="/register" className="hover:underline text-gray-900">
                       Register
                     </Link>
                   </p>

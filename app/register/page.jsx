@@ -31,7 +31,6 @@ const RegisterPage = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axios.post("/api/auth/register", data);
-            console.log("OTP sent:", response.data);
             setOtpSent(true);
             setMessage("Verification code sent to your email.");
             setError("");
@@ -46,7 +45,6 @@ const RegisterPage = () => {
         setLoading(true); // Set loading to true when API call starts
         try {
             const response = await axios.post("/api/auth/verify", { code: otp.join("") }); // Join OTP array to string
-            console.log("Account created:", response.data);
             setMessage("Account successfully verified and created.");
             setError("");
             setOtpSent(false);
