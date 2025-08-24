@@ -1,10 +1,10 @@
 import React from "react";
-import LayoutWithSidebar from "../LayoutWithSidebar";
 import authorsData from "../mock/authors.json";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Instagram, Twitter } from "lucide-react";
+import HomeLayout from "../HomeLayout";
 
 export const metadata = {
   title: "Glowist - Authors",
@@ -12,7 +12,7 @@ export const metadata = {
 
 const Authors = () => {
   return (
-    <LayoutWithSidebar>
+    <HomeLayout>
       <h2 className="font-matter font-semibold sm:text-3xl 2sm:text-2xl text-[22px] sm:my-[20px] mb-[15px] mt-2">
         Authors
       </h2>
@@ -73,7 +73,7 @@ const Authors = () => {
           </Card>
         ))}
       </div>
-    </LayoutWithSidebar>
+    </HomeLayout>
   );
 };
 

@@ -1,8 +1,8 @@
 import React from "react";
-import LayoutWithSidebar from "../LayoutWithSidebar";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
+import HomeLayout from "../HomeLayout";
 
 export const metadata = {
   title: "Glowist - Membership",
@@ -32,7 +32,7 @@ const premiumPlan = [
 
 const Membership = () => {
   return (
-    <LayoutWithSidebar>
+    <HomeLayout>
       <div className="lg:pb-20 md:pt-[40px] 2sm:pt-[30px] pt-[20px] sm:pb-0">
         <div className="w-full text-center text-white pb-10 lg:pb-20">
           <h1 className="font-matter text-gray-900 font-semibold sm:text-3xl 2sm:text-2xl text-[22px] mb-4">
@@ -147,7 +147,7 @@ const Membership = () => {
           </div>
         </div>
       </div>
-    </LayoutWithSidebar>
+    </HomeLayout>
   );
 };
 

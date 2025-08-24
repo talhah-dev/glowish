@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import LayoutWithSidebar from "../LayoutWithSidebar";
 import {
   Button,
   Dropdown,
@@ -11,6 +10,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { Bookmark, Ellipsis } from "lucide-react";
+import HomeLayout from "../HomeLayout";
 
 const bookmarkItems = [
   {
@@ -77,7 +77,7 @@ const menuItems = [
 
 const Bookmarks = () => {
   return (
-    <LayoutWithSidebar>
+    <HomeLayout>
       <h2 className="font-matter font-semibold sm:text-3xl 2sm:text-2xl text-[22px] sm:my-[20px] mb-[15px] mt-2">
         Bookmarks
       </h2>
@@ -86,7 +86,7 @@ const Bookmarks = () => {
           <BookmarkedPost item={item} />
         ))}
       </div>
-    </LayoutWithSidebar>
+    </HomeLayout>
   );
 };
 

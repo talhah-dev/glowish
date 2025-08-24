@@ -162,7 +162,8 @@ const Header = ({ isLoggedIn }) => {
             <Image
               src={"/assets/images/logo.png"}
               alt=" Logo"
-              layout="fill"
+              width={100}
+              height={100}
             />
           </Link>
           <Link
@@ -177,6 +178,8 @@ const Header = ({ isLoggedIn }) => {
             />
           </Link>
         </NavbarBrand>
+
+        <Link href={"/dashboard"}>Dashboard</Link>
 
         {/* Center */}
         <NavbarContent

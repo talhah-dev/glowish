@@ -13,8 +13,8 @@ export function Providers({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [activeTab, setActiveTab] = useState({
-    tab:"news",
-    title:""
+    tab: "news",
+    title: ""
   }); // Default to "News" tab
 
   useEffect(() => {

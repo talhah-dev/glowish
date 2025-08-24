@@ -49,9 +49,9 @@ const LoginPage = () => {
         <div className="lg:absolute lg:w-fit w-full xl:top-[40px] xl:right-[60px] lg:top-[30px] lg:right-[40px]">
           <Link href="/" className="flex w-[118px] lg:m-0 mt-3 mx-auto">
             <Image
+              src="/assets/images/logo.png"
               height={118}
               width={200}
-              src="/assets/images/logo.png"
               alt="glowist logo"
               className="w-full"
             />

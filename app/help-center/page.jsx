@@ -1,8 +1,8 @@
 import React from "react";
 import { Divider } from "@nextui-org/react";
-import LayoutWithSidebar from "../../app/LayoutWithSidebar";
 import Link from "next/link";
 import Contactform from "../../app/contact/Contactform";
+import HomeLayout from "../HomeLayout";
 
 export const metadata = {
   title: "Glowist - About Us",
@@ -10,7 +10,7 @@ export const metadata = {
 
 const HelpCenter = () => {
   return (
-    <LayoutWithSidebar>
+    <HomeLayout>
       <main>
         <div>
           <h2 className="font-semibold sm:text-3xl 2sm:text-2xl text-[22px] sm:mb-[15px] mb-[10px] mt-3">
@@ -218,7 +218,7 @@ const HelpCenter = () => {
           </div>
         </div>
       </main>
-    </LayoutWithSidebar>
+    </HomeLayout>
   );
 };
 

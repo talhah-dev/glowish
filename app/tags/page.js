@@ -1,13 +1,13 @@
 import React from "react";
-import LayoutWithSidebar from "../LayoutWithSidebar";
 import tagsData from "../mock/tags.json";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
+import HomeLayout from "../HomeLayout";
 
 const Tags = () => {
   return (
-    <LayoutWithSidebar>
+    <HomeLayout>
       <h2 className="font-matter font-semibold sm:text-3xl 2sm:text-2xl text-[22px] sm:my-[20px] mb-[15px] mt-2">
         Tags
       </h2>
@@ -41,7 +41,7 @@ const Tags = () => {
           </Card>
         ))}
       </div>
-    </LayoutWithSidebar>
+    </HomeLayout>
   );
 };
 

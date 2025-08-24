@@ -3,7 +3,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 import Header from "./components/Header";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { ReduxProviders } from "./redux/provider";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +13,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const isLoggedIn = true;
+  
 
   return (
     <html lang="en">
@@ -20,7 +21,7 @@ export default function RootLayout({ children }) {
         {/* <ReduxProviders> */}
           <Providers>
             <ProtectedRoute>
-              <Header isLoggedIn={isLoggedIn} />
+              <ToastContainer />
               {children}
             </ProtectedRoute>
           </Providers>

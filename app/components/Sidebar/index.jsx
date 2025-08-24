@@ -1,22 +1,38 @@
 "use client";
-import { Accordion, AccordionItem, Divider } from "@nextui-org/react";
+import { Accordion, AccordionItem, Divider, useDisclosure } from "@nextui-org/react";
 import React, { useContext, useState, useEffect, useRef } from "react";
-import sidebarData from "./sidebarData";
-import { ChevronDown, Dot, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SidebarContext, SmallScreenContext, TabContext } from "../../../app/providers";
-import { useDisclosure } from "@nextui-org/react";
 import DonateModal from "./DonateModal";
+
+// Icons
+import {
+  ChevronDown,
+  Dot,
+  X,
+  House,
+  Siren,
+  Lightbulb,
+  Award,
+  CircleAlert,
+  Phone,
+  Settings,
+  Mail,
+  LogIn,
+  UserPlus,
+} from "lucide-react";
+import { PiHandHeart } from "react-icons/pi";
 
 const Sidebar = () => {
   const pathname = usePathname();
   const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
   const { isSmallScreen } = useContext(SmallScreenContext);
   const { setActiveTab, activeTab } = useContext(TabContext);
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [modalType, setModalType] = useState(null);
-  const sidebarRef = useRef(null); // Ref to track sidebar element
+  const sidebarRef = useRef(null);
 
   const handleOpenModal = (type) => {
     setModalType(type);
@@ -26,23 +42,23 @@ const Sidebar = () => {
   // Close sidebar when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        isSidebarOpen &&
-        sidebarRef.current &&
-        !sidebarRef.current.contains(event.target)
-      ) {
+      if (isSidebarOpen && sidebarRef.current && !sidebarRef.current.contains(event.target)) {
         setIsSidebarOpen(false);
       }
     };
-
-    // Add event listener for clicks
     document.addEventListener("mousedown", handleClickOutside);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isSidebarOpen, setIsSidebarOpen]);
+
+  // Helpers to determine active states for accordions/links
+  const isActivePath = (link) => link !== "#" && pathname === link;
+  const includesPath = (segment) => pathname?.toLowerCase().includes(segment);
+
+  const handleSubClick = (sectionLabel) => {
+    // Preserve your original behavior: toggle between news/surveys on each click
+    setActiveTab({ tab: activeTab.tab === "news" ? "surveys" : "news", title: sectionLabel });
+    if (isSmallScreen) setIsSidebarOpen(false);
+  };
 
   return (
     <>
@@ -50,127 +66,291 @@ const Sidebar = () => {
 
       <div
         id="navbar"
-        ref={sidebarRef} // Attach ref to sidebar
+        ref={sidebarRef}
         className={`flex flex-col w-[250px] h-[calc(100vh-56px)] md:h-[calc(100vh-73px)] border-r transition-transform bg-white fixed z-50 bottom-0 ${isSidebarOpen ? "" : "-translate-x-full"
           }`}
       >
         <div className="text-2xl px-3 pt-6 flex lg:hidden justify-end sm:mt-32">
           {/* <X
-            variant="light"
             size={24}
             className="cursor-pointer"
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           /> */}
         </div>
+
         <div className="flex-grow overflow-auto px-5 pb-0 pt-2">
-          {sidebarData().map((item, index) => (
-            <div key={item.title}>
-              {index !== 0 && <Divider className="my-4" />}
-              <h3 className="py-[10px] px-[12px] font-matter text-xs font-medium text-gray-800 uppercase tracking-wider">
-                {item.title}
-              </h3>
-              <ul>
-                {item.items.map((listItem) => {
-                  const activeItem =
-                    !pathname.includes("tag-details") &&
-                    pathname.includes(listItem.label.toLowerCase());
-                  return (
-                    <li key={listItem.id}>
-                      {!listItem.subItems ? (
-                        <Link
-                          href={listItem.link}
-                          onClick={(e) => {
-                            if (listItem.label === "Donate") {
-                              e.preventDefault();
-                              handleOpenModal("donate");
-                            } else if (listItem.label === "Subscribe") {
-                              e.preventDefault();
-                              handleOpenModal("subscribe");
-                            } else if (isSmallScreen) {
-                              setIsSidebarOpen(false);
-                            }
-                          }}
-                          className={`w-full flex items-center gap-2 text-base leading-6 text-[#646464] mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500
-                            ${pathname === listItem.link || activeItem
-                              ? "bg-black hover:!bg-black text-white"
-                              : ""
-                            }
-                            ${listItem.link === "/login" || listItem.link === "/register"
-                              ? "xl:hidden"
-                              : ""
-                            }`}
-                        >
-                          {listItem.icon}
-                          {listItem.label}
-                          {(listItem.label === "Technology" || listItem.label === "Sports") && (
-                            <span className="text-xs opacity-50">(Soon)</span>
-                          )}
-                        </Link>
-                      ) : (
-                        <Accordion
-                          className="!p-0"
-                          defaultExpandedKeys={
-                            activeItem ? [`Accordion ${listItem.id}`] : []
-                          }
-                        >
-                          <AccordionItem
-                            key={`Accordion ${listItem.id}`}
-                            aria-label={`Accordion ${listItem.id}`}
-                            startContent={listItem.icon}
-                            title={listItem.label}
-                            classNames={{
-                              trigger: `group gap-2 mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 focus:bg-black ${activeItem ? "bg-black hover:!bg-black" : ""
-                                }`,
-                              title: `text-base text-[#646464] gap-0 group-focus:!text-white ${activeItem ? "bg-black hover:!bg-black text-white" : ""
-                                }`,
-                              startContent: `text-[#646464] group-focus:!text-white ${activeItem ? "text-white" : ""
-                                }`,
-                              indicator: `group-focus:!text-white ${activeItem ? "text-white" : ""}`,
-                              content: "ps-5 py-1",
-                            }}
-                            indicator={<ChevronDown size={17} />}
-                          >
-                            {listItem.subItems.map((accItem) => (
-                              <Link
-                                key={accItem.id}
-                                href={accItem.link}
-                                onClick={() => {
-                                  isSmallScreen ? setIsSidebarOpen(false) : setIsSidebarOpen(!isSidebarOpen);
-                                  setActiveTab({ tab: activeTab.tab === "news" ? "surveys" : "news", title: listItem.label });
-                                }}
-                                className={`w-full flex items-center text-base leading-6 text-[#646464] mb-1 px-3 py-1.5 rounded-lg hover:bg-gray-500 ${pathname.includes(accItem.link) ? "bg-gray-500" : ""}`}
-                              >
-                                {accItem.subLabel}
-                              </Link>
-                            ))}
-                          </AccordionItem>
-                        </Accordion>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
+          {/* ======= MAIN ======= */}
+          <div>
+            <h3 className="py-[10px] px-[12px] font-matter text-xs font-medium text-gray-800 uppercase tracking-wider">
+              Main
+            </h3>
+            <ul>
+              {/* Home */}
+              <li>
+                <Link
+                  href="/"
+                  onClick={() => isSmallScreen && setIsSidebarOpen(false)}
+                  className={`w-full flex items-center gap-2 text-base leading-6 text-[#646464] mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 ${isActivePath("/") ? "bg-black hover:!bg-black text-white" : ""
+                    }`}
+                >
+                  <House size={20} />
+                  Home
+                </Link>
+              </li>
+
+              {/* Politics (Accordion) */}
+              <li>
+                <Accordion
+                  className="!p-0"
+                  defaultExpandedKeys={includesPath("politics") ? ["Accordion 2"] : []}
+                >
+                  <AccordionItem
+                    key="Accordion 2"
+                    aria-label="Accordion 2"
+                    startContent={<Siren size={20} />}
+                    title="Politics"
+                    classNames={{
+                      trigger: `group gap-2 mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 focus:bg-black ${includesPath("politics") ? "bg-black hover:!bg-black" : ""
+                        }`,
+                      title: `text-base text-[#646464] gap-0 group-focus:!text-white ${includesPath("politics") ? "text-white" : ""
+                        }`,
+                      startContent: `text-[#646464] group-focus:!text-white ${includesPath("politics") ? "text-white" : ""
+                        }`,
+                      indicator: `group-focus:!text-white ${includesPath("politics") ? "text-white" : ""
+                        }`,
+                      content: "ps-5 py-1",
+                    }}
+                    indicator={<ChevronDown size={17} />}
+                  >
+                    <Link
+                      href="#"
+                      onClick={() => handleSubClick("Politics")}
+                      className={`w-full flex items-center text-base leading-6 text-[#646464] mb-1 px-3 py-1.5 rounded-lg hover:bg-gray-500`}
+                    >
+                      News
+                    </Link>
+                    <Link
+                      href="#"
+                      onClick={() => handleSubClick("Politics")}
+                      className={`w-full flex items-center text-base leading-6 text-[#646464] mb-1 px-3 py-1.5 rounded-lg hover:bg-gray-500`}
+                    >
+                      Survey
+                    </Link>
+                  </AccordionItem>
+                </Accordion>
+              </li>
+
+              {/* Technology (Accordion) */}
+              <li>
+                <Accordion
+                  className="!p-0"
+                  defaultExpandedKeys={includesPath("technology") ? ["Accordion 3"] : []}
+                >
+                  <AccordionItem
+                    key="Accordion 3"
+                    aria-label="Accordion 3"
+                    startContent={<Lightbulb size={20} />}
+                    title={
+                      <span className="flex items-center gap-2">
+                        <span>Technology</span>
+                        <span className="text-xs opacity-50">(Soon)</span>
+                      </span>
+                    }
+                    classNames={{
+                      trigger: `group gap-2 mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 focus:bg-black ${includesPath("technology") ? "bg-black hover:!bg-black" : ""
+                        }`,
+                      title: `text-base text-[#646464] gap-0 group-focus:!text-white ${includesPath("technology") ? "text-white" : ""
+                        }`,
+                      startContent: `text-[#646464] group-focus:!text-white ${includesPath("technology") ? "text-white" : ""
+                        }`,
+                      indicator: `group-focus:!text-white ${includesPath("technology") ? "text-white" : ""
+                        }`,
+                      content: "ps-5 py-1",
+                    }}
+                    indicator={<ChevronDown size={17} />}
+                  >
+                    <Link
+                      href="#"
+                      onClick={() => handleSubClick("Technology")}
+                      className={`w-full flex items-center text-base leading-6 text-[#646464] mb-1 px-3 py-1.5 rounded-lg hover:bg-gray-500`}
+                    >
+                      News
+                    </Link>
+                    <Link
+                      href="#"
+                      onClick={() => handleSubClick("Technology")}
+                      className={`w-full flex items-center text-base leading-6 text-[#646464] mb-1 px-3 py-1.5 rounded-lg hover:bg-gray-500`}
+                    >
+                      Survey
+                    </Link>
+                  </AccordionItem>
+                </Accordion>
+              </li>
+
+              {/* Sports (Accordion) */}
+              <li>
+                <Accordion
+                  className="!p-0"
+                  defaultExpandedKeys={includesPath("sports") ? ["Accordion 4"] : []}
+                >
+                  <AccordionItem
+                    key="Accordion 4"
+                    aria-label="Accordion 4"
+                    startContent={<Award size={20} />}
+                    title={
+                      <span className="flex items-center gap-2">
+                        <span>Sports</span>
+                        <span className="text-xs opacity-50">(Soon)</span>
+                      </span>
+                    }
+                    classNames={{
+                      trigger: `group gap-2 mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 focus:bg-black ${includesPath("sports") ? "bg-black hover:!bg-black" : ""
+                        }`,
+                      title: `text-base text-[#646464] gap-0 group-focus:!text-white ${includesPath("sports") ? "text-white" : ""
+                        }`,
+                      startContent: `text-[#646464] group-focus:!text-white ${includesPath("sports") ? "text-white" : ""
+                        }`,
+                      indicator: `group-focus:!text-white ${includesPath("sports") ? "text-white" : ""
+                        }`,
+                      content: "ps-5 py-1",
+                    }}
+                    indicator={<ChevronDown size={17} />}
+                  >
+                    <Link
+                      href="#"
+                      onClick={() => handleSubClick("Sports")}
+                      className={`w-full flex items-center text-base leading-6 text-[#646464] mb-1 px-3 py-1.5 rounded-lg hover:bg-gray-500`}
+                    >
+                      News
+                    </Link>
+                    <Link
+                      href="#"
+                      onClick={() => handleSubClick("Sports")}
+                      className={`w-full flex items-center text-base leading-6 text-[#646464] mb-1 px-3 py-1.5 rounded-lg hover:bg-gray-500`}
+                    >
+                      Survey
+                    </Link>
+                  </AccordionItem>
+                </Accordion>
+              </li>
+            </ul>
+          </div>
+
+          <Divider className="my-4" />
+
+          {/* ======= RESOURCES ======= */}
+          <div>
+            <h3 className="py-[10px] px-[12px] font-matter text-xs font-medium text-gray-800 uppercase tracking-wider">
+              Resources
+            </h3>
+            <ul>
+              {/* About Us */}
+              <li>
+                <Link
+                  href="/about"
+                  onClick={() => isSmallScreen && setIsSidebarOpen(false)}
+                  className={`w-full flex items-center gap-2 text-base leading-6 text-[#646464] mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 ${isActivePath("/about") ? "bg-black hover:!bg-black text-white" : ""
+                    }`}
+                >
+                  <CircleAlert size={20} />
+                  About Us
+                </Link>
+              </li>
+
+              {/* Contact Us */}
+              <li>
+                <Link
+                  href="/contact"
+                  onClick={() => isSmallScreen && setIsSidebarOpen(false)}
+                  className={`w-full flex items-center gap-2 text-base leading-6 text-[#646464] mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 ${isActivePath("/contact") ? "bg-black hover:!bg-black text-white" : ""
+                    }`}
+                >
+                  <Phone size={20} />
+                  Contact Us
+                </Link>
+              </li>
+
+              {/* Settings */}
+              <li>
+                <Link
+                  href="/profile-edit"
+                  onClick={() => isSmallScreen && setIsSidebarOpen(false)}
+                  className={`w-full flex items-center gap-2 text-base leading-6 text-[#646464] mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 ${isActivePath("/profile-edit") ? "bg-black hover:!bg-black text-white" : ""
+                    }`}
+                >
+                  <Settings size={20} />
+                  Settings
+                </Link>
+              </li>
+
+              {/* Donate (modal) */}
+              <li>
+                <Link
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleOpenModal("donate");
+                  }}
+                  className={`w-full flex items-center gap-2 text-base leading-6 text-[#646464] mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500`}
+                >
+                  <PiHandHeart size={23} />
+                  Donate
+                </Link>
+              </li>
+
+              {/* Subscribe (modal) */}
+              <li>
+                <Link
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleOpenModal("subscribe");
+                  }}
+                  className={`w-full flex items-center gap-2 text-base leading-6 text-[#646464] mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500`}
+                >
+                  <Mail size={20} />
+                  Subscribe
+                </Link>
+              </li>
+
+              {/* Login */}
+              <li>
+                <Link
+                  href="/login"
+                  onClick={() => isSmallScreen && setIsSidebarOpen(false)}
+                  className={`w-full flex items-center gap-2 text-base leading-6 text-[#646464] mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 xl:hidden ${isActivePath("/login") ? "bg-black hover:!bg-black text-white" : ""
+                    }`}
+                >
+                  <LogIn size={20} />
+                  Login
+                </Link>
+              </li>
+
+              {/* Register */}
+              <li>
+                <Link
+                  href="/register"
+                  onClick={() => isSmallScreen && setIsSidebarOpen(false)}
+                  className={`w-full flex items-center gap-2 text-base leading-6 text-[#646464] mb-1 px-3 py-2.5 rounded-lg hover:bg-gray-500 xl:hidden ${isActivePath("/register") ? "bg-black hover:!bg-black text-white" : ""
+                    }`}
+                >
+                  <UserPlus size={20} />
+                  Register
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Sidebar Footer */}
         <div className="p-5">
-          <p className="font-matter text-sm text-gray-800 mb-2">
-            © Copyright 2024 - Glowist. All Rights Reserved.
-          </p>
+          <p className="font-matter text-sm text-gray-800 mb-2">© Copyright 2024 - Glowist. All Rights Reserved.</p>
           <div className="flex items-center">
-            <Link
-              href="/"
-              className="text-sm text-gray-800 hover:text-gray-900 hover:underline"
-            >
+            <Link href="/" className="text-sm text-gray-800 hover:text-gray-900 hover:underline">
               Privacy Policy
             </Link>
             <Dot size={16} className="text-gray-800" />
-            <Link
-              href="/"
-              className="text-sm text-gray-800 hover:text-gray-900 hover:underline"
-            >
+            <Link href="/" className="text-sm text-gray-800 hover:text-gray-900 hover:underline">
               Terms of use
             </Link>
           </div>
