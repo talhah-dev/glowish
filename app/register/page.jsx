@@ -1,11 +1,12 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import MyInput from "../components/MyInput";
+import { InputOtp, Button } from "@heroui/react"; // ⬅️ HeroUI/NextUI OTP + Button
 
 const RegisterPage = () => {
     const {
@@ -14,23 +15,20 @@ const RegisterPage = () => {
         formState: { errors },
         trigger,
         reset,
-    } = useForm({
-        mode: "onChange",
-    });
+    } = useForm({ mode: "onChange" });
 
     const [otpSent, setOtpSent] = useState(false);
-    const [otp, setOtp] = useState(Array(6).fill("")); // Keep OTP as an array for better manipulation
+    const [otp, setOtp] = useState(""); // ⬅️ string instead of array
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false); // Loading state for OTP verification
+    const [loading, setLoading] = useState(false);
 
-    const inputRefs = useRef([]); // To store references for each input field
-    const router = useRouter(); // Next.js router to navigate
+    const router = useRouter();
 
     // STEP 1: Register and request OTP
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post("/api/auth/register", data);
+            await axios.post("/api/auth/register", data);
             setOtpSent(true);
             setMessage("Verification code sent to your email.");
             setError("");
@@ -42,35 +40,21 @@ const RegisterPage = () => {
 
     // STEP 2: Verify OTP and create account
     const verifyOtp = async () => {
-        setLoading(true); // Set loading to true when API call starts
+        if (otp.length !== 6) return; // guard
+        setLoading(true);
         try {
-            const response = await axios.post("/api/auth/verify", { code: otp.join("") }); // Join OTP array to string
+            await axios.post("/api/auth/verify", { code: otp });
             setMessage("Account successfully verified and created.");
             setError("");
             setOtpSent(false);
-            reset(); // Clear form
-            setOtp(Array(6).fill("")); // Reset OTP
-            router.push("/login"); // Navigate to login page after successful OTP verification
+            reset();
+            setOtp("");
+            router.push("/login");
         } catch (err) {
             setError(err.response?.data?.message || "Verification failed");
             setMessage("");
         } finally {
-            setLoading(false); // Set loading to false when API call is completed
-        }
-    };
-
-    // Handle OTP input change
-    const handleOtpChange = (e, index) => {
-        const value = e.target.value;
-        if (/^\d$/.test(value)) {
-            const newOtp = [...otp]; // Clone the current OTP array
-            newOtp[index] = value; // Set the digit at the correct index
-            setOtp(newOtp);
-
-            // Focus next input if the value is valid and not the last input
-            if (index < 5) {
-                inputRefs.current[index + 1]?.focus();
-            }
+            setLoading(false);
         }
     };
 
@@ -98,9 +82,10 @@ const RegisterPage = () => {
                             {otpSent ? "Verify OTP" : "Register"}
                         </h2>
                         <p className="font-matter 2sm:text-base text-sm text-gray-800 mb-4">
-                            {otpSent
-                                ? "Enter the 6-digit code sent to your email."
-                                : <>
+                            {otpSent ? (
+                                "Enter the 6-digit code sent to your email."
+                            ) : (
+                                <>
                                     By continuing, you agree to our{" "}
                                     <Link href="/terms-of-use" className="text-gray-900 underline hover:no-underline">
                                         Terms of use
@@ -108,9 +93,10 @@ const RegisterPage = () => {
                                     and acknowledge that you understand the{" "}
                                     <Link href="/privacy-policy" className="text-gray-900 underline hover:no-underline">
                                         Privacy Policy
-                                    </Link>.
+                                    </Link>
+                                    .
                                 </>
-                            }
+                            )}
                         </p>
 
                         {message && <p className="text-green-600 font-medium mb-3">{message}</p>}
@@ -128,9 +114,7 @@ const RegisterPage = () => {
                                             placeholder={"Enter name..."}
                                             trigger={trigger}
                                             register={register}
-                                            validations={{
-                                                required: "Name is required",
-                                            }}
+                                            validations={{ required: "Name is required" }}
                                             errors={errors}
                                         />
                                     </div>
@@ -162,9 +146,7 @@ const RegisterPage = () => {
                                             placeholder={"Enter phone..."}
                                             trigger={trigger}
                                             register={register}
-                                            validations={{
-                                                required: "Phone is required",
-                                            }}
+                                            validations={{ required: "Phone is required" }}
                                             errors={errors}
                                         />
                                     </div>
@@ -192,6 +174,7 @@ const RegisterPage = () => {
                                         />
                                     </div>
                                 </div>
+
                                 <div className="flex flex-wrap justify-between items-center cursor-pointer sm:mb-6 mb-5">
                                     <p className="font-matter 2sm:text-base text-sm text-gray-800">
                                         Already have an account?{" "}
@@ -200,6 +183,7 @@ const RegisterPage = () => {
                                         </Link>
                                     </p>
                                 </div>
+
                                 <div className="w-full">
                                     <button
                                         type="submit"
@@ -210,31 +194,40 @@ const RegisterPage = () => {
                                 </div>
                             </form>
                         ) : (
-                            <div className="flex flex-col gap-4">
-                                <div className="flex gap-2">
-                                    {Array(6).fill().map((_, index) => (
-                                        <input
-                                            key={index}
-                                            type="text"
-                                            maxLength="1"
-                                            value={otp[index] || ""}
-                                            onChange={(e) => handleOtpChange(e, index)}
-                                            ref={(el) => (inputRefs.current[index] = el)}
-                                            className="w-12 h-12 text-center text-2xl font-bold border border-gray-400 rounded-md"
-                                        />
-                                    ))}
+                            <div className="flex flex-col gap-5">
+                                {/* ✅ HeroUI OTP */}
+                                <div className="flex flex-col items-center justify-center gap-4">
+                                    <InputOtp
+                                        autoFocus
+                                        length={6}
+                                        value={otp}
+                                        onValueChange={(v) => setOtp(v.replace(/\D/g, ""))}
+                                        inputMode="numeric"
+                                        autoComplete="one-time-code"
+                                        className="flex gap-3"
+                                        variant="bordered"
+                                        classNames={{
+                                            base: "justify-center",             // center the whole OTP group
+                                            segment:
+                                                // box size + default border + HIGHLIGHT on focus/active
+                                                "rounded-xl border border-default-300 bg-white transition " +
+                                                "focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/30 " +
+                                                "data-[active=true]:border-primary data-[active=true]:ring-2 data-[active=true]:ring-primary/30",
+                                            input: "text-2xl font-semibold text-center",
+                                        }}
+                                        aria-label="One-time password"
+                                    />
                                 </div>
-                                <button
-                                    onClick={verifyOtp}
-                                    className="w-full flex text-center justify-center text-white rounded-full 2sm:p-[12px] p-[10px] font-matter text-base bg-gray-900 border transition border-gray-900 hover:bg-white hover:border-gray-900 hover:text-gray-900"
-                                    disabled={loading} // Disable button while loading
+
+
+                                <Button
+                                    className="rounded-full"
+                                    onPress={verifyOtp}
+                                    isDisabled={otp.length !== 6 || loading}
+                                    isLoading={loading}
                                 >
-                                    {loading ? (
-                                        <div className="loader">Loading...</div> // Add a loading spinner or text
-                                    ) : (
-                                        "Verify OTP"
-                                    )}
-                                </button>
+                                    Verify OTP
+                                </Button>
                             </div>
                         )}
                     </div>

@@ -3,6 +3,7 @@
 import { NextUIProvider } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { createContext, useEffect, useState } from "react";
+import { HeroUIProvider } from "@heroui/react";
 
 export const SidebarContext = createContext(undefined);
 export const SmallScreenContext = createContext(undefined);
@@ -39,7 +40,9 @@ export function Providers({ children }) {
       <SidebarContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>
         <SmallScreenContext.Provider value={{ isSmallScreen, setIsSmallScreen }}>
           <TabContext.Provider value={{ activeTab, setActiveTab }}>
+            <HeroUIProvider>
             {children}
+            </HeroUIProvider>
           </TabContext.Provider>
         </SmallScreenContext.Provider>
       </SidebarContext.Provider>
