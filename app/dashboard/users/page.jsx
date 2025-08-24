@@ -280,7 +280,7 @@ export default function UsersPage() {
     <>
       <ToastContainer position="top-right" theme="colored" />
       <DashboardLayout className="mt-5 pr-3">
-        <div className="mx-auto w-full max-w-[1200px] px-4 space-y-5">
+        <div className="mx-auto w-full space-y-5">
           {/* -------- Toolbar -------- */}
           <div className="grid grid-cols-1 gap-3 md:grid-cols-12 md:items-center">
             <div className="md:col-span-5">
@@ -467,6 +467,7 @@ export default function UsersPage() {
           <div className="hidden md:block rounded-xl border bg-white">
             <Table
               aria-label="Users table"
+              className="overflow-auto"
               removeWrapper
               selectionMode="multiple"
               selectedKeys={selectedKeys}
@@ -487,7 +488,7 @@ export default function UsersPage() {
                 {visible.map((u) => {
                   const act = u.activity || {};
                   return (
-                    <TableRow key={u.id}>
+                    <TableRow className="flex-wrap" key={u.id}>
                       <TableCell>
                         <div className="flex items-center gap-3">
                           <Avatar src={u.avatar} name={u.name} />
@@ -518,6 +519,8 @@ export default function UsersPage() {
                       <TableCell className="text-right">{act.comments ?? 0}</TableCell>
                       <TableCell className="text-right">{act.donations ?? 0}</TableCell>
                       <TableCell><span className="text-xs text-default-500">{u.lastLogin ? fmt(u.lastLogin) : "—"}</span></TableCell>
+
+                      
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">
                           <Button as={Link} href={`/dashboard/users/${u.id}`} size="sm" variant="flat" startContent={<Eye size={14} />}>

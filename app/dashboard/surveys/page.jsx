@@ -160,7 +160,7 @@ export default function SurveysPage() {
     <>
       <ToastContainer position="top-right" theme="colored" />
       <DashboardLayout className="mt-5 pr-3">
-        <div className="mx-auto w-full max-w-[1100px] px-4 space-y-5">
+        <div className="mx-auto w-full space-y-5">
           {/* Toolbar */}
           <div className="grid grid-cols-1 gap-3 md:grid-cols-12 md:items-center">
             <div className="md:col-span-5">

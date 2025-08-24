@@ -13,6 +13,7 @@ import {
   UsersRound,
   Settings,
   LogOut,
+  CreditCard
 } from "lucide-react";
 
 const AdminDashboardSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
@@ -68,6 +69,9 @@ const AdminDashboardSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <li>
               <Item href="/dashboard/users" icon={<UsersRound size={20} />}>Users</Item>
             </li>
+            <li>
+              <Item href="/dashboard/payments" icon={<CreditCard size={20} />}>Payments</Item>
+            </li>
           </ul>
         </div>
 
@@ -80,7 +84,7 @@ const AdminDashboardSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </h3>
           <ul>
             <li>
-              <Item href="/admin/settings" icon={<Settings size={20} />}>Settings</Item>
+              <Item href="/dashboard/settings" icon={<Settings size={20} />}>Settings</Item>
             </li>
             <li>
               <Item href="/logout" icon={<LogOut size={20} />} danger>

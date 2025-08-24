@@ -179,9 +179,7 @@ const Header = ({ isLoggedIn }) => {
           </Link>
         </NavbarBrand>
 
-        <Link href={"/dashboard"}>Dashboard</Link>
-
-        {/* Center */}
+          {/* Center */}
         <NavbarContent
           className="flex w-full px-4 grow gap-0"
           justify="start"

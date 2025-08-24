@@ -22,23 +22,34 @@ const LoginPage = () => {
   const router = useRouter(); // Next.js router to navigate after successful login
 
   const onSubmit = async (data) => {
-    setLoading(true); // Start loading state
-    setError(""); // Reset previous errors
+    setLoading(true);
+    setError("");
 
     try {
-      // API call to authenticate the user
       const response = await axios.post("/api/auth/login", data);
-      // On successful login, navigate to the homepage or another page
-      router.push("/"); // Redirect to the homepage or dashboard page
 
+      // Try a few common shapes:
+      // { user: { role: 'admin' } }  OR  { role: 'admin' }  OR  { user: { roles: ['admin'] } }  OR  { isAdmin: true }
+      const payload = response?.data ?? {};
+      const roleFromPayload =
+        payload?.user?.role ??
+        payload?.role ??
+        (Array.isArray(payload?.user?.roles) ? payload.user.roles[0] : undefined);
+
+      const isAdmin =
+        payload?.isAdmin === true ||
+        (typeof roleFromPayload === "string" &&
+          roleFromPayload.toLowerCase() === "admin");
+
+      router.push(isAdmin ? "/dashboard" : "/");
     } catch (err) {
       console.error("Login error:", err);
-      // Handle error based on response
       setError(err.response?.data?.message || "Something went wrong, please try again.");
     } finally {
-      setLoading(false); // End loading state after API call is finished
+      setLoading(false);
     }
   };
+
 
   return (
     <main

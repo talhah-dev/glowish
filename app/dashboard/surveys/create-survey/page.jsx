@@ -96,17 +96,9 @@ export default function Page() {
 
   return (
     <DashboardLayout className="mt-5 pr-3">
-      <div className="mx-auto w-full max-w-[1000px] px-4 space-y-6 pb-10">
+      <div className="mx-auto w-full px-4 space-y-6 pb-10">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <h1 className="text-2xl font-semibold">Create Survey</h1>
-          <div className="flex items-center gap-2">
-            <Button variant="light" onPress={() => onSubmit("draft")}>
-              Save Draft
-            </Button>
-            <Button color="primary" onPress={() => onSubmit("active")}>
-              Create & Activate
-            </Button>
-          </div>
+          <h1 className="text-3xl font-medium">Create Survey</h1>
         </div>
 
         {/* Basics */}
