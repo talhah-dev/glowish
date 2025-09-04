@@ -8,10 +8,8 @@ export async function POST(req) {
     try {
         await mongoDB();
 
-        // Parse the incoming request body
         const { email, password } = await req.json();
 
-        // Validate request data
         if (!email || !password) {
             return NextResponse.json(
                 {
@@ -22,21 +20,19 @@ export async function POST(req) {
             );
         }
 
-        // Check if the user exists
-        const existingUser = await User.findOne({ email });
+        const user = await User.findOne({ email });
 
-        if (!existingUser) {
+        if (!user) {
             return NextResponse.json(
                 {
                     error: "Authentication error",
                     message: "Email not found. Please check your email and try again."
                 },
-                { status: 404 } // 404 Not Found is more appropriate than 400 for non-existing resources
+                { status: 404 }
             );
         }
 
-        // Compare provided password with stored hash
-        const isMatch = await bcrypt.compare(password, existingUser.password);
+        const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
             return NextResponse.json(
@@ -44,36 +40,28 @@ export async function POST(req) {
                     error: "Authentication error",
                     message: "Invalid password. Please try again."
                 },
-                { status: 401 } // Unauthorized - Invalid credentials
+                { status: 401 }
             );
         }
 
-        // Generate JWT token
         const token = jwt.sign(
             {
-                userId: existingUser._id,
-                email: existingUser.email,
-                role: existingUser.role
+                userId: user._id,
+                role: user.role
             },
             process.env.JWT_SECRET,
-            { expiresIn: "1y" } // Expiration time
+            { expiresIn: "1y" }
         );
 
-        // Prepare response and set the cookie
         const response = NextResponse.json({
-            message: `Welcome back, ${existingUser.name}`,
-            user: {
-                name: existingUser.name,
-                email: existingUser.email,
-                role: existingUser.role, // Example: sending user role
-            },
+            message: `Welcome back, ${user.name}`,
+            user
         });
 
-        // Set the token as an HTTP-only cookie for security
         response.cookies.set("token", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production", // Only set Secure flag in production
-            maxAge: 90 * 24 * 60 * 60, // 90 days in seconds
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 360 * 24 * 60 * 60,
             path: "/",
         });
 
@@ -82,7 +70,6 @@ export async function POST(req) {
     } catch (err) {
         console.error("Login error:", err);
 
-        // Catch any unforeseen server errors
         return NextResponse.json(
             {
                 error: "Server error",

@@ -1,12 +1,13 @@
 import Header from "./components/Header";
-import RightSideBar from "./components/RightSideBar";
+import ImageUploader from "./components/ImageUploader";
 import Sidebar from "./components/Sidebar";
 
-export default function HomeLayout({ children }) {
+export default function HomeLayout({ children  }) {
   const isLoggedIn = true;
   return (
     <>
       <Header isLoggedIn={isLoggedIn} />
+      <ImageUploader />
       <div className="flex">
         <Sidebar />
         <div className="w-full xl:w-[calc(100%)] xl:ms -[250px] p-5">

@@ -6,8 +6,14 @@ import MyInput from "../components/MyInput";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { LoaderCircle } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../redux/userSlice";
 
 const LoginPage = () => {
+
+  const dispatch = useDispatch()
+
   const {
     register,
     handleSubmit,
@@ -17,9 +23,9 @@ const LoginPage = () => {
     mode: "onChange",
   });
 
-  const [loading, setLoading] = useState(false); // Loading state for login
-  const [error, setError] = useState(""); // Error state for API errors
-  const router = useRouter(); // Next.js router to navigate after successful login
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -28,20 +34,18 @@ const LoginPage = () => {
     try {
       const response = await axios.post("/api/auth/login", data);
 
-      // Try a few common shapes:
-      // { user: { role: 'admin' } }  OR  { role: 'admin' }  OR  { user: { roles: ['admin'] } }  OR  { isAdmin: true }
-      const payload = response?.data ?? {};
-      const roleFromPayload =
-        payload?.user?.role ??
-        payload?.role ??
-        (Array.isArray(payload?.user?.roles) ? payload.user.roles[0] : undefined);
+      const role = response.data.user?.role;
 
-      const isAdmin =
-        payload?.isAdmin === true ||
-        (typeof roleFromPayload === "string" &&
-          roleFromPayload.toLowerCase() === "admin");
+      if (role === "admin") {
+        router.push("/dashboard");
+      } else if (role === "user") {
+        router.push("/");
+      } else {
+        router.push("/");
+      }
 
-      router.push(isAdmin ? "/dashboard" : "/");
+      dispatch(setUserData(response.data))
+
     } catch (err) {
       console.error("Login error:", err);
       setError(err.response?.data?.message || "Something went wrong, please try again.");
@@ -138,21 +142,30 @@ const LoginPage = () => {
                       Register
                     </Link>
                   </p>
-                  {/* <Link
-                    href="/"
+                  <Link
+                    href="/forgot-password"
                     className="font-matter 2sm:text-base text-sm text-gray-900 hover:underline"
                   >
                     Forgot Password?
-                  </Link> */}
+                  </Link>
                 </div>
                 <div className="w-full">
                   <button
                     type="submit"
-                    className="w-full flex text-center justify-center text-white rounded-full 2sm:p-[12px] p-[10px] font-matter text-base bg-gray-900 border transition border-gray-900 hover:bg-white hover:border-gray-900 hover:text-gray-900"
-                    disabled={loading} // Disable button while loading
+                    disabled={loading}
+                    aria-busy={loading}
+                    className={`w-full flex items-center justify-center rounded-full 2sm:p-[12px] p-[10px] font-matter text-base border transition
+                  ${loading
+                        ? "bg-gray-700 text-white border-gray-700 opacity-80 cursor-not-allowed"
+                        : "bg-gray-900 text-white border-gray-900 hover:bg-white hover:text-gray-900"
+                      }`}
                   >
                     {loading ? (
-                      <div className="loader">Loading...</div> // Add a loading spinner or text
+                      <span className="flex items-center gap-2">
+                        {/* spinner */}
+                        <LoaderCircle className="animate-spin text-white" />
+                        <span>Logging in…</span>
+                      </span>
                     ) : (
                       "Login"
                     )}

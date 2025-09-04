@@ -38,6 +38,7 @@ import { SidebarContext } from "../providers";
 import NotificationSection from "./HeaderComponents/NotificationSection";
 import DonateModal from "./Sidebar/DonateModal";
 import { PiHandHeart } from "react-icons/pi";
+import { useSelector } from "react-redux";
 
 const languages = [
   {
@@ -124,6 +125,8 @@ const Header = ({ isLoggedIn }) => {
   const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
   const [modalType, setModalType] = useState(null);
 
+  const { userData } = useSelector((state) => state.user);
+
   const {
     isOpen: isDonateOpen,
     onOpen: onDonateOpen,
@@ -179,7 +182,7 @@ const Header = ({ isLoggedIn }) => {
           </Link>
         </NavbarBrand>
 
-          {/* Center */}
+        {/* Center */}
         <NavbarContent
           className="flex w-full px-4 grow gap-0"
           justify="start"

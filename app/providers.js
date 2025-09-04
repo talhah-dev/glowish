@@ -4,21 +4,29 @@ import { NextUIProvider } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { createContext, useEffect, useState } from "react";
 import { HeroUIProvider } from "@heroui/react";
+import { store } from "./redux/store";
+import useUser from "./components/hooks/useUser";
+import { Provider as ReduxProvider } from "react-redux";
 
 export const SidebarContext = createContext(undefined);
 export const SmallScreenContext = createContext(undefined);
 export const TabContext = createContext(undefined);
 
+// NEW: run useUser only AFTER ReduxProvider is mounted
+function InitUser() {
+  useUser();
+  return null;
+}
+
 export function Providers({ children }) {
   const router = useRouter();
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [activeTab, setActiveTab] = useState({
-    tab: "news",
-    title: ""
-  }); // Default to "News" tab
+  const [activeTab, setActiveTab] = useState({ tab: "news", title: "" });
 
   useEffect(() => {
+
     const handleResize = () => {
       if (window.innerWidth < 1280) {
         setIsSidebarOpen(false);
@@ -29,23 +37,24 @@ export function Providers({ children }) {
     };
     handleResize();
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <NextUIProvider navigate={router.push}>
-      <SidebarContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>
-        <SmallScreenContext.Provider value={{ isSmallScreen, setIsSmallScreen }}>
-          <TabContext.Provider value={{ activeTab, setActiveTab }}>
-            <HeroUIProvider>
-            {children}
-            </HeroUIProvider>
-          </TabContext.Provider>
-        </SmallScreenContext.Provider>
-      </SidebarContext.Provider>
-    </NextUIProvider>
+    <ReduxProvider store={store}>
+      <NextUIProvider navigate={router.push}>
+        <SidebarContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>
+          <SmallScreenContext.Provider value={{ isSmallScreen, setIsSmallScreen }}>
+            <TabContext.Provider value={{ activeTab, setActiveTab }}>
+              <HeroUIProvider>
+                {/* run user bootstrap INSIDE the Redux provider */}
+                <InitUser />
+                {children}
+              </HeroUIProvider>
+            </TabContext.Provider>
+          </SmallScreenContext.Provider>
+        </SidebarContext.Provider>
+      </NextUIProvider>
+    </ReduxProvider>
   );
 }

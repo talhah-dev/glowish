@@ -76,7 +76,13 @@ const userSchema = new mongoose.Schema({
     },
 
     verificationCode: {
-        type: String
+        type: String,
+        default: ''
+    },
+
+    otpExpire: {
+        type: Date,
+        default: Date.now()
     },
 
     jobTitle: {

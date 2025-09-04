@@ -17,7 +17,6 @@ const ProfileEditForm = () => {
     console.log(data);
   };
 
-  // Sample LinkedIn job titles (based on common and popular titles from 2025 trends)
   const jobTitles = [
     "Software Engineer",
     "Data Scientist",
@@ -39,7 +38,6 @@ const ProfileEditForm = () => {
     "Dental Assistant",
     "Mental Health Practitioner",
     "Delivery Driver",
-    // Add more as needed
   ];
 
   return (
@@ -257,49 +255,6 @@ const ProfileEditForm = () => {
             }}
           />
         </div>
-      </div>
-      <div className="sm:mb-5 mb-4">
-        <label htmlFor="bbcProfile" className="flex pb-2 text-base text-gray-900">
-          BBC Profile
-        </label>
-        <Input
-          id="bbcProfile"
-          type="text"
-          placeholder="Your BBC profile link..."
-          {...register("bbcProfile")}
-          classNames={{
-            inputWrapper:
-              "w-full rounded-full text-gray-900 px-0 shadow-none !bg-transparent hover:!bg-transparent h-fit",
-            input:
-              "text-base rounded-full w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#000]",
-          }}
-        />
-        <Button
-          type="button"
-          variant="flat"
-          className="mt-2 flex justify-center items-center text-base px-[22px] min-w-[30px] rounded-full"
-          onClick={() => navigator.clipboard.writeText("Your BBC profile link")}
-        >
-          Copy BBC Profile Link
-        </Button>
-      </div>
-      <div className="sm:mb-5 mb-4">
-        <label htmlFor="idVerification" className="flex pb-2 text-base text-gray-900">
-          ID Verification
-        </label>
-        <Input
-          id="idVerification"
-          type="text"
-          placeholder="Upload or verify your ID..."
-          {...register("idVerification")}
-          classNames={{
-            inputWrapper:
-              "w-full rounded-full text-gray-900 px-0 shadow-none !bg-transparent hover:!bg-transparent h-fit",
-            input:
-              "text-base rounded-full w-full leading-6 px-6 py-3 border border-gray-400 focus:border-[#000]",
-          }}
-        />
-        <p className="text-green-600 text-sm mt-1">You verified your identity</p>
       </div>
       <div className="sm:mb-5 mb-4">
         <label htmlFor="isPublic" className="flex pb-2 text-base text-gray-900">
