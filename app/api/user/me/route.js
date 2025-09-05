@@ -1,20 +1,19 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 import User from "../../../../models/User";
 import mongoDB from "../../../../lib/mongoDB";
 
-export async function GET(req) {
+export async function GET() {
     try {
         await mongoDB();
 
-        // cookies se token nikaalo
-        const token = req.cookies.get("token")?.value;
+        const token = cookies().get("token")?.value;
 
         if (!token) {
             return NextResponse.json({ error: "No token found" }, { status: 401 });
         }
 
-        // token verify
         let decoded;
         try {
             decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -33,7 +32,7 @@ export async function GET(req) {
         });
     } catch (err) {
         return NextResponse.json(
-            { error: err.message, message: "Something went wrong" },
+            { error: "Server error", message: "Something went wrong" },
             { status: 500 }
         );
     }

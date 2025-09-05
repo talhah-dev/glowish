@@ -7,16 +7,21 @@ import { HeroUIProvider } from "@heroui/react";
 import { store } from "./redux/store";
 import useUser from "./components/hooks/useUser";
 import { Provider as ReduxProvider } from "react-redux";
+import Loader from "./components/Loader";
 
 export const SidebarContext = createContext(undefined);
 export const SmallScreenContext = createContext(undefined);
 export const TabContext = createContext(undefined);
 
-// NEW: run useUser only AFTER ReduxProvider is mounted
-function InitUser() {
-  useUser();
-  return null;
+function InitUser({ children }) {
+  const { user, loading, error } = useUser();
+
+  if (loading) return <Loader />;
+  if (error) return <div>Failed to load user</div>;
+
+  return children;
 }
+
 
 export function Providers({ children }) {
   const router = useRouter();
@@ -47,9 +52,9 @@ export function Providers({ children }) {
           <SmallScreenContext.Provider value={{ isSmallScreen, setIsSmallScreen }}>
             <TabContext.Provider value={{ activeTab, setActiveTab }}>
               <HeroUIProvider>
-                {/* run user bootstrap INSIDE the Redux provider */}
-                <InitUser />
-                {children}
+                <InitUser>
+                  {children}
+                </InitUser>
               </HeroUIProvider>
             </TabContext.Provider>
           </SmallScreenContext.Provider>

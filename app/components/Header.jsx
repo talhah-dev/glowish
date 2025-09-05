@@ -118,7 +118,7 @@ const searchListData = [
   },
 ];
 
-const Header = ({ isLoggedIn }) => {
+const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showSearchList, setShowSearchList] = useState(false);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -126,6 +126,15 @@ const Header = ({ isLoggedIn }) => {
   const [modalType, setModalType] = useState(null);
 
   const { userData } = useSelector((state) => state.user);
+  console.log(userData)
+
+  let isLoggedIn
+
+  if (!userData) {
+    isLoggedIn = false
+  }else{
+    isLoggedIn = true
+  }
 
   const {
     isOpen: isDonateOpen,
@@ -244,26 +253,7 @@ const Header = ({ isLoggedIn }) => {
             <NavbarItem>
               <ProfileDropdown />
             </NavbarItem>
-            <NavbarItem className="hidden md:flex">
-              <Button
-                color="primary"
-                href="/login"
-                as={Link}
-                className="hidden md:flex justify-center items-center text-base px-[22px] min-w-[30px] w-full rounded-full border border-gray-900 bg-white text-gray-900"
-              >
-                Login
-              </Button>
-            </NavbarItem>
-            <NavbarItem className="hidden md:flex">
-              <Button
-                color="primary"
-                href="/register"
-                as={Link}
-                className="hidden md:flex justify-center items-center text-base px-[22px] min-w-[30px] w-full rounded-full bg-gray-900"
-              >
-                Register
-              </Button>
-            </NavbarItem>
+            
           </div>
         ) : (
           <div className="flex items-center gap-4">
